@@ -1,0 +1,106 @@
+:root {
+    /* Color */
+    --color-defaultbackground: #303550;
+    --color-blue: #333399;
+    --color-orange: #eb7e52;
+    --color-darkorange: #eb7648;
+    --color-gray: #c2c1c1;
+    --color-whitegray: #ebeaea;
+    --color-loginbordergray: #C8D0DA;
+    --color-loginbackgray: #F6F8FA;
+    --color-loginfont: #24292F;
+}
+body{
+    margin: 0;
+}
+#edit__nav{
+    background-color: var(--color-defaultbackground);
+}
+#xmark{
+    margin-top: 20px;
+    margin-left: 20px;
+    color: whitesmoke;
+}
+#main {
+    display: flex;
+    width: 100%;
+    height: 700px;
+    background-color: var(--color-defaultbackground);
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+.picture {
+    display: flex;
+    width: 60%;
+    height: 70%;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 0.5rem outset white;
+    border-radius: 2px;
+
+}
+
+#the_picture {
+    height: 80%;
+    margin-left: 30px;
+}
+
+#about {
+    height: 80%;
+    margin-left: 30px;
+    align-items: left;
+}
+
+#the_description {
+    word-break: break-all;
+    margin-right: 30px;
+}
+#the_date{
+    color: gray;
+}
+.edit{
+    display: flex;
+    align-items: center;
+}
+#trashcan{
+    margin-left: 20px;
+    color: var(--color-orange);
+}
+.arrow_left{
+    display:flex;
+    position:relative;
+    margin-right: 200px;
+    text-align:center; 
+    animation:arrow_left 2s infinite;
+}
+.left__scroll-arrow {
+    width:10px; 
+    height:10px; 
+    border-right: 3px solid white; 
+    border-bottom: 3px solid white;
+    transform: translate3d(0,-50%,0) rotate(135deg);
+}
+@keyframes arrow_left{
+    0%{left:60px;opacity: 1;}
+    100%{left:20px;opacity: 0;}
+    }
+.arrow_right{
+    display:flex;
+    position:relative;
+    margin-left: 200px;
+    text-align:center; 
+    animation:arrow_right 2s infinite;
+}
+.right__scroll-arrow {
+    width:10px; 
+    height:10px; 
+    border-right: 3px solid white; 
+    border-bottom: 3px solid white;
+    transform: translate3d(0,-50%,0) rotate(315deg);
+}
+@keyframes arrow_right{
+0%{right:60px;opacity: 1;}
+100%{right:20px;opacity: 0;}
+}

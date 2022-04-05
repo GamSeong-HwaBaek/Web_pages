@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감성화백</title>
+    <meta name="description" content="2022 Capstone Design2 Team 어때요, 참 쉽죠?">
+    <meta name="author" content="Eunseo">
+    <link rel="icon" type="image/png" href="image/favicon.png">
+    <script src="https://kit.fontawesome.com/9ff9f6bf5f.js" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/555ffe8d45.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="exhibit.css">
+    <script src="exhibit.js" defer></script>
+
+</head>
+
+<body>
+    <section id="edit__nav">
+        <i class="fa-regular fa-circle-xmark fa-2x", id="xmark", onclick="click_xmark()"></i>
+    </section>
+    <section id="main">
+        <div class="arrow_left", onclick="click_arrowleft()">
+            <div class="left__scroll-arrow"></div>
+            <div class="left__scroll-arrow"></div>
+            <div class="left__scroll-arrow"></div>
+        </div>
+        <div class="picture">
+            <img src="./img/slide2.jpg" id="the_picture">
+            <div id="about">
+                <h2 id="the_title">그림 제목</h2>
+                <p id="the_description">dsfjlsdjfldsjkf;sdafdas flsdj;fjsdkfldsj;fsdfsdfsdfdsfd</p>
+                <div class="edit">
+                    <p id="the_date">2022-04-06</p>
+                    <i class="fa-solid fa-trash-can fa-1x", id="trashcan", onclick="click_trashcan()"></i>
+                </div>
+            </div>
+        </div>
+        <div class="arrow_right", onclick="click_arrowright()">
+            <div class="right__scroll-arrow"></div>
+            <div class="right__scroll-arrow"></div>
+            <div class="right__scroll-arrow"></div>
+        </div>
+    </section>
+</body>
