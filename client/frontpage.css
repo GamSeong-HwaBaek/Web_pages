@@ -11,15 +11,14 @@
     --color-loginfont: #24292F;
 
     /* Font size */
-    --font-large: 48px;
-    --font-medium: 28px;
-    --font-regular: 18px;
-    --font-small: 16px;
-    --font-micro: 14px;
+    --font-large: 40px;
+    --font-medium: 30px;
+    --font-regular: 20px;
+    --font-small: 15px;
 
     /* Font weight */
     --weight-bold: 700;
-    --weight-semi-bold: 600;
+    --weight-semi-bold: 540;
     --weight-regular: 400;
 
     /* Size */
@@ -88,17 +87,18 @@ input {
 .about__script {
     display: inline-block;
     width: 80%;
-    height: 80%;
+    height: 70%;
     text-align: left;
 }
 
 .about__title {
-    font-size: 60px;
+    font-size: var(--font-large);
+    padding-top: 50px;
 }
 
 .about__script {
     color: whitesmoke;
-    font-size: 25px;
+    font-size: var(--font-regular);
     line-height: 50px;
 }
 
@@ -116,7 +116,8 @@ input {
     display: flex;
     align-items: center;
     height: 20%;
-    font-size: 40px;
+    font-size: var(--font-medium);
+    font-weight: var(--weight-semi-bold);
     text-align: center;
     color: whitesmoke;
     justify-content: center;
@@ -147,7 +148,8 @@ input {
     margin-top: 6%;
     height: 5%;
     color: var(--color-loginfont);
-    font-size: 25px;
+    font-size: 22px;
+    font-weight: var(--weight-semi-bold);
     margin-bottom: 4%;
 }
 
@@ -200,7 +202,7 @@ input {
 .login__create {
     height: 100%;
     width: 50%;
-    font-size: 15px;
+    font-size: var(--font-small);
 }
 
 .login__create:hover {
@@ -210,7 +212,7 @@ input {
 .login__forget {
     height: 100%;
     width: 50%;
-    font-size: 15px;
+    font-size: var(--font-small);
     justify-content: right;
     color: var(--color-blue);
 }
@@ -241,6 +243,8 @@ input {
 
 .login__with {
     margin-top: 4%;
+    font-size: var(--font-small);
+    font-weight: var(--weight-semi-bold);
 }
 
 .related__buttons {
