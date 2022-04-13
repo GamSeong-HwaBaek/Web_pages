@@ -15,6 +15,7 @@
     --font-medium: 30px;
     --font-regular: 20px;
     --font-small: 15px;
+    --font-nano: 12px;
 
     /* Font weight */
     --weight-bold: 700;
@@ -41,7 +42,9 @@ button {
 input {
     padding: 15px;
 }
-
+p{
+    font-size: var(--font-small);
+}
 #home {
     width: 100%;
     height: 740px;
@@ -210,6 +213,7 @@ input {
 
 .login__create:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .login__forget {
@@ -223,6 +227,7 @@ input {
 
 .login__forget:hover {
     text-decoration: underline;
+    cursor: pointer;;
 }
 
 .login__btn {
@@ -335,12 +340,15 @@ input {
 }
 #close_popup:hover{
     color: var(--color-orange);
+    cursor: pointer;
 }
 .popup__inside{
     width: 90%;
     height: 80%;
     padding-bottom: 5%; 
+    font-size: var(--font-regular);
 }
+
 .create_account{
     width: 100%;
     height: 15%;
@@ -373,6 +381,44 @@ input {
     margin-top: 4%;
     margin-bottom: 1%;
 }
+.name__textfirst{
+    border: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--color-loginbordergray);
+    color: var(--color-loginfont);
+    width: 10%;
+    margin-right: 10px;
+}
+.name__textlast{
+    border: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--color-loginbordergray);
+    color: var(--color-loginfont);
+    width: 16%;
+    margin-right: 10px;
+}
+.email__text, .password__text, .password2__text{
+    border: 3px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--color-loginbordergray);
+    color: var(--color-loginfont);
+}
+.name__textfirst:focus, .name__textlast:focus, .email__text:focus, .password__text:focus, .password2__text:focus {
+    border-color: var(--color-orange);
+    outline: none;
+}
+#email__isoverlap{
+    margin-left: 10px;
+    color: var(--color-orange);
+}
+#email__isoverlapword{
+    margin-left: 10px;
+    color: var(--color-orange);
+    font-size: var(--font-nano);
+}
 .password__message{
     height: 5%;
     color: var(--color-loginfont);
@@ -381,10 +427,50 @@ input {
     margin-top: 4%;
     margin-bottom: 1%;
 }
+#password__okay{
+    margin-left: 10px;
+    color: var(--color-orange);
+}
+#password__okayword{
+    margin-left: 10px;
+    color: var(--color-orange);
+    font-size: var(--font-nano);
+}
+.password2__message{
+    height: 5%;
+    color: var(--color-loginfont);
+    font-size: var(--font-small);
+    font-weight: var(--weight-semi-bold);
+    margin-top: 4%;
+    margin-bottom: 1%;
+}
+#password2__match{
+    margin-left: 10px;
+    color: var(--color-orange);
+}
+#password2__matchword{
+    margin-left: 10px;
+    color: var(--color-orange);
+    font-size: var(--font-nano);
+}
 .create_account{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: right;
+}
+.create_account__right{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 20px;
+    width: 40%;
+}
+.create_account__right:hover{
+    color:var(--color-orange);
+    cursor: pointer;
+}
+#saveAccount{
+    padding-right: 15px;
 }
 #saveAccount:hover{
     color: var(--color-orange);

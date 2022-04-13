@@ -18,7 +18,9 @@
     <script src="frontpage.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anek+Odia:wght@300&family=Beau+Rivage&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anek+Odia:wght@300&family=Beau+Rivage&family=Nanum+Myeongjo&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -28,7 +30,7 @@
         <div class="home__img_animation">
             <!--머신러닝을 통해 생성된 그림 영상 제작 후 삽입 예정 현재 임의의 동영상 삽입-->
             <video muted autoplay loop>
-                <source src="test.mp4" type="video/mp4">
+                <source src="../video/test.mp4" type="video/mp4">
                 <strong>Your browser does not support the video tag.</strong>
             </video>
         </div>
@@ -39,10 +41,9 @@
     <section id="about" class="section">
         <div class="about__script">
             <h1 class="about__title">About Us</h1>
-            <p class="about__description">Currently a student at Chung-Ang University..
-                Currently a student at Chung-Ang University..<br>
-                Currently a student at Chung-Ang University..
-                Currently a student at Chung-Ang University..<br>
+            <p class="about__description">나만의 감성 미술관 서비스: <br>
+                일기에 따라 감정을 분석해 주고, 업로드 된 사진을 나만의 그림으로 바꾸어 주는 서비스로<br>
+                나만의 전시회 개최할 수 있습니다.<br>
                 감성화백은 2022년 1학기 어때요 참 쉽죠 팀의 캡스톤 프로젝트입니다.
             </p>
         </div>
@@ -53,7 +54,7 @@
         <div class="login__box">
             <div class="login__message" , id="login__box__inside">Welcome. Please login</div>
             <input class="login__idbox" , type="text" , placeholder="Username or email address">
-            <input class="login__password" , type="text" , placeholder="Password">
+            <input class="login__password" , type="password" , placeholder="Password">
             <div class="login__help" , id="login__box__inside">
                 <div class="login__create" , id="login__box__inside" , onclick="createNewAccount()">Create new account
                 </div>
@@ -73,28 +74,44 @@
         <div class="background">
             <div class="window">
                 <div class="popup">
-                    <i class="fa-solid fa-xmark", id="close_popup" onclick="closePopup()"></i>
+                    <i class="fa-solid fa-xmark" , id="close_popup" onclick="closePopup()"></i>
+
                     <div class="popup__inside">
                         <div class="welcome__message" , id="popup__inside">Welcome to 감성화백</div>
-                        <div class="name__message" , id="popup__inside">Enter your name</div>
-                        <div class="name__text", id="popup__inside">
-                            <input class="name__textfirst" , type="text" , placeholder="Firstname">
-                            <input class="name__textlast" , type="text" , placeholder="Lastname">
+                        <div class="name__message" , id="popup__inside">이름을 입력하세요</div>
+                        <div class="name__text" , id="popup__inside">
+                            <input class="name__textfirst" , id="name__textfirst", type="text" , placeholder="성">
+                            <input class="name__textlast" id="name__textlast", type="text" , placeholder="이름">
                         </div>
-                        <div class="email__message" , id="popup__inside">Enter your Email</div>
-                        <input class="email__text" , type="text" , placeholder="Email address">
-                        <i class="fa-solid fa-check"></i>
-                        <div class="password__message" , id="popup__inside">Create a password</div>
-                        <input class="password__text" , type="text" , placeholder="Password">
-                        <div class="password__message" , id="popup__inside">Check password</div>
-                        <input class="password__text" , type="text" , placeholder="Password">
-                        <i class="fa-solid fa-check"></i>
+                        <div class="email__message" , id="popup__inside">이메일 주소를 입력하세요</div>
+                        <div class="email" , id="popup__inside">
+                            <input class="email__text" , id="email__text", type="text" , placeholder="example@art.com", onkeyup="emailCheck()">
+                            <i id="email__isoverlap", class=""></i>
+                            <p id="email__isoverlapword"></p>
+                        </div>
+
+                        <div class="password__message" , id="popup__inside">비밀번호를 입력하세요</div>
+                        <div class="password" , id="popup__inside">
+                            <input class="password__text" , id="password__text", type="password" , placeholder="Password", onkeyup="passwordCheck();passwordSame()">
+                            <i id="password__okay", class=""></i>
+                            <p id="password__okayword"></p>
+                        </div>
+
+                        <div class="password2__message" , id="popup__inside">비밀번호를 다시 입력하세요</div>
+                        <div class="password2" , id="popup__inside">
+                            <input class="password2__text" , id="password2__text", type="password" , placeholder="Password", onkeyup="passwordSame();passwordCheck();">
+                            <i id="password2__match", class=""></i>
+                            <p id="password2__matchword"></p>
+                        </div>
                     </div>
                     <div class="create_account">
-                        <i class="fa-solid fa-brush fa-2x", id="saveAccount"></i>
+                        <div class="create_account__right">
+                            <i class="fa-solid fa-brush fa-2x" , id="saveAccount"></i>
+                            <p>화가가 되어 봅시다 !</p>
+                        </div>
                     </div>
-                <div>
-            <div>
-        <div>
+                    <div>
+                        <div>
+                            <div>
     </section>
 </body>
