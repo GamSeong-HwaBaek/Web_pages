@@ -1,5 +1,8 @@
 function createNewAccount() {
-    console.log("create new account");
+    document.querySelector(".background").className = "background show";
+}
+function closePopup() {
+    document.querySelector(".background").className = "background";
 }
 function findIDorPassword() {
     console.log("findIDorPassword");
