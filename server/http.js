@@ -1,5 +1,6 @@
-const { read } = require('fs');
+const { read, fstat } = require('fs');
 const http = require('http');
+const fs = require('fs');
 
 const courses = [
   { name: 'HTML' },
@@ -12,7 +13,11 @@ const courses = [
 const server = http.createServer((req, res) => {
   const url = req.url;
   const method = req.method;
-  if (url === '/courses') {
+  if (url === '/') {
+    res.setHeader('Content-Type', 'text/html');
+    fs.createReadStream('../client/pages/frontpage.html').pipe(res);
+  }
+  else if (url === '/courses') {
     if (method === 'GET') {
       res.writeHead(200, { 'Content-Type': 'application/json' });
       res.end(JSON.stringify(courses));
@@ -35,4 +40,4 @@ const server = http.createServer((req, res) => {
   }
 });
 
-server.listen(8080);
+server.listen(8090);
