@@ -41,6 +41,9 @@ function passwordSame() {
         document.getElementById('password2__matchword').innerText = "비밀번호가 일치하지 않습니다."
     }
 }
+function addtoDB() {
+    closePopup();
+}
 function closePopup() {
     input1 = document.getElementById('name__textfirst');
     input1.value = null;
