@@ -63,9 +63,69 @@ function closePopup() {
     document.getElementById('password2__matchword').innerText = ""
     document.querySelector(".background").className = "background";
 }
+
 function findIDorPassword() {
-    console.log("findIDorPassword");
+    document.querySelector(".background2").className = "background2 show";
+    console.log("hi");
 }
+function resetcolor1() {
+    document.getElementById('checkbox1').style.color = "var(--color-loginfont)";
+    document.getElementById('idname__textmsg').innerText = "";
+}
+function resetcolor2() {
+    document.getElementById('checkbox1').style.color = "var(--color-loginfont)";
+    document.getElementById('idname__textmsg').innerText = "";
+}
+function findId() {
+    nowName1 = document.getElementById('name__textfirst2').value;
+    nowName2 = document.getElementById('name__textlast2').value;
+    if (nowName1 === 'a' && nowName2 === 'b') { //가입된 이름이면
+        document.getElementById('idname__textmsg').innerText = "이메일주소";
+        document.getElementById('checkbox1').style.color = "var(--color-orange)";
+    }
+    else {
+        document.getElementById('idname__textmsg').innerText = "가입되지 않은 이름/닉네임 입니다.";
+    }
+}
+function email2Check() {
+    nowEmail = document.getElementById('email2__text').value;
+    document.getElementById('checkbox2').style.color = "var(--color-loginfont)";
+    console.log(nowEmail);
+    if (nowEmail.indexOf('@') == -1) { //이메일 형식이 아니면 x를
+        document.getElementById('pwdemail__textmsg').innerText = "올바른 이메일주소 형식이 아닙니다.";
+    }
+    else { //이메일 형식이면 넘어감
+        document.getElementById('pwdemail__textmsg').innerText = "";
+    }
+}
+function sendPassword() {
+    nowEmail = document.getElementById('email2__text').value;
+    if (nowEmail.indexOf('@') == -1) { //이메일 형식이 아니면 x를
+        document.getElementById('pwdemail__textmsg').innerText = "올바른 이메일주소 형식이 아닙니다.";
+    }
+    else if (nowEmail === '1@') { //이미 가입된 이메일이면 임시 비밀번호 전송
+        document.getElementById('pwdemail__textmsg').innerText = "이메일로 임시비밀번호를 전송하였습니다.";
+        document.getElementById('checkbox2').style.color = "var(--color-orange)";
+    }
+    else {
+        document.getElementById('pwdemail__textmsg').innerText = "가입되지 않은 이메일 주소입니다.";
+    }
+}
+function closePopup2() {
+    input1 = document.getElementById('name__textfirst2');
+    input1.value = null;
+    input2 = document.getElementById('name__textlast2');
+    input2.value = null;
+    input3 = document.getElementById('email2__text');
+    input3.value = null;
+
+    document.getElementById('checkbox1').style.color = "var(--color-loginfont)";
+    document.getElementById('checkbox2').style.color = "var(--color-loginfont)";
+    document.getElementById('idname__textmsg').innerText = ""
+    document.getElementById('pwdemail__textmsg').innerText = ""
+    document.querySelector(".background2").className = "background2";
+}
+
 function signIn() {
     console.log("signIn");
 }
