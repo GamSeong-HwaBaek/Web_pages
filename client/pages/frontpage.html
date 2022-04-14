@@ -71,47 +71,75 @@
                 <i class="fa-solid fa-n fa-3x" , id="login__with__btn" , onclick="relatedToNaver()"></i>
             </div>
         </div>
+
         <div class="background">
             <div class="window">
                 <div class="popup">
                     <i class="fa-solid fa-xmark" , id="close_popup" onclick="closePopup()"></i>
-
                     <div class="popup__inside">
                         <div class="welcome__message" , id="popup__inside">Welcome to 감성화백</div>
                         <div class="name__message" , id="popup__inside">이름을 입력하세요</div>
                         <div class="name__text" , id="popup__inside">
-                            <input class="name__textfirst" , id="name__textfirst", type="text" , placeholder="성">
-                            <input class="name__textlast" id="name__textlast", type="text" , placeholder="이름">
+                            <input class="name__textfirst" , id="name__textfirst" , type="text" , placeholder="성">
+                            <input class="name__textlast" id="name__textlast" , type="text" , placeholder="이름">
                         </div>
                         <div class="email__message" , id="popup__inside">이메일 주소를 입력하세요</div>
                         <div class="email" , id="popup__inside">
-                            <input class="email__text" , id="email__text", type="text" , placeholder="example@art.com", onkeyup="emailCheck()">
-                            <i id="email__isoverlap", class=""></i>
+                            <input class="email__text" , id="email__text" , type="text" , placeholder="example@art.com"
+                                , onkeyup="emailCheck()">
+                            <i id="email__isoverlap" , class=""></i>
                             <p id="email__isoverlapword"></p>
                         </div>
 
                         <div class="password__message" , id="popup__inside">비밀번호를 입력하세요</div>
                         <div class="password" , id="popup__inside">
-                            <input class="password__text" , id="password__text", type="password" , placeholder="Password", onkeyup="passwordCheck();passwordSame()">
-                            <i id="password__okay", class=""></i>
+                            <input class="password__text" , id="password__text" , type="password" ,
+                                placeholder="Password" , onkeyup="passwordCheck();passwordSame()">
+                            <i id="password__okay" , class=""></i>
                             <p id="password__okayword"></p>
                         </div>
 
                         <div class="password2__message" , id="popup__inside">비밀번호를 다시 입력하세요</div>
                         <div class="password2" , id="popup__inside">
-                            <input class="password2__text" , id="password2__text", type="password" , placeholder="Password", onkeyup="passwordSame();passwordCheck();">
-                            <i id="password2__match", class=""></i>
+                            <input class="password2__text" , id="password2__text" , type="password" ,
+                                placeholder="Password" , onkeyup="passwordSame();passwordCheck();">
+                            <i id="password2__match" , class=""></i>
                             <p id="password2__matchword"></p>
                         </div>
                     </div>
                     <div class="create_account">
-                        <div class="create_account__right">
+                        <div class="create_account__right" , onclick="addtoDB()">
                             <i class="fa-solid fa-brush fa-2x" , id="saveAccount"></i>
                             <p>화가가 되어 봅시다 !</p>
                         </div>
                     </div>
-                    <div>
-                        <div>
-                            <div>
+                </div>
+            </div>
+        </div>
+
+        <div class="background2">
+            <div class="window2">
+                <div class="popup2">
+                    <i class="fa-solid fa-xmark" , id="close_popup2" onclick="closePopup2()"></i>
+                    <div class="popup2__inside">
+                        <div class="id__message" , id="popup2__inside">아이디 찾기</div>
+                        <div class="idname__message" , id="popup2__inside">이름/닉네임을 입력하세요</div>
+                        <div class="idname__text" , id="popup2__inside">
+                            <input class="idname__textfirst" , id="name__textfirst2" , onkeyup="resetcolor1()", type="text" , placeholder="성">
+                            <input class="idname__textlast" id="name__textlast2" , onkeyup="resetcolor2()", type="text" , placeholder="이름">
+                            <i class="fa-solid fa-square-check", id="checkbox1", onclick="findId()"></i>
+                            <p id="idname__textmsg"></p>
+                        </div>
+                        <div class="pwd__message" , id="popup2__inside">비밀번호 찾기</div>
+                        <div class="pwdemail__message" , id="popup2__inside">이메일 주소를 입력하세요</div>
+                        <div class="pwdemail" , id="popup2__inside">
+                            <input class="pwdemail__text" , id="email2__text" , type="text" , placeholder="example@art.com", onkeyup="email2Check()">
+                                <i class="fa-solid fa-square-check", id="checkbox2", onclick="sendPassword()"></i>
+                            <p id="pwdemail__textmsg"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </body>
