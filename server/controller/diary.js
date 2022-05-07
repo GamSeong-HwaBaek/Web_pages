@@ -15,8 +15,19 @@ export async function getbyDate(req, res, next) {
     res.status(200).json(data);
   } else {
     res.status(404).json({ message: `Diary id(${id}) not found` });
+    //이거 id가 아니라 Diary written on date(${date}) not found 이런식으로 해야할듯!
   }
 }
+/*export async function getbyEmotion(req, res, next) {
+  const emotion = req.params.emotion;
+  const data = await diaryRepository.getbyEmotion(emotion);
+  if (data) {
+    res.status(200).json(data);
+  } else {
+    res.status(404).json({ message: `Diary written as emotion(${emotion}) not found` });
+  }
+}
+*/
 
 export async function create(req, res, next) {
   const { date, emotion, weather, title, contents, writer } = req.body;
