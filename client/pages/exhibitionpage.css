@@ -1,0 +1,148 @@
+:root {
+    /* Color */
+    --color-defaultbackground: #303550;
+    --color-blue: #333399;
+    --color-orange: #eb7e52;
+    --color-darkorange: #eb7648;
+    --color-gray: #c2c1c1;
+    --color-whitegray: #ebeaea;
+    --color-loginbordergray: #C8D0DA;
+    --color-loginbackgray: #F6F8FA;
+    --color-loginfont: #24292F;
+}
+
+body {
+    margin: 0;
+    color: whitesmoke;
+    background-color: var(--color-defaultbackground);
+    
+}
+
+.navbar {
+    display: flex;
+}
+
+.logo {
+    width: 10%;
+    height: 15%;
+}
+
+.menu {
+    width: 15%;
+    height: 15%;
+    display: flex;
+    font-size: var(--font-regular);
+    font-weight: 600x;
+}
+
+#diary_btn {
+    width: 40%;
+    height: 100%;
+    font-size: 20px;
+}
+
+#exhibition_btn {
+    width: 60%;
+    height: 100%;
+    font-size: 20px;
+}
+
+#exhibition_btn {
+    border-bottom: 4px solid #8fd3f4;
+}
+
+.to-right-underline {
+    position: relative;
+}
+
+.to-right-underline:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0px;
+    height: 3px;
+    margin: 4px 0 0;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.3s;
+    opacity: 0;
+    background-color: #3f51b5;
+}
+
+.to-right-underline:hover:after {
+    width: 100%;
+    opacity: 1;
+}
+
+
+
+#main {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+
+.title {
+    height: 50px;
+    border-bottom: thin solid;
+}
+
+.year__flexbox {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.flexboxone {
+    flex-basis: 48%;
+    height: 400px;
+    border-radius: 30px;
+    margin-bottom: 2%;
+    box-shadow: -5px 10px 10px #1a1f3ada;
+}
+
+.icons {
+    margin-top: 3%;
+    margin-right: 3%;
+    align-items: space-between;
+    text-align: right;
+}
+
+.contents {
+    margin-left: 6%;
+    margin-right: 6%;
+    height: 100%;
+    width: 88%;
+}
+
+#hearticon:hover {
+    transform: scale(1.2);
+}
+
+#deleteicon:hover {
+    transform: scale(1.2);
+}
+
+#y2020__01 {
+    text-align: left;
+    background-image: url('../gallery_img/20220507.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#y2020__02 {
+    vertical-align: bottom;
+    text-align: right;
+}
+#y2020__02__contents{
+    display: flex;
+    vertical-align: bottom;
+}
+#y2020__02__title{
+    vertical-align: bottom;
+}
+#y2020__02__date{
+    vertical-align: bottom;
+}
