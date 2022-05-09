@@ -11,10 +11,13 @@
   "author": "어때요, 참 쉽죠?",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "express-async-errors": "^3.1.1",
+    "express-validator": "^6.11.1",
     "helmet": "^5.0.2",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
