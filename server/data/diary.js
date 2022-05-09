@@ -3,7 +3,7 @@ import * as userRepository from './auth.js';
 let diary = [
   {
     id: '1',
-    date : '20220302',
+    date: '20220302',
     emotion: '{emotion:  `Happy`}',
     weather: '맑음',
     title: '개강',
@@ -12,7 +12,7 @@ let diary = [
   },
   {
     id: '2',
-    date : '20220315',
+    date: '20220315',
     emotion: '{emotion:  `Excited`}',
     weather: '흐림',
     title: '키친 마이야르 탐방기',
@@ -21,7 +21,7 @@ let diary = [
   },
   {
     id: '3',
-    date : '20220401',
+    date: '20220401',
     emotion: '{emotion:  `Sad`}',
     weather: '맑음',
     title: '만우절과 신입생',
@@ -59,12 +59,22 @@ export async function getbyId(id) {
 export async function getbyDate(date) {
   return diary.find((data) => data.date === date);
 }
+<<<<<<< HEAD
 
 export async function create(date, emotion, weather, title, contents, userId) {
+=======
+/*
+export async function getbyEmotion(emotion) {
+  return diary.find((data) => data.emotion === emotion);
+}
+*/
+export async function create(date, emotion, weather, title, contents, writer) {
+>>>>>>> 0520f836864877dd774c54ba2e91de2e23cbcb6b
   const data = {
     id: new Date().toString(),
     date,
     emotion,
+<<<<<<< HEAD
     weather, 
     title, 
     contents, 
@@ -72,6 +82,15 @@ export async function create(date, emotion, weather, title, contents, userId) {
   };
   diary = [data, ...diary];
   return getbyId(data.id);
+=======
+    weather,
+    title,
+    contents,
+    writer
+  };
+  diary = [data, ...diary]; //이거 날짜별로 정렬하는게 좋을거 같아요!
+  return data;
+>>>>>>> 0520f836864877dd774c54ba2e91de2e23cbcb6b
 }
 
 export async function update(id, date, emotion, weather, title, contents) {
