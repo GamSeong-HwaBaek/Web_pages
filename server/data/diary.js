@@ -33,7 +33,7 @@ let diary = [
 export async function getAll() {
   return Promise.all(
     diary.map(async (data) => {
-      const { username, naxme, url } = await userRepository.findById(
+      const { username, name, url } = await userRepository.findById(
         data.userId
       );
       return { ...data, username, name, url };
@@ -57,7 +57,13 @@ export async function getbyId(id) {
 }
 
 export async function getbyDate(date) {
-  return diary.find((data) => data.date === date);
+  // return diary.find((data) => data.date === date);
+  const found = diary.find((data) => data.date === date);
+  if (!found) {
+    return null;
+  }
+  const { username, name, url } = await userRepository.findById(found.userId);
+  return { ...found, username, name, url };
 }
 
 
@@ -81,8 +87,8 @@ export async function getbyEmotion(emotion) {
   return getbyId(data.id);
 }
 
-export async function update(id, date, emotion, weather, title, contents) {
-  const data = diary.find((data) => data.id === id);
+export async function update(date, emotion, weather, title, contents) {
+  const data = diary.find((data) => data.date === date);
   if (data) {
     data.date = date;
     data.emotion = emotion;
