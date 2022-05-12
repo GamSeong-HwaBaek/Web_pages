@@ -4,11 +4,10 @@ import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import diaryRouter from './router/diary.js';
-<<<<<<< HEAD
 import authRouter from './router/auth.js';
-=======
 import exhibitionRouter from './router/exhibition.js';
->>>>>>> 0520f836864877dd774c54ba2e91de2e23cbcb6b
+import { config } from './config.js';
+import { db } from './db/database.js';
 
 const app = express();
 
@@ -30,4 +29,6 @@ app.use((error, req, res, next) => {
   res.sendStatus(500);
 });
 
-app.listen(8080);
+
+db.getConnection().then((connection) => console.log(connection));
+app.listen(config.host.port);
