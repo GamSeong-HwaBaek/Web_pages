@@ -1,26 +1,32 @@
 import { db } from '../db/database.js';
-import * as userRepository from './auth.js';
 // 데이터에 이미지 추가 필요
 
 const SELECT_JOIN =
-  'SELECT di.DiaryID, di.DiaryDate, di.Emotion, di.Weather, di.DiaryTitle, di.DiaryContents, us.name FROM diary as di JOIN users as us ON di.userID=us.userId';
-const ORDER_DECS = 
-  'ORDER BY di.DiaryDate DSEC';
-export async function getAll() {
+  'SELECT di.id, di.date, di.emotion, di.weather, di.title, di.contents, us.name FROM diary as di JOIN users as us ON di.userid=us.userid';
+const ORDER_DESC = 
+  'ORDER BY di.date DESC';
+
+// export async function getAll() {
+//   return db
+//     .execute(`${SELECT_JOIN} ${ORDER_DESC}`) //
+//     .then((result) => result[0]);
+// }
+
+export async function getAllByUserId(userid) {
   return db
-    .execute(`${SELECT_JOIN} ${ORDER_DECS}`) //
+    .execute(`${SELECT_JOIN} WHERE userid=? ${ORDER_DESC}`, [userid]) //
     .then((result) => result[0]);
 }
 
 export async function getbyId(id) {
   return db
-    .execute(`${SELECT_JOIN} WHERE di.DiaryID=?`, [id]) //
+    .execute(`${SELECT_JOIN} WHERE di.id=?`, [id]) //
     .then((result) => result[0][0]);
 }
 
 export async function getbyDate(date) {
   return db
-    .execute(`${SELECT_JOIN} WHERE di.DiaryDate=?`, [date]) //
+    .execute(`${SELECT_JOIN} WHERE di.date=?`, [date]) //
     .then((result) => result[0][0]);
 }
 
@@ -30,14 +36,13 @@ export async function getbyEmotion(emotion) {
 }
 */
 
-export async function create(date, emotion, weather, title, contents, userId) {
-  const {DiaryDate, Emotion, Weather, DiaryTitle, DiaryContents, userID} = data;
+export async function create(date, emotion, weather, title, contents, userid) {
   return db
     .execute(
-      'INSERT INTO diary (DiaryDate, Emotion, Weather, DiaryTitle, DiaryContents, userID) VALUES (?,?,?,?,?,?)',
-      [date, emotion, weather, title, contents, userId]
+      'INSERT INTO diary (date, emotion, weather, title, contents, userid) VALUES (?,?,?,?,?,?)',
+      [date, emotion, weather, title, contents, userid]
     )
-    .then((result) =>getbyId(result[0].insertId));
+    .then((result) =>getbyId(result[0].insertid));
 }
 
 export async function update(date, emotion, weather, title, contents) {
