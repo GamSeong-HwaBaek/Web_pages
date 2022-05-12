@@ -14,18 +14,101 @@
         crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/555ffe8d45.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="diary.css">
-    <script src="../service/diary.js" defer></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="tempdiary.css">
 
+    <script src="tempdiary.js" defer></script>
 </head>
 
 <body>
-    <!-- Home -->
-    <section id="home" class="section">>
-        <div class="home__img_animation">
-            <h1 class="home__img_discription">SAD</h1>
-        </div>
-        <img src="image/profile.png" class="home__logo">
-    </section>
+    <div class="mydiary__container">
+        <div class="mydiary">
+            <div class="left">
+                <div class="left__firstrow">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" , id="month" , size="10">
+                </div>
+                <div class="left__secondrow">
+                </div>
 
+                <div class="left__thirdrow">
+                    <div class="picture">
+                        <div class="container">
+                            <div class="image-upload" id="image-upload">
+                    
+                                <form method="post" enctype="multipart/form-data">
+                                    <div class="button">
+                                        <label for="chooseFile">
+                                            👉 CLICK HERE! 👈
+                                        </label>
+                                    </div>
+                                    <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                                </form>
+                    
+                                <div class="fileContainer">
+                                    <div class="fileInput">
+                                        <p>FILE NAME: </p>
+                                        <p id="fileName"></p>
+                                    </div>
+                                    <div class="buttonContainer">
+                                        <div class="submitButton" id="submitButton">SUBMIT</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="image-show" id="image-show"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="left__lastrow">
+                    <i class="fa-solid fa-caret-left" , id="openPrevpage"></i>
+                </div>
+            </div>
+            <div class="right">
+                <div class="fistrowrap">
+                    <div class="firstrow">
+                        <div class="date">
+                            <input type="text" , id="month" , size="4">년
+                            <input type="text" , id="month" , size="1">월
+                            <input type="text" , id="day" , size="1">일
+                        </div>
+                        <div class="weather">날씨 :
+                            <i class="fa-solid fa-sun fa-lg"></i>
+                            <i class="fa-solid fa-cloud fa-lg"></i>
+                            <i class="fa-solid fa-cloud-showers-heavy fa-lg"></i>
+                            <i class="fa-solid fa-snowflake fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="secondrowwrap">
+                    <div class="secondrow">
+                        <div class="emotion">감정 :
+                            <i class="fa-solid fa-face-laugh-beam"> happy</i>
+                            <i class="fa-solid fa-face-sad-tear"> sad</i>
+                            <i class="fa-solid fa-face-angry"> angry</i>
+                            <i class="fa-solid fa-face-laugh-beam"> happy</i>
+                            <i class="fa-solid fa-face-sad-tear"> sad</i>
+                            <i class="fa-solid fa-face-angry"> angry</i>
+                            <i class="fa-solid fa-face-angry"> angry</i>
+                            <i class="fa-solid fa-face-angry"> angry</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="thirdrowwrap">
+                    <div class="thirdrow">
+                        <div class="title">제목 :
+                            <input type="text" , class="title__input">
+                        </div>
+                    </div>
+                </div>
+                <div class="content">
+                    <textarea class="content__input" , cols="60" rows="10"></textarea>
+                </div>
+                <div class="right__lastrow">
+                    <i class="fa-solid fa-caret-left" , id="openNextpage"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
