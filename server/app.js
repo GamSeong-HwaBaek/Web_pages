@@ -17,12 +17,9 @@ app.use(helmet());
 app.use(cors());
 app.use(morgan('tiny'));
 
-app.use('/diary', diaryRouter);
-<<<<<<< HEAD
 app.use('/auth', authRouter);
-=======
+app.use('/diary', diaryRouter);
 app.use('/exhibition', exhibitionRouter);
->>>>>>> 0520f836864877dd774c54ba2e91de2e23cbcb6b
 
 app.use((req, res, next) => {
   res.sendStatus(404);

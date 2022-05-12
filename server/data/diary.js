@@ -42,7 +42,7 @@ export async function getAll() {
 }
 
 export async function getbyWriter(username) {
-  return getAll().then((diary) => 
+  return getAll().then((diary) =>
     diary.filter((data) => data.username === username)
   );
 }
@@ -59,38 +59,31 @@ export async function getbyId(id) {
 export async function getbyDate(date) {
   return diary.find((data) => data.date === date);
 }
-<<<<<<< HEAD
 
-export async function create(date, emotion, weather, title, contents, userId) {
-=======
 /*
 export async function getbyEmotion(emotion) {
   return diary.find((data) => data.emotion === emotion);
 }
 */
 export async function create(date, emotion, weather, title, contents, writer) {
->>>>>>> 0520f836864877dd774c54ba2e91de2e23cbcb6b
   const data = {
     id: new Date().toString(),
     date,
     emotion,
-<<<<<<< HEAD
-    weather, 
-    title, 
-    contents, 
+    weather,
+    title,
+    contents,
     userId,
   };
   diary = [data, ...diary];
   return getbyId(data.id);
-=======
-    weather,
+  weather,
     title,
     contents,
     writer
-  };
-  diary = [data, ...diary]; //이거 날짜별로 정렬하는게 좋을거 같아요!
-  return data;
->>>>>>> 0520f836864877dd774c54ba2e91de2e23cbcb6b
+};
+diary = [data, ...diary]; //이거 날짜별로 정렬하는게 좋을거 같아요!
+return data;
 }
 
 export async function update(id, date, emotion, weather, title, contents) {
