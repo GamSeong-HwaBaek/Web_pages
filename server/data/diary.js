@@ -43,11 +43,11 @@ export async function create(date, emotion, weather, title, contents, userid) {
       [date, emotion, weather, title, contents, userid]
     )
     .then((result) =>getbyId(result[0].insertid));
-}
+
 
 export async function update(date, emotion, weather, title, contents) {
   return db.execute('UPDATE diary SET emotion=?, weather=?, title=?, contents=? WHERE date=?', [emotion, weather, title, contents, date])
-  .then(() => getbyDate(date));
+    .then(() => getbyDate(date));
 }
 
 export async function remove(id) {

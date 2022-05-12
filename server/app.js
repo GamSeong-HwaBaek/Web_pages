@@ -17,8 +17,8 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(express.static('public'));
 
-app.use('/diary', diaryRouter);
 app.use('/auth', authRouter);
+app.use('/diary', diaryRouter);
 app.use('/exhibition', exhibitionRouter);
 
 app.use((req, res, next) => {
