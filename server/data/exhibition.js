@@ -7,6 +7,15 @@ let exhibition = [
     //mainimage : 
     img_Num: 1,
     owner: '최은서'
+  },
+  {
+    id: "2",
+    title: "",
+    diaires: [4, 5, 6],
+    date: '20220513',
+    //mainimage : 
+    img_Num: 1,
+    owner: '이하은'
   }
 ];
 
@@ -14,8 +23,8 @@ export async function getAll() {
   return exhibition
 }
 
-export async function getbyWriter(writer) {
-  return exhibition.filter((data) => data.writer === writer);
+export async function getbyOwner(owner) {
+  return exhibition.filter((data) => data.owner === owner);
 }
 
 export async function getbyId(id) {

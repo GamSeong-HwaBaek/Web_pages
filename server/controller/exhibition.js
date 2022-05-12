@@ -3,7 +3,7 @@ import * as exhibitionRepository from '../data/exhibition.js';
 export async function getAll(req, res) {
   const writer = req.query.writer;
   const data = await (writer
-    ? exhibitionRepository.getbyWriter(writer)
+    ? exhibitionRepository.getbyOwner(writer)
     : exhibitionRepository.getAll());
   res.status(200).json(data);
 }
