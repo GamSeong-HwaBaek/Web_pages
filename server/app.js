@@ -15,13 +15,14 @@ app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use(morgan('tiny'));
+app.use(express.static('../client/public'));
 
 app.use('/auth', authRouter);
 app.use('/diary', diaryRouter);
 app.use('/exhibition', exhibitionRouter);
 
 app.use((req, res, next) => {
-  res.sendStatus(404);
+  res.sendFile('C:/Users/82108/Desktop/Web_pages/client/public/views/frontpage.html');
 });
 
 app.use((error, req, res, next) => {

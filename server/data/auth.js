@@ -7,9 +7,9 @@ export async function findByUsername(username) {
   //return users.find((user) => user.username === username);
 }
 
-export async function findById(id) {
+export async function findById(userid) {
   return db
-  .execute('SELECT * FROM users WHERE userId=?', [id])
+  .execute('SELECT * FROM users WHERE userid=?', [userid])
   .then((result) => result[0][0]);
   // return users.find((user) => user.id === id);
 }

@@ -141,3 +141,5 @@ function relateToNaver() {
 function relateToKakao() {
     console.log("relate1");
 }
+
+console.log("main js loaded");
