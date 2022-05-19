@@ -1,58 +1,37 @@
-let exhibition = [
-  {
-    id: "1",
-    title: "",
-    diaries: [1, 2, 3],
-    date: '20220302',
-    //mainimage : 
-    img_Num: 1,
-    owner: '최은서'
-  },
-  {
-    id: "2",
-    title: "",
-    diaires: [4, 5, 6],
-    date: '20220513',
-    //mainimage : 
-    img_Num: 1,
-    owner: '이하은'
-  }
-];
+import { db } from '../db/database.js';
 
-export async function getAll() {
-  return exhibition
-}
+const SELECT_JOIN =
+  'SELECT g.GalleryId, g.GalleryName, g.DiaryID, g.GalleryDate, g.Img, g.Img_Num, g.OwnerID FROM gallery as g JOIN users as us ON g.OwnerID=us.userid';
+const ORDER_DESC =
+  'ORDER BY g.GalleryDate DESC';
 
-export async function getbyOwner(owner) {
-  return exhibition.filter((data) => data.owner === owner);
+
+export async function getbyOwner(ownerid) {
+  return db
+    .execute(`${SELECT_JOIN} WHERE g.OwnerID=? ${ORDER_DESC}`, [ownerid]) //
+    .then((result) => result[0]);
 }
 
 export async function getbyId(id) {
-  return exhibition.find((data) => data.id === id);
+  return db
+    .execute(`${SELECT_JOIN} WHERE g.GalleryId=?`, [id]) //
+    .then((result) => result[0][0]);
 }
 
-export async function create(title, diaries, date, owner) {
-  const data = {
-    id: (exhibition.length + 1).toString(), /* 얘도 회원id+전시번호로 나중에 바꿀것 */
-    title,
-    diaries,
-    date,
-    img_Num: exhibition.length,
-    owner
-  };
-  exhibition = [data, ...exhibition]; //전시는 최근에 생성되는게 쌓이는 형태
-  return data;
+export async function create(GalleryName, DiaryID, GalleryDate, Img, ImgNum, OwnerID) {
+  return db
+    .execute(
+      'INSERT INTO gallery (GalleryName, DiaryID, GalleryDate, Img, ImgNum, OwnerID) VALUES (?,?,?,?,?,?)',
+      [GalleryName, DiaryID, GalleryDate, Img, ImgNum, OwnerID]
+    )
+    .then((result) => getbyId(result[0].insertid));
 }
 
 export async function update(id, title, diaries) { //제목과 일기목록(삭제) 수정가능
-  const data = exhibition.find((data) => data.id === id);
-  if (data) {
-    data.title = title;
-    data.diaries = diaries;
-  }
-  return data;
+  return db.execute('UPDATE gallery SET GalleryName=?, DiaryID=? WHERE OwnerId=?', [title, diaries])
+    .then(() => getbyId(id));
 }
 
 export async function remove(id) { //전시 삭제 가능
-  exhibition = exhibition.filter((data) => data.id !== id);
+  return db.execute('DELETE FROM gallery WHERE id=?', [id]);
 }
