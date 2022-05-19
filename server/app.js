@@ -8,6 +8,7 @@ import authRouter from './router/auth.js';
 import exhibitionRouter from './router/exhibition.js';
 import { config } from './config.js';
 import { db } from './db/database.js';
+import path from 'path';
 
 const app = express();
 
@@ -17,12 +18,19 @@ app.use(cors());
 app.use(morgan('tiny'));
 app.use(express.static('../client/public'));
 
+const __dirname = path.resolve();
+
+
 app.use('/auth', authRouter);
-app.use('/diary', diaryRouter);
-app.use('/exhibition', exhibitionRouter);
+app.use('/diary', function(req, res, next){
+  res.sendFile(__dirname,'..','client/public/views/tempdiary.html');
+}, diaryRouter);
+app.use('/exhibition', function(req, res, next){
+  res.sendFile(__dirname,'..','client/public/views/exhibitionpage.html');
+}, exhibitionRouter);
 
 app.use((req, res, next) => {
-  res.sendFile('C:/Users/82108/Desktop/Web_pages/client/public/views/frontpage.html');
+  res.sendFile(__dirname,'..','client/public/views/frontpage.html');
 });
 
 app.use((error, req, res, next) => {

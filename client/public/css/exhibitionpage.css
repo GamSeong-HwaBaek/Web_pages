@@ -135,12 +135,12 @@ span:hover{
 }
 
 #y2020__01 {
-    background-image: url('../gallery_img/20220507.jpg');
+    background-image: url('../img/gallery_img/20220507.jpg');
     background-size: cover;
     background-position: center;
 }
 #y2020__02{
-    background-image: url('../gallery_img/20220507.jpg');
+    background-image: url('../img/gallery_img/20220507.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -159,7 +159,7 @@ span:hover{
 }
 
 #y2020__03{
-    background-image: url('../gallery_img/20220507.jpg');
+    background-image: url('../img/gallery_img/20220507.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -177,7 +177,7 @@ span:hover{
 }
 
 #y2020__04{
-    background-image: url('../gallery_img/20220507.jpg');
+    background-image: url('../img/gallery_img/20220507.jpg');
     background-size: cover;
     background-position: center;
 }

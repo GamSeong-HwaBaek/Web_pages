@@ -14,7 +14,7 @@ const ORDER_DESC =
 
 export async function getAllByUserId(userid) {
   return db
-    .execute(`${SELECT_JOIN} WHERE userid=? ${ORDER_DESC}`, [userid]) //
+    .execute(`${SELECT_JOIN} WHERE us.userid=? ${ORDER_DESC}`, [userid]) //
     .then((result) => result[0]);
 }
 

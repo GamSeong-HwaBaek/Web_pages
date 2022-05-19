@@ -2,7 +2,7 @@ let exhibition = [
   {
     id: "1",
     title: "",
-    diaires: [1, 2, 3],
+    diaries: [1, 2, 3],
     date: '20220302',
     //mainimage : 
     img_Num: 1,
