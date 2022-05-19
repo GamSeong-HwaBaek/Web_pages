@@ -17,12 +17,12 @@ const validateDiary = [
 
 //GET /diary
 
-router.get('/', isAuth, diaryController.getDiaries);
+router.get('/', diaryController.getDiaries);
 
 // router.get('/:id', isAuth, diaryController.getbyId);
 
 //GET /diary/date
-router.get('/:date', isAuth, diaryController.getData);
+router.get('/:date', diaryController.getData);
 
 
 /*GET /diary/emodion 감정 검색
@@ -30,12 +30,12 @@ router.get('/:emotion', diaryController.getbyEmotion);
 */
 
 //POST /diary
-router.post('/', isAuth, validateDiary, diaryController.create);
+router.post('/', validateDiary, diaryController.create);
 
 //PUT /diary/:date
-router.put('/:date', isAuth, validateDiary, diaryController.update);
+router.put('/:date', validateDiary, diaryController.update);
 
 
-router.delete('/:id', isAuth, diaryController.remove);
+router.delete('/:id',  diaryController.remove);
 
 export default router;

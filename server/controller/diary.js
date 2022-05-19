@@ -1,8 +1,8 @@
 import * as diaryRepository from '../data/diary.js';
 
 export async function getDiaries(req, res) {
-  const id = req.query.userid;
-  const data = await diaryRepository.getAllByUserId(id);
+  const userid = req.query.userid;
+  const data = await diaryRepository.getAllByUserId(userid);
   if (data) {
     res.status(200).json(data);
   } else {
@@ -49,8 +49,8 @@ export async function getData(req, res, next) {
 }
 
 export async function create(req, res, next) {
-  const { date, emotion, weather, title, contents } = req.body;
-  const data = await diaryRepository.create(date, emotion, weather, title, contents, req.userid);
+  const { date, emotion, weather, title, contents, userid } = req.body;
+  const data = await diaryRepository.create(date, emotion, weather, title, contents, userid);
   res.status(201).json(data);
 }
 
