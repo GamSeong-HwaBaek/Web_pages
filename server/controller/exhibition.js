@@ -12,18 +12,6 @@ export async function getExhibitions(req, res) {
 
 
 export async function getbyId(req, res, next) {
-  const id = req.params.id;
-  const data = await exhibitionRepository.getbyId(id);
-  if (data) {
-    res.status(200).json(data);
-  } else {
-    res.status(404).json({ message: `Exhibition id(${id}) not found` });
-    //이거 id가 아니라 Diary written on date(${date}) not found 이런식으로 해야할듯!
-    // URL 내에서 사용x!
-  }
-}
-
-export async function getbyId(req, res, next) {
   const id = req.params.id
   const data = await exhibitionRepository.getbyId(id);
   if (data) {

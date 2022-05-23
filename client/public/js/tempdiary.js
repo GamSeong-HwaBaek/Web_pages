@@ -27,6 +27,7 @@ function loadFile(input) {
     newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지 숨기기
     newImage.style.objectFit = "contain";
 
+
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
 };
