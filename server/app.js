@@ -29,7 +29,7 @@ app.use('/exhibition', function(req, res, next){
 }, exhibitionRouter);
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname,'..','client/public/views/frontpage.html'));
+  res.sendFile(path.join(__dirname,"..", "client/public/views/frontpage.html"));
 });
 
 app.use((error, req, res, next) => {
