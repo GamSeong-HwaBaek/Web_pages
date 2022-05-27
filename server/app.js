@@ -16,14 +16,16 @@ app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use(morgan('tiny'));
+app.use(express.static('public'));
 
 const __dirname = path.resolve();
 
 
 app.use('/auth', authRouter);
-app.use('/diary', function(req, res, next){
-  res.sendFile(path.join(__dirname,'..','client/public/views/tempdiary.html'));
-}, diaryRouter);
+//app.use('/diary', function(req, res, next){
+  //res.sendFile(path.join(__dirname,'..','client/public/views/tempdiary.html'));
+//}, diaryRouter);
+app.use('/diary', diaryRouter);
 app.use('/exhibition', function(req, res, next){
   res.sendFile(path.join(__dirname,'..','client/public/views/exhibitionpage.html'));
 }, exhibitionRouter);

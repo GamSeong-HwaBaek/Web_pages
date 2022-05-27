@@ -16,7 +16,7 @@ export async function getAllByUserId(userid) {
   return db
     .execute(`${SELECT_JOIN} WHERE us.userid=? ${ORDER_DESC}`, [userid]) //
     .then((result) => result[0]);
-}
+} 
 
 export async function getbyId(id) {
   return db

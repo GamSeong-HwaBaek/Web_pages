@@ -5,6 +5,7 @@ export async function getDiaries(req, res) {
   const data = await diaryRepository.getAllByUserId(userid);
   if (data) {
     res.status(200).json(data);
+    console.log(data);
   } else {
     res.status(404).json({ message: `Diary id(${id}) not found` });
   }
