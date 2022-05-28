@@ -1,6 +1,7 @@
 :root {
     /* Color */
     --color-defaultbackground: whitesmoke;
+    --color-main: #303550;
     --color-blue: #333399;
     --color-orange: #eb7e52;
     --color-darkorange: #eb7648;
@@ -11,11 +12,11 @@
     --color-loginfont: #24292F;
 
     /* Font size */
-    --font-large: 50px;
-    --font-medium: 30px;
-    --font-regular: 20px;
-    --font-small: 15px;
-    --font-nano: 12px;
+    --font-large: 70px;
+    --font-medium: 50px;
+    --font-regular: 30px;
+    --font-small: 20px;
+    --font-nano: 15px;
 
     /* Font weight */
     --weight-bold: 700;
@@ -31,6 +32,7 @@
 }
 
 body {
+    background-color: whitesmoke;
     margin: 0;
     font-family: "SF Pro Display", "Noto Sans KR", sans-serif !important;
 }
@@ -45,6 +47,62 @@ input {
 p{
     font-size: var(--font-small);
 }
+
+.footer {
+    position: absolute;
+    background-color: var(--color-defaultbackground);
+    color: var(--color-main);
+    text-align: center;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 42px;
+    padding:2px;
+}
+
+.sa {
+    opacity: 0;
+    transition: all .5s ease;
+}
+
+  /* 아래에서 위로 페이드 인 */
+.sa-up {
+    transform: translate(0, 100px);
+}
+  /* 위에서 아래로 페이드 인 */
+.sa-down {
+    transform: translate(0, -100px);
+}
+  /* 왼쪽에서 오른쪽으로 페이드 인 */
+.sa-right {
+    transform: translate(-100px, 0);
+}
+  /* 오른쪽에서 왼쪽으로 페이드 인 */
+.sa-left {
+    transform: translate(100px, 0);
+}
+  /* 왼쪽으로 회전하면서 페이드 인 */
+.sa-rotateL {
+    transform: rotate(180deg);
+}
+  /* 오른쪽으로 회전하면서 페이드 인 */
+.sa-rotateR {
+    transform: rotate(-180deg);
+}
+  /* 작아진 상태에서 커지면서 페이드 인 */
+.sa-scaleUp {
+    transform: scale(.5);
+}
+  /* 커진 상태에서 작아지면서 페이드 인 */
+.sa-scaleDown {
+    transform: scale(1.5);
+}
+
+.sa.show {
+    opacity: 1;
+    transform: none;
+}
+
 #home {
     width: 100%;
     height: 740px;
@@ -58,6 +116,7 @@ p{
     position: center;
     /* background-repeat: no-repeat; */
     text-align: center;
+    background-color: black;
     vertical-align: middle;
     color: #303550;
 }
@@ -74,7 +133,7 @@ p{
 
 .home__logo {
     width: 20%;
-    height: 20%;
+    height: 30%;
     position: right;
 }
 
@@ -239,7 +298,7 @@ p{
     border-radius: 15px;
     border-color: var(--color-darkorange);
     background-color: var(--color-orange);
-    color: whitesmoke;
+    color: w;
     justify-content: center;
     font-size: 21px;
     margin-top: 1%;
@@ -270,7 +329,7 @@ p{
     border-radius: 50%;
     margin-left: 20px;
     margin-right: 20px;
-    color: var(--color-defaultbackground);
+    color: var(--color-main);
 }
 
 #login__with__btn:hover {
