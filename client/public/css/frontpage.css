@@ -69,34 +69,6 @@ p{
 .sa-up {
     transform: translate(0, 100px);
 }
-  /* 위에서 아래로 페이드 인 */
-.sa-down {
-    transform: translate(0, -100px);
-}
-  /* 왼쪽에서 오른쪽으로 페이드 인 */
-.sa-right {
-    transform: translate(-100px, 0);
-}
-  /* 오른쪽에서 왼쪽으로 페이드 인 */
-.sa-left {
-    transform: translate(100px, 0);
-}
-  /* 왼쪽으로 회전하면서 페이드 인 */
-.sa-rotateL {
-    transform: rotate(180deg);
-}
-  /* 오른쪽으로 회전하면서 페이드 인 */
-.sa-rotateR {
-    transform: rotate(-180deg);
-}
-  /* 작아진 상태에서 커지면서 페이드 인 */
-.sa-scaleUp {
-    transform: scale(.5);
-}
-  /* 커진 상태에서 작아지면서 페이드 인 */
-.sa-scaleDown {
-    transform: scale(1.5);
-}
 
 .sa.show {
     opacity: 1;
@@ -132,7 +104,7 @@ p{
 }
 
 .home__logo {
-    width: 20%;
+    width: 15%;
     height: 30%;
     position: right;
 }
@@ -311,6 +283,7 @@ p{
 
 }
 
+
 .login__with {
     font-family: 'Anek Odia', sans-serif;
     margin-top: 4%;
@@ -374,7 +347,7 @@ p{
     border-color: var(--color-loginbordergray);
     
     /* 임시 지정 */
-    width: 500px;
+    width: 600px;
     height: 500px;
     
     /* 초기에 약간 아래에 배치 */
@@ -413,6 +386,12 @@ p{
     width: 100%;
     height: 15%;
 }
+
+.close_tab{
+    width: 100%;
+    height: 15%;
+}
+
 #popup__inside {
     width: 100%;
     display: flex;
@@ -529,6 +508,24 @@ p{
     color:var(--color-orange);
     cursor: pointer;
 }
+
+.close_tab{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.close_tab_right{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    padding-right: 20px;
+    width: 40%;
+}
+.close_tab_right:hover{
+    color:var(--color-orange);
+    cursor: pointer;
+}
+
 #saveAccount{
     padding-right: 15px;
 }
@@ -580,8 +577,8 @@ p{
     border-color: var(--color-loginbordergray);
 
     /* 임시 지정 */
-    width: 500px;
-    height: 320px;
+    width: 600px;
+    height: 500px;
 
     /* 초기에 약간 아래에 배치 */
     transform: translate(-50%, -40%);

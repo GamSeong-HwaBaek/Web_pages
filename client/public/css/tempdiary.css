@@ -68,6 +68,60 @@ i:hover {
     color: var(--color-orange);
 }
 
+.navbar {
+    display: flex;
+}
+
+.fav_logo {
+    width: 15%;
+    height: 30%;
+}
+.menu {
+    
+    vertical-align: middle;
+    width: 30%;
+    height: 15%;
+    display: flex;
+    font-size: var(--font-regular);
+    font-weight: 600x;
+}
+#diary_btn {
+    width: 40%;
+    height: 100%;
+    font-size: 20px;
+    border-bottom: 4px solid #8fd3f4;
+}
+
+#exhibition_btn {
+    width: 60%;
+    height: 100%;
+    font-size: 20px;
+}
+.to-right-underline {
+    position: relative;
+}
+
+.to-right-underline:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0px;
+    height: 3px;
+    margin: 4px 0 0;
+    transition: all 0.2s ease-in-out;
+    transition-duration: 0.3s;
+    opacity: 0;
+    background-color: #3f51b5;
+}
+
+.to-right-underline:hover:after {
+    width: 100%;
+    opacity: 1;
+}
+
+
+
 .mydiary__container {
     display: flex;
     width: 100%;
