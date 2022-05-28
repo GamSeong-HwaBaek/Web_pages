@@ -11,11 +11,11 @@
     --color-loginfont: #24292F;
 
     /* Font size */
-    --font-large: 50px;
-    --font-medium: 30px;
-    --font-regular: 20px;
-    --font-small: 15px;
-    --font-nano: 12px;
+    --font-large: 70px;
+    --font-medium: 50px;
+    --font-regular: 30px;
+    --font-small: 20px;
+    --font-nano: 15px;
 
     /* Font weight */
     --weight-bold: 700;
@@ -58,6 +58,7 @@ p{
     position: center;
     /* background-repeat: no-repeat; */
     text-align: center;
+    background-color: black;
     vertical-align: middle;
     color: #303550;
 }
@@ -74,7 +75,7 @@ p{
 
 .home__logo {
     width: 20%;
-    height: 20%;
+    height: 30%;
     position: right;
 }
 
