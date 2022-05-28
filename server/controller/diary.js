@@ -10,11 +10,11 @@ export async function getDiaries(req, res) {
     res.status(404).json({ message: `Diary id(${id}) not found` });
   }
   //   const userid = req.query.userid;
-//   const data = await (userid
-//     ? diaryRepository.getAllByUserId(userid)
-//     : diaryRepository.getAll());
-//   res.status(200).json(data);
-// 
+  //   const data = await (userid
+  //     ? diaryRepository.getAllByUserId(userid)
+  //     : diaryRepository.getAll());
+  //   res.status(200).json(data);
+  // 
 }
 
 export async function getbyId(req, res, next) {
@@ -28,16 +28,6 @@ export async function getbyId(req, res, next) {
     // URL 내에서 사용x!
   }
 }
-/*export async function getbyEmotion(req, res, next) {
-  const emotion = req.params.emotion;
-  const data = await diaryRepository.getbyEmotion(emotion);
-  if (data) {
-    res.status(200).json(data);
-  } else {
-    res.status(404).json({ message: `Diary written as emotion(${emotion}) not found` });
-  }
-}
-*/
 
 export async function getData(req, res, next) {
   const date = req.params.date;
@@ -48,6 +38,21 @@ export async function getData(req, res, next) {
     res.status(200).json(data);
   }
 }
+
+/*
+export async function getbyEmotion(req, res, next) {
+  const emotion = req.params.emotion;
+  const data = await diaryRepository.getbyEmotion(emotion);
+  var step;
+  if (data) {
+    res.status(200).json(data);
+  } else {
+    res.status(404).json({ message: `Diary written as emotion(${emotion}) not found` });
+  }
+}
+*/
+
+
 
 export async function create(req, res, next) {
   const { date, emotion, weather, title, contents, userid } = req.body;
