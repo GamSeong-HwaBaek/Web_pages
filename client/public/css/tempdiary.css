@@ -45,11 +45,14 @@ body {
 
 input {
     font-family: "twinklestar";
+    font-size: var(--font-regular);
     font-weight: var(--weight-bold);
     color: white;
     border: none;
     background: transparent;
     text-align: right;
+    width: 70%;
+    height: 60%;
 }
 
 textarea {
@@ -92,17 +95,10 @@ i:hover {
     height: 10%;
 }
 
-.left__secondrow {
-    width: 100%;
-    height: 20%;
-    border-top: 5px solid var(--color-defaultbackground);
-    border-bottom: 5px solid var(--color-defaultbackground);
-}
-
 .left__thirdrow {
     border-top: 5px solid black;
     width: 100%;
-    height: 70%;
+    height: 90%;
 }
 .container {
     display: flex;
@@ -172,16 +168,12 @@ label {
     position: absolute;
     object-fit: contain;
     width: 100%;
-    height: 100%;
-    
+    height: 80%
 }
 
 .img {
     position: absolute;
 }
-
-
-
 
 
 
@@ -191,7 +183,7 @@ label {
 
 .right {
     height: 100%;
-    width: 60%;
+    width: 70%;
     border: 5px solid black;
     border-left: 0px;
 }
@@ -279,7 +271,7 @@ label {
 
 .title {
     display: flex;
-    width: 90%;
+    width: 100%;
     height: 100%;
     align-items: center;
     justify-content: space-evenly;

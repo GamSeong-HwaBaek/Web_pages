@@ -21,11 +21,13 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Anek+Odia:wght@300&family=Beau+Rivage&family=Nanum+Myeongjo&display=swap"
         rel="stylesheet">
+
+    
 </head>
 
 <body>
     <!-- Home -->
-    <section id="home" class="section">
+    <section id="home" class="sa sa-up">
         
         <img src="../img/logo_no.png" class="home__logo">
         <div class="home__img_animation">
@@ -40,8 +42,11 @@
         
     </section>
     <!-- About -->
-    <section id="about" class="section">
+    <section id="about" class="sa sa-up">
         <div class="about__script">
+            <br>
+            <br>
+            <br>
             <h1 class="about__title">About Us</h1>
             <p class="about__description">나만의 감성 미술관 서비스: <br>
                 일기에 따라 감정을 분석해 주고, 업로드 된 사진을 나만의 그림으로 바꾸어 주는 서비스로<br>
@@ -51,7 +56,10 @@
         </div>
     </section>
     <!-- Login -->
-    <section id="login" class="section">
+    <section id="login" class="sa sa-up">
+        <br>
+        <br>
+        <br>
         <div class="login__title">감성화백, 시작하시겠습니까?</div>
         <div class="login__box">
             <div class="login__message" , id="login__box__inside">Welcome. Please login</div>
@@ -143,5 +151,32 @@
                 </div>
             </div>
         </div>
+
+    <section id="about" class="sa sa-up">
+        <footer>
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <p>@Made by 어때요 참 쉽죠?</p>
+                </div>
+            </div>
+        </footer>
+    </section>
+
+        <script>
+            // Scroll Animation (sa, 스크롤 애니메이션)
+            const saTriggerMargin = 300;
+            const saElementList = document.querySelectorAll('.sa');
+            const saFunc = function() {
+                for (const element of saElementList) {
+                    if (!element.classList.contains('show')) {
+                    if (window.innerHeight > element.getBoundingClientRect().top + saTriggerMargin) {
+                        element.classList.add('show');
+                        }
+                    }
+                }
+            }
+            window.addEventListener('load', saFunc);
+            window.addEventListener('scroll', saFunc);
+        </script>
     </section>
 </body>
