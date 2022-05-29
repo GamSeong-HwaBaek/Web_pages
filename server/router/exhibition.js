@@ -19,15 +19,15 @@ const validateExhibition = [
 router.get('/', exhibitionController.getExhibitions);
 
 //GET /exhibition/id 전시 선택
-router.get('/:id', exhibitionController.getbyId);
+router.get('/:GalleryID', exhibitionController.getbyId);
 
 //POST /exhibition
-router.post('/', validateExhibition, exhibitionController.create);
+router.post('/', exhibitionController.create);
 
 //PUT /exhibition/:id
-//router.put('/:id', exhibitionController.update);  
+router.put('/:GalleryID', exhibitionController.update);
 
 //DELETE /exhibition/:id
-//router.delete('/:id', exhibitionController.remove);
+router.delete('/:GalleryID', exhibitionController.remove);
 
 export default router;

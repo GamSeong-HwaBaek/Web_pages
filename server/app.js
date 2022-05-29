@@ -23,15 +23,13 @@ const __dirname = path.resolve();
 
 app.use('/auth', authRouter);
 //app.use('/diary', function(req, res, next){
-  //res.sendFile(path.join(__dirname,'..','client/public/views/tempdiary.html'));
+//res.sendFile(path.join(__dirname,'..','client/public/views/tempdiary.html'));
 //}, diaryRouter);
 app.use('/diary', diaryRouter);
-app.use('/exhibition', function(req, res, next){
-  res.sendFile(path.join(__dirname,'..','client/public/views/exhibitionpage.html'));
-}, exhibitionRouter);
+app.use('/exhibition', exhibitionRouter);
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname,"..", "client/public/views/frontpage.html"));
+  res.sendFile(path.join(__dirname, "..", "client/public/views/frontpage.html"));
 });
 
 app.use((error, req, res, next) => {
