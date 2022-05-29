@@ -94,7 +94,7 @@ i:hover {
     font-weight: 600x;
 }
 #diary_btn {
-    width: 40%;
+    width: 30%;
     height: 100%;
     font-size: 20px;
     border-bottom: 4px solid #8fd3f4;
@@ -124,7 +124,7 @@ i:hover {
 }
 
 .to-right-underline:hover:after {
-    width: 100%;
+    width: 200%;
     opacity: 1;
 }
 
