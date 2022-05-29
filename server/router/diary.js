@@ -25,9 +25,9 @@ router.get('/', diaryController.getDiaries);
 router.get('/:date', diaryController.getData);
 
 
-/*GET /diary/emodion 감정 검색
-router.get('/:emotion', diaryController.getbyEmotion);
-*/
+//GET /diary/emotion 감정 검색
+//router.get('/:emotion', diaryController.getbyEmotion);
+
 
 //POST /diary
 router.post('/', validateDiary, diaryController.create);
@@ -36,6 +36,6 @@ router.post('/', validateDiary, diaryController.create);
 router.put('/:date', validateDiary, diaryController.update);
 
 
-router.delete('/:id',  diaryController.remove);
+router.delete('/:id', diaryController.remove);
 
 export default router;
