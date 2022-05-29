@@ -10,7 +10,8 @@
 
 :root {
     /* Color */
-    --color-defaultbackground: #303550;
+    --color-defaultbackground: whitesmoke;
+    --color-main: #303550;
     --color-blue: #333399;
     --color-orange: #eb7e52;
     --color-darkorange: #eb7648;
@@ -33,9 +34,11 @@
     --weight-regular: 400;
 }
 
+
+
 body {
     margin: 0;
-    color: whitesmoke;
+    color: var(--color-main);
     background-color: var(--color-defaultbackground);
     font-family: "twinklestar";
     font-size: var(--font-medium);
@@ -47,7 +50,7 @@ input {
     font-family: "twinklestar";
     font-size: var(--font-regular);
     font-weight: var(--weight-bold);
-    color: white;
+    color: var(--color-main);
     border: none;
     background: transparent;
     text-align: right;
@@ -58,7 +61,7 @@ input {
 textarea {
     font-family: "sungsil";
     font-weight: var(--weight-bold);
-    color: white;
+    color: var(--color-main);
     border: none;
     background: transparent;
     text-align: right;
@@ -67,7 +70,11 @@ textarea {
 i:hover {
     color: var(--color-orange);
 }
-
+#all {
+    width: 100%;
+    height: 600px;
+    background-color: var(--color-defaultbackground);
+}
 .navbar {
     display: flex;
 }
@@ -75,9 +82,10 @@ i:hover {
 .fav_logo {
     width: 15%;
     height: 30%;
+    position: right;
 }
 .menu {
-    
+    padding-top: 5%;
     vertical-align: middle;
     width: 30%;
     height: 15%;
@@ -134,7 +142,7 @@ i:hover {
 
 .mydiary {
     display: flex;
-    height: 80%;
+    height: 100%;
     width: 80%;
 }
 
@@ -206,7 +214,7 @@ label {
     align-items: center;
     margin-left: 10px;
     background-color: black;
-    color: white;
+    color: whitesmoke;
     border-radius: 30px;
     padding: 10px;
     font-size: 0.8em;
@@ -220,7 +228,7 @@ label {
     justify-content: center;
     align-items: center;
     position: absolute;
-    object-fit: contain;
+    object-fit: none;
     width: 100%;
     height: 80%
 }
@@ -348,7 +356,7 @@ label {
     font-size: var(--font-medium);
     margin: 2%;
     background-color: transparent;
-    color: white;
+    color: var(--color-main);
 }
 
 .right__lastrow {
