@@ -12,41 +12,35 @@
     <script src="https://kit.fontawesome.com/9ff9f6bf5f.js" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous">
-    </script>
+        </script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/555ffe8d45.js" crossorigin="anonymous"></script>
-    <script type="application/js" src="../js/frontpage.js" defer></script>
+    <script src="../js/frontpage.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Anek+Odia:wght@300&family=Beau+Rivage&family=Nanum+Myeongjo&display=swap"
         rel="stylesheet">
-
-    
 </head>
 
 <body>
+
     <!-- Home -->
     <section id="home" class="sa sa-up">
-        
         <img src="../img/logo_no.png" class="home__logo">
         <div class="home__img_animation">
             <!--머신러닝을 통해 생성된 그림 영상 제작 후 삽입 예정 현재 임의의 동영상 삽입-->
-
             <video muted autoplay loop>
                 <source src="../video/test.mp4" type="video/mp4">
                 <strong>Your browser does not support the video tag.</strong>
             </video>
         </div>
         <!--로고는 좌측 상단에 넣을까 고민 중,,-->
-
     </section>
     <!-- About -->
     <section id="about" class="sa sa-up">
         <div class="about__script">
-            <br>
-            <br>
-            <br>
+            <br><br><br>
             <h1 class="about__title">About Us</h1>
             <p class="about__description">나만의 감성 미술관 서비스: <br>
                 일기에 따라 감정을 분석해 주고, 업로드 된 사진을 나만의 그림으로 바꾸어 주는 서비스로<br>
@@ -56,12 +50,10 @@
         </div>
     </section>
     <!-- Login -->
-    <section id="login" class="sa sa-up">
-        <br>
-        <br>
-        <br>
-        <div class="login__title">감성화백, 시작하시겠습니까?</div>
-        <div class="login__box">
+    <section id="login" class="section">
+        <br><br><br><br>
+        <div id="login__title" class="sa sa-up">감성화백, 시작하시겠습니까?</div>
+        <div id="login__box" class="sa sa-up">
             <div class="login__message" , id="login__box__inside">Welcome. Please login</div>
             <input class="login__idbox" , type="text" , placeholder="Username or email address">
             <input class="login__password" , type="password" , placeholder="Password">
@@ -135,19 +127,19 @@
                         <div class="id__message" , id="popup2__inside">아이디 찾기</div>
                         <div class="idname__message" , id="popup2__inside">이름/닉네임을 입력하세요</div>
                         <div class="idname__text" , id="popup2__inside">
-<<<<<<< HEAD
+
                             <input class="idname__textfirst" , id="name__textfirst2" , onkeyup="resetcolor1()" ,
                                 type="text" , placeholder="성">
                             <input class="idname__textlast" id="name__textlast2" , onkeyup="resetcolor2()" , type="text"
                                 , placeholder="이름">
                             <i class="fa-solid fa-square-check" , id="checkbox1" , onclick="findId()"></i>
                             <p id="idname__textmsg"></p>
-=======
-                            <input class="idname__textfirst" , id="name__textfirst2" , onkeyup="resetcolor1()", type="text" , placeholder="성">
-                            <input class="idname__textlast" id="name__textlast2" , onkeyup="resetcolor2()", type="text" , placeholder="이름">
-                            <i class="fa-solid fa-square-check", id="checkbox1", onclick="findId()"></i>
-                            <p id="idname__textmsg"></p>X
->>>>>>> ddaf5979c4e1f9161c5f81313ffda8c3725a5578
+                            <input class="idname__textfirst" , id="name__textfirst2" , onkeyup="resetcolor1()" ,
+                                type="text" , placeholder="성">
+                            <input class="idname__textlast" id="name__textlast2" , onkeyup="resetcolor2()" , type="text"
+                                , placeholder="이름">
+                            <i class="fa-solid fa-square-check" , id="checkbox1" , onclick="findId()"></i>
+                            <p id="idname__textmsg"></p>
                         </div>
                         <div class="pwd__message" , id="popup2__inside">비밀번호 찾기</div>
                         <div class="pwdemail__message" , id="popup2__inside">이메일 주소를 입력하세요</div>
@@ -157,30 +149,35 @@
                             <i class="fa-solid fa-square-check" , id="checkbox2" , onclick="sendPassword()"></i>
                             <p id="pwdemail__textmsg"></p>
                         </div>
+                        <div class="close_tab">
+                            <div class="close_tab_right" , onclick="closePopup2()">
+                                <i class="fa-solid fa-brush fa-2x" , id="saveAccount"></i>
+                                <p>close</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-    <section id="about" class="sa sa-up">
-        <footer>
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <p>@Made by 어때요 참 쉽죠?</p>
+        <section id="about" class="sa sa-up">
+            <footer>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <p>@Made by 어때요 참 쉽죠?&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;2022.06.03</p>
+                    </div>
                 </div>
-            </div>
-        </footer>
-    </section>
+            </footer>
+        </section>
 
         <script>
             // Scroll Animation (sa, 스크롤 애니메이션)
             const saTriggerMargin = 300;
             const saElementList = document.querySelectorAll('.sa');
-            const saFunc = function() {
+            const saFunc = function () {
                 for (const element of saElementList) {
                     if (!element.classList.contains('show')) {
-                    if (window.innerHeight > element.getBoundingClientRect().top + saTriggerMargin) {
-                        element.classList.add('show');
+                        if (window.innerHeight > element.getBoundingClientRect().top + saTriggerMargin) {
+                            element.classList.add('show');
                         }
                     }
                 }
@@ -188,5 +185,6 @@
             window.addEventListener('load', saFunc);
             window.addEventListener('scroll', saFunc);
         </script>
+
     </section>
 </body>
