@@ -1,7 +1,7 @@
 import { db } from '../db/database.js';
 
 const SELECT_JOIN =
-  'SELECT g.GalleryId, g.GalleryName, g.DiaryID, g.GalleryDate, g.Img, g.Img_Num, g.OwnerID FROM gallery as g JOIN users as us ON g.OwnerID=us.userid';
+  'SELECT g.GalleryId, g.GalleryName, g.DiaryID, g.GalleryDate, g.Img_Num, g.OwnerID FROM gallery as g JOIN users as us ON g.OwnerID=us.userid';
 const ORDER_DESC =
   'ORDER BY g.GalleryDate DESC';
 
@@ -18,20 +18,20 @@ export async function getbyId(id) {
     .then((result) => result[0][0]);
 }
 
-export async function create(GalleryName, DiaryID, GalleryDate, Img, ImgNum, OwnerID) {
+export async function create(GalleryName, DiaryID, GalleryDate, ImgNum, OwnerID, Createby) {
   return db
     .execute(
-      'INSERT INTO gallery (GalleryName, DiaryID, GalleryDate, Img, ImgNum, OwnerID) VALUES (?,?,?,?,?,?)',
-      [GalleryName, DiaryID, GalleryDate, Img, ImgNum, OwnerID]
+      'INSERT INTO gallery (GalleryName, DiaryID, GalleryDate, ImgNum, OwnerID, Createby) VALUES (?,?,?,?,?,?)',
+      [GalleryName, DiaryID, GalleryDate, ImgNum, OwnerID, Createby]
     )
     .then((result) => getbyId(result[0].insertid));
 }
 
 export async function update(id, title, diaries) { //제목과 일기목록(삭제) 수정가능
-  return db.execute('UPDATE gallery SET GalleryName=?, DiaryID=? WHERE OwnerId=?', [title, diaries])
+  return db.execute('UPDATE gallery SET GalleryName=?, DiaryID=? WHERE OwnerID=?', [title, diaries])
     .then(() => getbyId(id));
 }
 
 export async function remove(id) { //전시 삭제 가능
-  return db.execute('DELETE FROM gallery WHERE id=?', [id]);
+  return db.execute('DELETE FROM gallery WHERE GalleryId=?', [id]);
 }

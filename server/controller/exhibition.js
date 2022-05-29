@@ -5,6 +5,7 @@ export async function getExhibitions(req, res) {
   const data = await exhibitionRepository.getbyOwner(userid);
   if (data) {
     res.status(200).json(data);
+    console.log(data);
   } else {
     res.status(404).json({ message: `Exhibition id(${id}) not found` });
   }
@@ -21,9 +22,10 @@ export async function getbyId(req, res, next) {
   }
 }
 
+
 export async function create(req, res, next) {
-  const { date, emotion, weather, title, contents, userid } = req.body;
-  const data = await exhibitionRepository.create(GalleryName, DiaryID, GalleryDate, Img, ImgNum, OwnerID);
+  const { GalleryName, DiaryID, GalleryDate, ImgNum, OwnerID, Createby } = req.body;
+  const data = await exhibitionRepository.create(GalleryName, DiaryID, GalleryDate, ImgNum, OwnerID, Createby);
   res.status(201).json(data);
 }
 
