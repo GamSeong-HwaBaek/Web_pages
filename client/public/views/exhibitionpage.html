@@ -16,10 +16,10 @@
 
 </head>
 
-<scri>
+<body onload="reloading()">
     <div class="navbar">
         <div class="navbar">
-            <img src="../img/logo_no.png" alt="감성화백" class="fav_logo", onclick="createGllery()"></img>
+            <img src="../img/logo_no.png" alt="감성화백" class="fav_logo"></img>
             <div class="menu">
                 <p id="diary_btn" , onclick="location.href='tempdiary.html'"><span class="to-right-underline">Diary</span></p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -32,17 +32,22 @@
         <div class="background", id="background">
             <div class="window">
                 <div class="popup">
-                    <i class="fa-solid fa-xmark" , id="close_popup" onclick="closePopup()"></i>
+                    <div class="popup__top">
+                        <div class="title">제목 :
+                            <input type="text" value='defult', id="texpinput">
+                        </div>
+                        <i class="fa-solid fa-xmark" , id="close_popup" onclick="closePopup()"></i>
+                    </div>
                     <div class="popup__inside">
                         <div class="arrow_left", onclick="click_arrowleft()">
                             <div class="left__scroll-arrow"></div>
                             <div class="left__scroll-arrow"></div>
                             <div class="left__scroll-arrow"></div>
                         </div>
-                        <div class="picture">
+                        <div class="picture"> <!--exhibitionid+diaryid-->
                             <img src="../img/slide2.jpg" id="the_picture">
                             <div id="about">
-                                <h2 id="the_title">제주시 해변에서 한때</h2>
+                                <h2 id="the_title"></h2>
                                 <div class="edit">
                                     <p id="the_date">2020-11-11</p>
                                     <i class="fa-solid fa-trash-can fa-1x", id="trashcan", onclick="click_trashcan()"></i>
@@ -59,4 +64,5 @@
             </div>
         </div>
     </div>
+    <div class="end"></div>
 </body>

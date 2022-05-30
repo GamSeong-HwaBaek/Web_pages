@@ -19,7 +19,7 @@ const validateDiary = [
 
 router.get('/', diaryController.getDiaries);
 
-// router.get('/:id', isAuth, diaryController.getbyId);
+router.get('/:id', diaryController.getbyId);
 
 //GET /diary/date
 router.get('/:date', diaryController.getData);

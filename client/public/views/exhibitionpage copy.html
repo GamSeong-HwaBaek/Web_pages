@@ -32,6 +32,7 @@
         <div id="main__2020" , class="year">
             <h3 id="2020" , class="subtitle">2020</h3>
             <div class="year__flexbox">
+                <!-- "y2020__01__GalleryID" -->
                 <div id="y2020__01" , class="flexboxone">
                     <div id="y2022__01__icons" , class="icons">
                         <i class="fa-solid fa-bars fa-lg", id="2022__01__baricon", onclick="onBarbtn()"></i>
@@ -142,7 +143,12 @@
         <div class="background">
             <div class="window">
                 <div class="popup">
-                    <i class="fa-solid fa-xmark" , id="close_popup" onclick="closePopup()"></i>
+                    <div class="popup__top">
+                        <div class="title">제목 :
+                            <input type="text" , class="title__input">
+                        </div>
+                        <i class="fa-solid fa-xmark" , id="close_popup" onclick="closePopup()"></i>
+                    </div>
                     <div class="popup__inside">
                         <div class="arrow_left", onclick="click_arrowleft()">
                             <div class="left__scroll-arrow"></div>

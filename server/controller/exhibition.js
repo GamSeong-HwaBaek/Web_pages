@@ -5,8 +5,6 @@ export async function getExhibitions(req, res) {
   const data = await exhibitionRepository.getbyOwner(OwnerID);
   if (data) {
     res.status(200).json(data);
-    console.log(data[0]);
-    console.log(data[1]);
   } else {
     res.status(404).json({ message: `Exhibition id(${OwnerID}) not found` });
   }
