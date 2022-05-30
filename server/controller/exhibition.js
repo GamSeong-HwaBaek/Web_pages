@@ -12,7 +12,7 @@ export async function getExhibitions(req, res) {
 
 
 export async function getbyId(req, res, next) {
-  const GalleryID = req.params.GalleryID
+  const GalleryID = req.params.GalleryID;
   const data = await exhibitionRepository.getbyId(GalleryID);
   if (data) {
     res.status(200).json(data);
@@ -23,12 +23,19 @@ export async function getbyId(req, res, next) {
 
 
 export async function create(req, res, next) {
-  const { GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby } = req.body;
+  const GalleryID = req.body.GalleryID;
+  const GalleryName = req.body.GalleryName;
+  const DiaryID = req.body.DiaryID;
+  const GalleryDate = req.body.GalleryDate;
+  const Img_Num = req.body.Img_Num;
+  const OwnerID = req.body.OwnerID;
+  const Createby = req.body.Createby;
   const data = await exhibitionRepository.create(GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby);
-  res.status(201).json(data);
+  res.sendstatus(201).json(data);
 }
 
 export async function update(req, res, next) {
+  //update(GalleryID, GalleryName, DiaryID)
   const GalleryID = req.params.GalleryID;
   const GalleryName = req.body.GalleryName;
   const DiaryID = req.body.DiaryID;
@@ -37,7 +44,7 @@ export async function update(req, res, next) {
     return res.status(404).json({ message: `Exhibitions not found: ${GalleryID}` });
   }
   const updated = await exhibitionRepository.update(GalleryID, GalleryName, DiaryID);
-  res.status(200).json(updated);
+  res.sendstatus(200).json(updated);
 }
 
 export async function remove(req, res, next) {
