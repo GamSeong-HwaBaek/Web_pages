@@ -34,13 +34,13 @@ export async function getbyDate(date) {
 FROM diary as di 
 JOIN users as us ON di.userid=us.userid
 */
-function findIndexs(array, value) {
+/*function findIndexs(array, value) {
   fromIndex = array.indexOf(value)
   while (fromIndex != -1) {
     document.writeln(fromIndex);
     fromIndex = arr.indexOf(1, fromIndex + 1);
   }
-};
+};*/
 /*
 export async function getbyEmotion(emotion) {
   return db
