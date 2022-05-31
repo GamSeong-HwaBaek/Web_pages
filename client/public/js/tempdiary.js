@@ -16,6 +16,84 @@ function setData() {
 
     /* set Data 버튼 클릭 시 */
     btnSLD.addEventListener('click', setData);
+
+    /*전시 생성부분-수정하지 말아주세요(-choi)*/
+    //다이어리 정보 가져오기
+
+    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+        .then((data) => {//최신 날짜순
+            var onlyyeardic = {};
+            var yeardic = {}; //{"2022": [JSON, JSON], "2021" : [JSON, JSON]} 형태
+            var yearweather = {};
+            data.forEach(diaryelement => {
+                let onlynowyear = diaryelement.date.slice(0, 4);
+                let onlyyearkeys = Object.keys(onlyyeardic);
+                if (onlyyearkeys.includes(onlynowyear)) {
+                    onlyyeardic[onlynowyear].push((diaryelement));
+                } else { //처음 삽입시
+                    onlyyeardic[onlynowyear] = [(diaryelement)];
+                }
+
+                let nowyear = diaryelement.date.slice(0, 4);
+                let yearkeys = Object.keys(yeardic);
+                let nowmonth = diaryelement.date.slice(5, 7);
+                let nowseason;
+                if (nowmonth == "03" || nowmonth == "04" || nowmonth == "05") {
+                    nowseason = "spring";
+                } else if (nowmonth == "06" || nowmonth == "07" || nowmonth == "08") {
+                    nowseason = "summer";
+                } else if (nowmonth == "09" || nowmonth == "10" || nowmonth == "11") {
+                    nowseason = "fall";
+                } else if (nowmonth == "12" || nowmonth == "01" || nowmonth == "02") {
+                    nowseason = "winter";
+                } else {
+                    console.log("잘못된 월이 입력되었습니다.");
+                }
+                if (yearkeys.includes(nowyear)) {
+                    let seasonkeys = Object.keys(yeardic[nowyear]);
+                    if (seasonkeys.includes(nowseason)) {
+                        yeardic[nowyear][nowseason].push((diaryelement.id));
+                    } else {
+                        yeardic[nowyear][nowseason] = [diaryelement.id];
+                    }
+                } else { //처음 삽입시
+                    yeardic[nowyear] = [];
+                    yeardic[nowyear][nowseason] = [diaryelement.id];
+                }
+
+
+                let nowweather = diaryelement.weather;
+                if (yearkeys.includes(nowyear)) {
+                    let weatherkeys = Object.keys(yearweather[nowyear]);
+                    if (weatherkeys.includes(nowweather)) {
+                        yearweather[nowyear][nowweather].push((diaryelement.id));
+                    } else {
+                        yearweather[nowyear][nowweather] = [diaryelement.id];
+                    }
+                } else { //처음 삽입시
+                    yearweather[nowyear] = [];
+                    yearweather[nowyear][nowweather] = [diaryelement.id];
+                }
+            });
+            console.log(onlyyeardic); //년도별 다이어리 id
+            console.log(yeardic); //년-season별 다이어리 id
+            console.log(yearweather); //년-날씨별 다이어리 id
+            yeardic.forEach(element => {
+
+            });
+            //각 항목별로 10개이면 
+            //갤러리 정보 가져와서 다이어리 추가or생성
+            fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'GET' }).then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                });
+            //전시 생성
+            /*
+            fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                });*/
+        });
 };
 
 
