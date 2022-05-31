@@ -275,6 +275,8 @@ label {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .date>input {
@@ -285,10 +287,20 @@ label {
     height: 50%;
     border: none;
     background: transparent;
-    width: 10%;
     font-size: 30px;
 }
-
+#month {
+    height: 50%;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+}
+#day {
+    height: 50%;
+    border: none;
+    background: transparent;
+    font-size: 30px;
+}
 .weather {
     border-left: 5px solid var(--color-main);
     height: 100%;
@@ -314,8 +326,12 @@ label {
     vertical-align: middle;
     align-items: center;
     justify-content: space-evenly;
+    padding-left: 2%;
+    padding-right: 2%;
 }
-
+.emotion{
+    width: 85%;
+}
 .emotion>i {
     font-size: var(--font-small);
 }
@@ -347,7 +363,7 @@ label {
 }
 
 .title__input {
-    width: 90%;
+    width: 80%;
     text-align: left;
     font-size: var(--font-medium);
 }

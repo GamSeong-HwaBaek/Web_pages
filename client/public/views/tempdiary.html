@@ -19,7 +19,7 @@
     <script src="../js/tempdiary.js" defer></script>
 </head>
 
-<body>
+<body onload="loadDiary()">
     <section id = "all">
         <div class="navbar">
             <img src="../img/logo_no.png" alt="감성화백" class="fav_logo"></img>
@@ -35,7 +35,7 @@
                 <div class="left">
                     <div class="left__firstrow">
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" , id="month" , size="10">
+                        <input type="text" , id="question__bar" , size="10">
                     </div>
 
                     <div class="left__thirdrow">
@@ -68,56 +68,56 @@
                         </div>
                     </div>
                     <div class="left__lastrow">
-                        <i class="fa-solid fa-caret-left" , id="openPrevpage"></i>
+                        <i class="fa-solid fa-caret-left" , id="openPrevpage", onclick="clickprevpage()"></i>
                     </div>
                 </div>
                 <div class="right">
                     <div class="fistrowrap">
                         <div class="firstrow">
                             <div class="date">
-                                <input type="text" , id="month" , size="4">년
+                                <input type="text" , id="year" , size="1">년
                                 <input type="text" , id="month" , size="1">월
                                 <input type="text" , id="day" , size="1">일
                             </div>
                             <div class="weather">날씨 :
-                                <i class="fa-solid fa-sun fa-lg"></i>
-                                <i class="fa-solid fa-cloud fa-lg"></i>
-                                <i class="fa-solid fa-cloud-showers-heavy fa-lg"></i>
-                                <i class="fa-solid fa-snowflake fa-lg"></i>
+                                <i class="fa-solid fa-sun fa-lg", id="sunny"></i>
+                                <i class="fa-solid fa-cloud fa-lg", id="cloudy"></i>
+                                <i class="fa-solid fa-cloud-showers-heavy fa-lg", id="rainy"></i>
+                                <i class="fa-solid fa-snowflake fa-lg", id="snowy"></i>
                             </div>
                         </div>
                     </div>
                     <div class="secondrowwrap">
-                        <div class="secondrow">
-                            <div class="emotion">감정 :
-                                <i class="fa-solid fa-face-laugh-beam"> active</i>
+                        <div class="secondrow">감정 :
+                            <div class="emotion">
+                                <i class="fa-solid fa-face-grin-stars"> active</i>
                                 <i class="fa-solid fa-face-laugh-beam"> joy</i>
-                                <i class="fa-solid fa-face-laugh-beam"> peaceful</i>
-                                <i class="fa-solid fa-face-laugh-beam"> neutral</i>
-                                <i class="fa-solid fa-face-laugh-beam"> relaxed</i>
+                                <i class="fa-solid fa-face-smile-wink"> peaceful</i>
+                                <i class="fa-solid fa-face-meh-blank"> neutral</i>
+                                <i class="fa-solid fa-face-smile"> relaxed</i>
                                 <i class="fa-solid fa-face-laugh-beam"> content</i>
-                                <i class="fa-solid fa-face-sad-tear"> tired</i>
-                                <i class="fa-solid fa-face-sad-tear"> sleepy</i>
-                                <i class="fa-solid fa-face-angry"> disgust</i>
+                                <i class="fa-solid fa-face-meh"> tired</i>
+                                <i class="fa-solid fa-bed"> sleepy</i>
+                                <i class="fa-solid fa-face-tired"> disgust</i>
                             </div>
                         </div>
                     </div>
                     <div class="thirdrowwrap">
                         <div class="thirdrow">
                             <div class="title">제목 :
-                                <input type="text" , class="title__input">
+                                <input type="text" , class="title__input", id="title">
                             </div>
                         </div>
                     </div>
                     <div class="content">
-                        <textarea class="content__input" id = "setInput", cols="60" rows="10"></textarea>
+                        <textarea class="content__input" id = "setInput", cols="70" rows="10"></textarea>
                         <!--저장 버튼 기능 추가-->
                         <div class="save_container">
                             <div class="btnSetLocalData" id="savebutton" onclick="setData()">SAVE</div>
                         </div>
                     </div>
                     <div class="right__lastrow">
-                        <i class="fa-solid fa-caret-left" , id="openNextpage"></i>
+                        <i class="fa-solid fa-caret-left" , id="openNextpage" onclick="clicknextpage()"></i>
                     </div>
                 </div>
             </div>
