@@ -22,16 +22,22 @@ export async function getbyId(req, res, next) {
 }
 
 
-export async function create(req, res, next) {
-  const GalleryID = req.body.GalleryID;
-  const GalleryName = req.body.GalleryName;
-  const DiaryID = req.body.DiaryID;
-  const GalleryDate = req.body.GalleryDate;
-  const Img_Num = req.body.Img_Num;
-  const OwnerID = req.body.OwnerID;
-  const Createby = req.body.Createby;
+// export async function create(req, res, next) {
+//   const GalleryID = req.body.GalleryID;
+//   const GalleryName = req.body.GalleryName;
+//   const DiaryID = req.body.DiaryID;
+//   const GalleryDate = req.body.GalleryDate;
+//   const Img_Num = req.body.Img_Num;
+//   const OwnerID = req.body.OwnerID;
+//   const Createby = req.body.Createby;
+//   const data = await exhibitionRepository.create(GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby);
+//   res.sendstatus(201).json(data);
+// }
+
+export async function create(req, res, next){
+  const { GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby } = req.body;
   const data = await exhibitionRepository.create(GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby);
-  res.sendstatus(201).json(data);
+  res.status(201).json(data);
 }
 
 export async function update(req, res, next) {
