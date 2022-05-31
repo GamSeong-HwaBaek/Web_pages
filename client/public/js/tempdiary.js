@@ -78,21 +78,61 @@ function setData() {
             console.log(onlyyeardic); //년도별 다이어리 id
             console.log(yeardic); //년-season별 다이어리 id
             console.log(yearweather); //년-날씨별 다이어리 id
-            yeardic.forEach(element => {
 
-            });
-            //각 항목별로 10개이면 
-            //갤러리 정보 가져와서 다이어리 추가or생성
-            fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'GET' }).then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                });
-            //전시 생성
-            /*
-            fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
-                .then((data) => {
-                    console.log(data);
-                });*/
+            //전달 받아야 할 항목 (년, 월, 일, season, weather)
+            let tempyear = 2022;
+            let tempmonth = "05";
+            let tempdaty = "31";
+
+            let tempseason = "spring";
+            let tempweather = "sunny";
+            //각 항목별로 10개이면
+            console.log((yeardic[tempyear][tempseason])); //5
+            console.log(yearweather[tempyear][tempweather]); //3
+
+            //5나 10의 배수가 아니면 생성 X 생성시(몫이 1인지에 따라->CREATE)(UPDATE) 구분)
+            if ((yeardic[tempyear][tempseason]).length % 5 != 0 && (yearweather[tempyear][tempweather]).length % 10 != 0) {//전지 생성 X
+                console.log('그냥 넘어감');
+            } else {
+                if ((yeardic[tempyear][tempseason]).length % 5 == 0) {
+                    //전시 아예 생성
+                    if ((yeardic[tempyear][tempseason]).length == 1) {
+                        console.log('아예 새로 생성');
+                        /*                        
+                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+                            });
+                        */
+                    } else {
+                        /* 제목은 그대로 다이어리목록이랑 ImgNum CreateBy만 추가
+                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+                            });
+                        */
+                    }
+                }
+                if ((yearweather[tempyear][tempweather]).length % 10 == 0) {
+                    //갤러리 정보 가져와서 각 항목별로 10의 배수이면 다이어리 추가or생성
+                    if ((yearweather[tempyear][tempweather]).length / 5 == 1) {
+                        console.log('아예 새로 생성');
+                        /*                        
+                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+                            });
+                        */
+                    } else {
+                        /* 제목은 그대로 다이어리목록이랑 ImgNum CreateBy만 추가
+                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+                            });
+                        */
+                    }
+                }
+            }
         });
 };
 
