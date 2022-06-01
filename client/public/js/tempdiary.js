@@ -168,7 +168,7 @@ function showImage() {
     var newImage = document.getElementById('image-show').lastElementChild;
     newImage.style.visibility = "visible";
     newImage.style.display = "block";
-x``
+
     var imashow = document.getElementById('image-show');
     imashow.style.display = "block";
     document.getElementById('image-upload').style.visibility = 'hidden';
