@@ -53,7 +53,7 @@
                                                 👉 CLICK HERE! 👈
                                             </label>
                                         </div>
-                                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" onclick="createBackground()">
                                     </form>
                         
                                     <div class="fileContainer">
@@ -84,10 +84,10 @@
                                 <input type="text" , id="day" , size="1">일
                             </div>
                             <div class="weather">날씨 :
-                                <i class="fa-solid fa-sun fa-lg", id="sunny"></i>
-                                <i class="fa-solid fa-cloud fa-lg", id="cloudy"></i>
-                                <i class="fa-solid fa-cloud-showers-heavy fa-lg", id="rainy"></i>
-                                <i class="fa-solid fa-snowflake fa-lg", id="snowy"></i>
+                                <i class="fa-solid fa-sun fa-lg", id="sunny", onclick="clicksunny()"></i>
+                                <i class="fa-solid fa-cloud fa-lg", id="cloudy", onclick="clickcloudy()"></i>
+                                <i class="fa-solid fa-cloud-showers-heavy fa-lg", id="rainy", onclick="clickrainy()"></i>
+                                <i class="fa-solid fa-snowflake fa-lg", id="snowy", onclick="clicksnowy()"></i>
                             </div>
                         </div>
                     </div>
@@ -116,14 +116,14 @@
                     <div class="content">
                         <textarea class="content__input" id = "setInput", cols="70" rows="10"></textarea>
                         <!--저장 버튼 기능 추가-->
-                        <div class="save_container">
-                            <div class="writeDiary" id="blank" onclick="write()">WRITE</div>
-                        </div>
-
-                        <div class="save_container">
-                            <div class="btnSetLocalData" id="savebutton" onclick="setData(loginid)">SAVE</div>
-                        </div>
-                        
+                        <div class="btn__flexbox">
+                            <div class="write_container">
+                                <div class="writeDiary" id="blank" onclick="write()">WRITE</div>
+                            </div>
+                            <div class="save_container">
+                                <div class="btnSetLocalData" id="savebutton" onclick="setData(loginid)">SAVE</div>
+                            </div>
+                        </div>                        
                     </div>
                     <div class="right__lastrow">
                         <i class="fa-solid fa-caret-left" , id="openNextpage" onclick="clicknextpage()"></i>
@@ -131,6 +131,32 @@
                 </div>
             </div>
         </div>
+
+        <button id="show">팝업열기</button>
+        <div class="background">
+        <div class="window">
+        <div class="popup">
+            <i class="fa-solid fa-xmark" , id="close" onclick="close()"></i>
+        <div class="img__wrap">
+            <div class="img__wrapbox", id="img__wrapbox1", onclick="return1()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox2", onclick="return2()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox3", onclick="return3()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox4", onclick="return4()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox5">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img", , onclick="return5()"></img>
+            </div>
+        </div>
+        </div>
+        <div>
+<div>
 
 
     </section>

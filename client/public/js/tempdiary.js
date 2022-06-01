@@ -6,8 +6,31 @@ const btnSLD = document.querySelector('.btnSetLocalData');
 /* input 텍스트 */
 const setInput = document.querySelector('#setInput');
 
+let sunnycolor = document.getElementById('sunny').style.color;
+let cloudycolor = document.getElementById('cloudy').style.color;
+let rainycolor = document.getElementById('rainy').style.color;
+let snowycolor = document.getElementById('snowy').style.color;
+
 function setData() {
     /* 할 일 처리 --> 입력한 텍스트 값 가져오기 */
+    let noworange = 0;
+    if (sunnycolor == "var(--color-orange)") {
+        noworange += 1
+    }
+    if (cloudycolor == "var(--color-orange)") {
+        noworange += 1
+    }
+    if (rainycolor == "var(--color-orange)") {
+        noworange += 1
+    }
+    if (snowycolor == "var(--color-orange)") {
+        noworange += 1
+    }
+    if (noworange == 0) {
+        alert("날씨를 선택하세요");
+    } else if (noworange > 1) {
+        alert("하나의 날씨를 선택하세요");
+    }
     let setInputValue = setInput.value;
 
     /* localStorage 저장 */
@@ -167,6 +190,39 @@ function loadFile(input) {
     document.getElementById('image-show').style.opacity = "0";
 };
 
+function clicksunny() {
+    if (sunnycolor == "var(--color-orange)") {
+        document.getElementById('sunny').style.color = "var(--color-main)";
+    } else {
+        document.getElementById('sunny').style.color = "var(--color-orange)";
+    }
+    sunnycolor = document.getElementById('sunny').style.color;
+}
+function clickcloudy() {
+    if (cloudycolor == "var(--color-orange)") {
+        document.getElementById('cloudy').style.color = "var(--color-main)";
+    } else {
+        document.getElementById('cloudy').style.color = "var(--color-orange)";
+    }
+    cloudycolor = document.getElementById('cloudy').style.color;
+}
+function clickrainy() {
+    if (rainycolor == "var(--color-orange)") {
+        document.getElementById('rainy').style.color = "var(--color-main)";
+    } else {
+        document.getElementById('rainy').style.color = "var(--color-orange)";
+    }
+    rainycolor = document.getElementById('rainy').style.color;
+}
+function clicksnowy() {
+    if (snowycolor == "var(--color-orange)") {
+        document.getElementById('snowy').style.color = "var(--color-main)";
+    } else {
+        document.getElementById('snowy').style.color = "var(--color-orange)";
+    }
+    snowycolor = document.getElementById('snowy').style.color;
+}
+
 function serchweather(nowweather) {
     if (nowweather == 'sunny') {
         document.getElementById('sunny').style.color = 'var(--color-orange)';
@@ -275,3 +331,15 @@ function clicknextpage() {
 
         });
 }
+
+
+function show() {
+    document.querySelector(".background").className = "background show";
+}
+
+function close() {
+    document.querySelector(".background").className = "background";
+}
+
+document.querySelector("#show").addEventListener('click', show);
+document.querySelector("#close").addEventListener('click', close);
