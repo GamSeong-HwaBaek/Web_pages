@@ -1,3 +1,5 @@
+let Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTM4MzE3ODAsImV4cCI6MTY1NDAwNDU4MH0.hKX9hphNAwF_kE_L9FjKMmOt4RMI-_yy9mTOjKlLfKs';
+
 function clickTheExhitibion() {
     document.querySelector(".background").className = "background show";
 }
@@ -9,7 +11,12 @@ function click_arrowleft() {
     const aboutGalleryPicture = document.getElementsByClassName('picture').id.split('__');
     galleryid = aboutGalleryPicture[0];
     diaryid = aboutGalleryPicture[1];
-    fetch('http://localhost:8080/exhibition/' + String(galleryid), { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/exhibition/' + String(galleryid), {
+        method: 'GET',
+        headers: {
+            'Authorization': String(Authorization)
+        }
+    }).then((response) => response.json())
         .then((data) => {
             diaryArr = String(data.DiaryID.diaries).split(',');
             let beforeelement;
@@ -28,7 +35,12 @@ function click_arrowleft() {
             if (findnextelement == diaryArr[-1]) {
                 alert('맨 처음 그림입니다.');
             } else {
-                fetch('http://localhost:8080/diary/' + String(findnextelement), { method: 'GET' }).then((response) => response.json())
+                fetch('http://localhost:8080/diary/' + String(findnextelement), {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': String(Authorization)
+                    }
+                }).then((response) => response.json())
                     .then((data) => {
                         document.getElementById('the_title').textContent = (data.title);
                         document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(data.id);
@@ -43,7 +55,11 @@ function click_arrowright() {
     const aboutGalleryPicture = document.getElementsByClassName('picture').id.split('__');
     galleryid = aboutGalleryPicture[0];
     diaryid = aboutGalleryPicture[1];
-    fetch('http://localhost:8080/exhibition/' + String(galleryid), { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/exhibition/' + String(galleryid), {
+        method: 'GET', headers: {
+            'Authorization': String(Authorization)
+        }
+    }).then((response) => response.json())
         .then((data) => {
             diaryArr = String(data.DiaryID.diaries).split(',');
             let beforeelement;
@@ -81,9 +97,54 @@ function clickDeletebtn() {
         return false;
     }
 }
+
+//이미지 다운로드
+function dataURLtoBlob(dataurl) {
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {
+        type: mime
+    });
+}
+
+function downloadImg(imgSrc) {
+    var image = new Image();
+    image.crossOrigin = "anonymous";
+    image.src = imgSrc;
+    var fileName = image.src.split("/").pop();
+    image.onload = function () {
+        var canvas = document.createElement('canvas');
+        canvas.width = this.width;
+        canvas.height = this.height;
+        canvas.getContext('2d').drawImage(this, 0, 0);
+        if (typeof window.navigator.msSaveBlob !== 'undefined') {
+            window.navigator.msSaveBlob(dataURLtoBlob(canvas.toDataURL()), fileName);
+        } else {
+            var link = document.createElement('a');
+            link.href = canvas.toDataURL();
+            link.download = fileName;
+            link.click();
+        }
+    };
+}
+function ClicktoDownLoad() {
+    console.log(document.getElementById('the_picture').src);
+    downloadImg(document.getElementById('the_picture').src);
+}
 function reloading() {
     //최신순 정렬
-    fetch('http://localhost:8080/exhibition?OwnerID=5', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/exhibition?OwnerID=5', {
+        method: 'GET',
+        headers: {
+            'Authorization': String(Authorization)
+        }
+    }).then((response) => response.json())
         .then((data) => {
             console.log(data);
             var dictObject = {};
@@ -490,5 +551,4 @@ function reloading() {
                 parent.appendChild(elementyear);
             });
         });
-
 }

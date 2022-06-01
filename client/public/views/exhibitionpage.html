@@ -19,7 +19,7 @@
 <body onload="reloading()">
     <div class="navbar">
         <div class="navbar">
-            <img src="../img/logo_no.png" alt="감성화백" class="fav_logo"></img>
+            <img src="../img/logo_no.png" alt="감성화백" class="fav_logo" onclick="toDataURL()"></img>
             <div class="menu">
                 <p id="diary_btn" , onclick="location.href='tempdiary.html'"><span class="to-right-underline">Diary</span></p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -45,7 +45,7 @@
                             <div class="left__scroll-arrow"></div>
                         </div>
                         <div class="picture"> <!--exhibitionid+diaryid-->
-                            <img src="../img/slide2.jpg" id="the_picture">
+                            <img src="../img/slide2.jpg" id="the_picture", ondblclick="ClicktoDownLoad()">
                             <div id="about">
                                 <h2 id="the_title"></h2>
                                 <div class="edit">

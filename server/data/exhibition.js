@@ -20,12 +20,12 @@ export async function getbyId(GalleryID) {
 
 export async function create(GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby) {
   return db
-  .execute(
-    //INSERT INTO `gamsung3`.`gallery` (`GalleryID`, `GalleryName`, `DiaryID`, `GalleryDate`, `Img_Num`, `OwnerID`, `Createby`) VALUES ('2', 'ㅇㄴㄹ', '{\"diaries\": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]}', '2022-05-29', '10', '20', '{\"emotions\": \"sad\"}');
-    'INSERT INTO gallery (GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby) VALUES (?,?,?,?,?,?,?)',
-    [GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby]
-  )
-  .then((result) => getbyId(result[0].insertid));
+    .execute(
+      //INSERT INTO `gamsung3`.`gallery` (`GalleryID`, `GalleryName`, `DiaryID`, `GalleryDate`, `Img_Num`, `OwnerID`, `Createby`) VALUES ('2', 'ㅇㄴㄹ', '{\"diaries\": [1, 2, 3, 4, 5, 6, 7, 9, 10, 11]}', '2022-05-29', '10', '20', '{\"emotions\": \"sad\"}');
+      'INSERT INTO gallery (GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby) VALUES (?,?,?,?,?,?,?)',
+      [GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby]
+    )
+    .then((result) => getbyId(result[0].insertid));
 }
 
 //UPDATE `gamsung3`.`gallery` SET `GalleryName` = '안녕하세요!' WHERE (`GalleryID` = '1');
@@ -33,7 +33,8 @@ export async function update(GalleryID, GalleryName, DiaryID) { //제목과 일�
   return db.execute(
     'UPDATE gallery SET GalleryName=?, DiaryID=? WHERE GalleryID=?', [GalleryName, DiaryID, GalleryID])
     .then(() => getbyId(GalleryID));
-  }
+}
+
 
 
 export async function remove(GalleryID) { //전시 삭제 가능
