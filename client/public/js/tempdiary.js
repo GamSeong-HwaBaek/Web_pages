@@ -198,7 +198,7 @@ function serchweather(nowweather) {
     }
 }
 function loadDiary() {
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             if (data.length == 0) {
                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');

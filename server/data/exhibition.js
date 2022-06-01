@@ -35,6 +35,7 @@ export async function update(GalleryID, GalleryName, DiaryID) { //제목과 일�
     .then(() => getbyId(GalleryID));
 }
 
+
 export async function remove(GalleryID) { //전시 삭제 가능
   return db.execute('DELETE FROM gallery WHERE GalleryId=?', [GalleryID]);
 }

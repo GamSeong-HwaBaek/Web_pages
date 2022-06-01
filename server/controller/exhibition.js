@@ -34,7 +34,8 @@ export async function getbyId(req, res, next) {
 //   res.sendstatus(201).json(data);
 // }
 
-export async function create(req, res, next){
+
+export async function create(req, res, next) {
   const { GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby } = req.body;
   const data = await exhibitionRepository.create(GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby);
   res.status(201).json(data);
