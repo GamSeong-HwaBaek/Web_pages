@@ -94,15 +94,15 @@
                     <div class="secondrowwrap">
                         <div class="secondrow">감정 :
                             <div class="emotion">
-                                <i class="fa-solid fa-face-grin-stars"> active</i>
-                                <i class="fa-solid fa-face-laugh-beam"> joy</i>
-                                <i class="fa-solid fa-face-smile-wink"> peaceful</i>
-                                <i class="fa-solid fa-face-meh-blank"> neutral</i>
-                                <i class="fa-solid fa-face-smile"> relaxed</i>
-                                <i class="fa-solid fa-face-laugh-beam"> content</i>
-                                <i class="fa-solid fa-face-meh"> tired</i>
-                                <i class="fa-solid fa-bed"> sleepy</i>
-                                <i class="fa-solid fa-face-tired"> disgust</i>
+                                <i class="fa-solid fa-face-grin-stars", id = 'active', onclick="clickactive()"> active</i>
+                                <i class="fa-solid fa-face-laugh-beam", id = 'joy', onclick="clickjoy()"> joy</i>
+                                <i class="fa-solid fa-face-smile-wink", id = 'peaceful', onclick="clickpeaceful()"> peaceful</i>
+                                <i class="fa-solid fa-face-meh-blank", id = 'neutral', onclick="clickneutral()"> neutral</i>
+                                <i class="fa-solid fa-face-smile", id = 'relaxed', onclick="clickrelaxed()"> relaxed</i>
+                                <i class="fa-solid fa-face-laugh-beam", id = 'content', onclick="clickcontent()"> content</i>
+                                <i class="fa-solid fa-face-meh", id = 'tired', onclick="clicktired()"> tired</i>
+                                <i class="fa-solid fa-bed", id = 'sleepy', onclick="clicksleepy()"> sleepy</i>
+                                <i class="fa-solid fa-face-tired", id = 'disgust', onclick="clickdisgust    ()"> disgust</i>
                             </div>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                                 <div class="writeDiary" id="blank" onclick="write()">WRITE</div>
                             </div>
                             <div class="save_container">
-                                <div class="btnSetLocalData" id="savebutton" onclick="setData(loginid)">SAVE</div>
+                                <div class="btnSetLocalData" id="savebutton" onclick="location.href='loading.html'" >SAVE</div>
                             </div>
                         </div>                        
                     </div>
@@ -138,19 +138,19 @@
         <div class="popup"> <!-- id에 몇번 그림 선택했는지 저장-->
             <i class="fa-solid fa-xmark" , id="close", onclick="close()"></i>
         <div class="img__wrap">
-            <div class="img__wrapbox", id="img__wrapbox1", onclick="return1()">
+            <div class="img__wrapbox", id="img__wrapbox1", onclick="return1(), location.href='loading.html'">
                 <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
             </div>
-            <div class="img__wrapbox", id="img__wrapbox2", onclick="return2()">
+            <div class="img__wrapbox", id="img__wrapbox2", onclick="return2(), location.href='loading.html'">
                 <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
             </div>
-            <div class="img__wrapbox", id="img__wrapbox3", onclick="return3()">
+            <div class="img__wrapbox", id="img__wrapbox3", onclick="return3(), location.href='loading.html'">
                 <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
             </div>
-            <div class="img__wrapbox", id="img__wrapbox4", onclick="return4()">
+            <div class="img__wrapbox", id="img__wrapbox4", onclick="return4(), location.href='loading.html'">
                 <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
             </div>
-            <div class="img__wrapbox", id="img__wrapbox5", onclick="return5()">
+            <div class="img__wrapbox", id="img__wrapbox5", onclick="return5(), location.href='loading.html'">
                 <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
             </div>
         </div>
