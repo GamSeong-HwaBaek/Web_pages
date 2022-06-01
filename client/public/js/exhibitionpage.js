@@ -41,12 +41,15 @@ function click_arrowleft() {
                         'Authorization': String(Authorization)
                     }
                 }).then((response) => response.json())
-                    .then((data) => {
-                        document.getElementById('the_title').textContent = (data.title);
-                        document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(data.id);
-                        document.getElementById('the_picture').src = "../img/slide2.jpg";
-                        document.getElementById('the_title').textContent = (data.title);
-                        document.getElementById('the_date').textContent = (data.date).slice(0, 10);
+                    .then((arraydata) => {
+                        document.getElementById('the_title').textContent = (arraydata.title);
+                        document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(arraydata.id);
+                        //document.getElementById('the_picture').src = "../img/slide2.jpg";
+                        document.getElementById('the_title').textContent = (arraydata.title);
+                        document.getElementById('the_date').textContent = (arraydata.date).slice(0, 10);
+
+                        tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(arraydata.afterImg.data)));
+                        document.getElementById('the_picture').src = tempimgsrc;
                     });
             }
         });
@@ -71,7 +74,6 @@ function click_arrowright() {
                 } else {//beforeelement=element
                     if (find == false) {
                         findnextelement = element;
-                        console.log(findnextelement);
                         find = true;
                     }
                 }
@@ -83,9 +85,12 @@ function click_arrowright() {
                     .then((data) => {
                         document.getElementById('the_title').textContent = (data.title);
                         document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(data.id);
-                        document.getElementById('the_picture').src = "../img/slide2.jpg";
+                        //document.getElementById('the_picture').src = "../img/slide2.jpg";
                         document.getElementById('the_title').textContent = (data.title);
                         document.getElementById('the_date').textContent = (data.date).slice(0, 10);
+
+                        tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data.afterImg.data)));
+                        document.getElementById('the_picture').src = tempimgsrc;
                     });
             }
         });
@@ -134,23 +139,27 @@ function downloadImg(imgSrc) {
     };
 }
 function ClicktoDownLoad() {
-    console.log(document.getElementById('the_picture').src);
-    downloadImg(document.getElementById('the_picture').src);
+    //console.log(document.getElementById('the_picture').src);
+    if (confirm("다운로드 하시겠습니까??") == true) {    //확인
+        downloadImg(document.getElementById('the_picture').src);
+        document.removefrm.submit();
+    } else {   //취소
+        return false;
+    }
 }
+var tempimgsrc;
 function reloading() {
     //최신순 정렬
-    fetch('http://localhost:8080/exhibition?OwnerID=5', {
+    fetch('http://localhost:8080/exhibition?OwnerID=20', {
         method: 'GET',
         headers: {
             'Authorization': String(Authorization)
         }
     }).then((response) => response.json())
         .then((data) => {
-            console.log(data);
             var dictObject = {};
             data.forEach(element => {
                 GalleryDateyear = element.GalleryDate.slice(0, 4);
-                console.log(GalleryDateyear);
                 if (GalleryDateyear in dictObject) {
                     dictObject[GalleryDateyear] = dictObject[GalleryDateyear] + 1;
                 } else {
@@ -216,7 +225,8 @@ function reloading() {
                     flexboxn.style.borderRadius = "30px";
                     flexboxn.style.marginBottom = "2%";
                     flexboxn.style.boxShadow = "-5px 10px 10px #1a1f3ada";
-                    flexboxn.style.backgroundImage = "url('../img/gallery_img/20220507.jpg')";
+
+                    //flexboxn.style.backgroundImage = "url('../img/gallery_img/20220507.jpg')";
                     flexboxn.style.backgroundSize = "cover";
                     flexboxn.style.backgroundPosition = "center";
 
@@ -262,6 +272,7 @@ function reloading() {
                         }
                     });
 
+                    /*
                     let iclass2 = document.createElement('i');
                     iclass2.className = "fa-solid fa-floppy-disk fa-lg";
                     iclass2.id = "y" + String(year) + "__" + String(yearnum) + "__" + "hearticon";
@@ -276,10 +287,13 @@ function reloading() {
                             return false;
                         }
                     });
+                    */
 
                     let iclass3 = document.createElement('i');
                     iclass3.className = "fa-regular fa-circle-xmark fa-lg";
                     iclass3.id = "y" + String(year) + "__" + String(yearnum) + "__" + "deleteicon";
+                    iclass3.style.marginLeft = "auto";
+                    iclass3.style.marginRight = "0%";
 
                     const aboutGalleryPicture = flexboxn.id.split('__');
                     let nowgalleryid = aboutGalleryPicture[2];
@@ -296,7 +310,7 @@ function reloading() {
                     });
 
                     flexboxnicon.appendChild(iclass1);
-                    flexboxnicon.appendChild(iclass2);
+                    //flexboxnicon.appendChild(iclass2);
                     flexboxnicon.appendChild(iclass3);
                     //////
                     //////
@@ -323,9 +337,6 @@ function reloading() {
                     if (flexboxinside.style.visibility == "invisible") {
                         flexboxinside.style.display = "none";
                     }
-                    flexboxinside.addEventListener('click', function () {
-                        document.querySelector(".background").className = "background show";
-                    });
                     ///
                     /*.contents {
                     margin-left: 7%;
@@ -482,15 +493,13 @@ function reloading() {
                     //그림 제목들
                     let nowDiaryList = String(data[everynum].DiaryID.diaries);
                     const DiaryListarr = nowDiaryList.split(',');
-
                     DiaryListarr.forEach(element => {
                         fetch('http://localhost:8080/diary/' + element, { method: 'GET' }).then((response) => response.json())
-                            .then((data) => {
+                            .then((nowdata) => {
                                 let projectspan = document.createElement("span");
                                 projectspan.style.color = "whitesmoke";
-                                projectspan.id = String(data.id);
-                                projectspan.textContent = (data.title);
-
+                                projectspan.id = String(nowdata.id);
+                                projectspan.textContent = (nowdata.title);
                                 projectspan.addEventListener('mouseover', function () {
                                     projectspan.style.color = "var(--color-orange)";
                                     projectspan.style.transform = "scale(1.05)";
@@ -500,13 +509,19 @@ function reloading() {
                                     projectspan.style.transform = "scale(1)";
                                 });
                                 projectspan.addEventListener('click', function () {
+                                    document.querySelector(".background").className = "background show";
+
                                     projectspan.style.color = "white";
                                     projectspan.style.transform = "scale(1)";
                                     document.getElementById('texpinput').value = String(nowgalleryName);
-                                    document.getElementsByClassName('picture').id = String(nowgalleryid) + "__" + String(data.id);
-                                    document.getElementById('the_picture').src = "../img/slide2.jpg";
-                                    document.getElementById('the_title').textContent = (data.title);
-                                    document.getElementById('the_date').textContent = (data.date).slice(0, 10);
+                                    document.getElementsByClassName('picture').id = String(nowgalleryid) + "__" + String(nowdata.id);
+
+                                    console.log(nowdata.beforeImg.data);
+                                    console.log(nowdata.afterImg.data);
+                                    document.getElementById('the_title').textContent = (nowdata.title);
+                                    document.getElementById('the_date').textContent = (nowdata.date).slice(0, 10);
+                                    tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(nowdata.afterImg.data)));
+                                    document.getElementById('the_picture').src = tempimgsrc;
                                 });
                                 insidedescrition.appendChild(projectspan);
                             });
@@ -520,13 +535,19 @@ function reloading() {
                     flexboxn.appendChild(flexboxnicon);//div
                     flexboxn.appendChild(flexboxinside);//div
 
+                    r = parseInt(flexboxn.id.split("__")[0].slice(1, 5)) % 255;
+                    g = parseInt(flexboxn.id.split("__")[1]) % 255;
+                    b = parseInt(flexboxn.id.split("__")[2]) % 255;
+                    flexboxn.style.backgroundColor = "rgba(" + r + ", " + g + ", " + b + ", 0.1)";
+
+
                     elementyearflexbox.appendChild(flexboxn);//div
                     yearnum = yearnum + 1;
                     everynum += 1;
                 }
                 yearnum = yearnum - 1;
 
-                if (yearnum % 2 == 0) { //짝수개
+                if (yearnum % 2 == 0) { //짝수개    
                 } else {//홀수개
                     //flexboxone 추가+안보이게
                     // -- 각각의 전시 가져오기
@@ -551,4 +572,8 @@ function reloading() {
                 parent.appendChild(elementyear);
             });
         });
+}
+
+function newExhitiionCreate() {
+    //main의 3 -> 2 -> 1 자식노드의 색을 주황색으로!
 }
