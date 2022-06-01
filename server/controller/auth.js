@@ -35,6 +35,8 @@ export async function login(req, res) {
   }
   const token = createJwtToken(user.id);
   res.status(200).json({ token, username });
+  console.log(user.id);
+  return user.id;
 }
 
 function createJwtToken(id) {

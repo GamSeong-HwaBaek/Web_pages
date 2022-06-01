@@ -6,9 +6,16 @@ const btnSLD = document.querySelector('.btnSetLocalData');
 /* input 텍스트 */
 const setInput = document.querySelector('#setInput');
 
-function setData() {
+/* 검색 텍스트 */
+const searchkey = document.querySelector('#question__bar');
+
+function setData(loginid) {
     /* 할 일 처리 --> 입력한 텍스트 값 가져오기 */
     let setInputValue = setInput.value;
+
+    let url = 'http://localhost:8080/diary/?userid=' + loginid;
+
+    console.log(url);
 
     /* localStorage 저장 */
     localStorage.setItem('inputValue', setInputValue);
@@ -136,13 +143,32 @@ function setData() {
         });
 };
 
+function searchByTitle(loginid) {
+    return db
+        .execute(`SELECT diary.id FROM diary WHERE di.userid =? LIKE %?%`, [loginid, searchkey])
+        .then((response) => response.json)
+        .then((data) => {
+            len = data.length;
+            nowpage = document.getElementsByClassName('mydiary__container').id;
+            next = nowpage - 1;
+            nextpage = data[next];
+            document.getElementsByClassName('mydiary__container').id = next;
+            document.getElementById('year').value = nextpage.date.slice(0, 4);
+            document.getElementById('month').value = nextpage.date.slice(5, 7);
+            document.getElementById('day').value = nextpage.date.slice(8, 10);
+            document.getElementById('title').value = nextpage.title;
+            document.getElementById('setInput').value = nextpage.contents;
 
+            serchweather(nextpage.weather);
+            }
+        );
+}
 
 function showImage() {
     var newImage = document.getElementById('image-show').lastElementChild;
     newImage.style.visibility = "visible";
     newImage.style.display = "block";
-
+x``
     var imashow = document.getElementById('image-show');
     imashow.style.display = "block";
     document.getElementById('image-upload').style.visibility = 'hidden';
@@ -172,6 +198,7 @@ function loadFile(input) {
     var container = document.getElementById('image-show');
     container.appendChild(newImage);
 };
+
 function serchweather(nowweather) {
     if (nowweather == 'sunny') {
         document.getElementById('sunny').style.color = 'var(--color-orange)';
@@ -198,7 +225,7 @@ function serchweather(nowweather) {
     }
 }
 function loadDiary() {
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             if (data.length == 0) {
                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
@@ -219,9 +246,18 @@ function loadDiary() {
             }
         });
 }
+
+function write() {
+    document.getElementById('year').value = null;
+    document.getElementById('month').value = null;
+    document.getElementById('day').value = null;
+    document.getElementById('title').value = null;
+    document.getElementById('setInput').value = null;
+}
+
 function clickprevpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -243,7 +279,7 @@ function clickprevpage() {
 }
 function clicknextpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
