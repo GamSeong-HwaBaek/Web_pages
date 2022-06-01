@@ -174,15 +174,20 @@ i:hover {
 
 .image-upload {
     width: 100%;
-    height: 100%;
+    height: 50%;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 .image-show{
+    display: flex;
     width: 100%;
-    height: 100%;
+    height: 50%;
+    flex: 2;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .button {
@@ -230,15 +235,6 @@ label {
     padding: 10px;
     font-size: 0.8em;
     cursor: pointer;
-}
-
-.image-show {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 50%;
-    
 }
 
 .img {

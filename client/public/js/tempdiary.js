@@ -6,16 +6,9 @@ const btnSLD = document.querySelector('.btnSetLocalData');
 /* input 텍스트 */
 const setInput = document.querySelector('#setInput');
 
-/* 검색 텍스트 */
-const searchkey = document.querySelector('#question__bar');
-
-function setData(loginid) {
+function setData() {
     /* 할 일 처리 --> 입력한 텍스트 값 가져오기 */
     let setInputValue = setInput.value;
-
-    let url = 'http://localhost:8080/diary/?userid=' + loginid;
-
-    console.log(url);
 
     /* localStorage 저장 */
     localStorage.setItem('inputValue', setInputValue);
@@ -143,34 +136,12 @@ function setData(loginid) {
         });
 };
 
-function searchByTitle(loginid) {
-    return db
-        .execute(`SELECT diary.id FROM diary WHERE di.userid =? LIKE %?%`, [loginid, searchkey])
-        .then((response) => response.json)
-        .then((data) => {
-            len = data.length;
-            nowpage = document.getElementsByClassName('mydiary__container').id;
-            next = nowpage - 1;
-            nextpage = data[next];
-            document.getElementsByClassName('mydiary__container').id = next;
-            document.getElementById('year').value = nextpage.date.slice(0, 4);
-            document.getElementById('month').value = nextpage.date.slice(5, 7);
-            document.getElementById('day').value = nextpage.date.slice(8, 10);
-            document.getElementById('title').value = nextpage.title;
-            document.getElementById('setInput').value = nextpage.contents;
 
-            serchweather(nextpage.weather);
-        }
-        );
-}
 
 function showImage() {
-    var newImage = document.getElementById('image-show').lastElementChild;
-    newImage.style.visibility = "visible";
-    newImage.style.display = "block";
-    x``
     var imashow = document.getElementById('image-show');
     imashow.style.display = "block";
+    document.getElementById('image-show').style.opacity = "1";
     document.getElementById('image-upload').style.visibility = 'hidden';
     document.getElementById('fileContainer').style.display = 'none';
 
@@ -189,14 +160,11 @@ function loadFile(input) {
 
     newImage.src = URL.createObjectURL(file);
 
-    newImage.style.width = "100%";
-    newImage.style.height = "100%";
-    newImage.style.visibility = "hidden";   //버튼을 누르기 전까지는 이미지 숨기기
-    newImage.style.objectFit = "contain";
-
-
-    var container = document.getElementById('image-show');
-    container.appendChild(newImage);
+    document.getElementById('image-show').style.backgroundImage = "url(" + String(newImage.src) + ")";
+    document.getElementById('image-show').style.background.width = "100%";
+    document.getElementById('image-show').style.backgroundSize = "contain";
+    document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
+    document.getElementById('image-show').style.opacity = "0";
 };
 
 function serchweather(nowweather) {
@@ -246,18 +214,9 @@ function loadDiary() {
             }
         });
 }
-
-function write() {
-    document.getElementById('year').value = null;
-    document.getElementById('month').value = null;
-    document.getElementById('day').value = null;
-    document.getElementById('title').value = null;
-    document.getElementById('setInput').value = null;
-}
-
 function clickprevpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -279,7 +238,7 @@ function clickprevpage() {
 }
 function clicknextpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
