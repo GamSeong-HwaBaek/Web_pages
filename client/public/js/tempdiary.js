@@ -332,7 +332,6 @@ function clicknextpage() {
         });
 }
 
-
 function show() {
     document.querySelector(".background").className = "background show";
 }
@@ -340,6 +339,28 @@ function show() {
 function close() {
     document.querySelector(".background").className = "background";
 }
-
+function print() {
+    console.log(document.querySelector(".img__wrapbox"));
+}
 document.querySelector("#show").addEventListener('click', show);
-document.querySelector("#close").addEventListener('click', close);
+
+function return1() {
+    document.getElementsByClassName('popup').id = "1";
+    close();
+}
+function return2() {
+    document.getElementsByClassName('popup').id = "2";
+    close();
+}
+function return3() {
+    document.getElementsByClassName('popup').id = "3";
+    close();
+}
+function return4() {
+    document.getElementsByClassName('popup').id = "4";
+    close();
+}
+function return5() {
+    document.getElementsByClassName('popup').id = "5";
+    close();
+}
