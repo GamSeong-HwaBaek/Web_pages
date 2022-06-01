@@ -399,6 +399,7 @@ function loadDiary() {
             }
         });
 }
+
 function clickprevpage() {
     //diary?userid=5
     fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
@@ -421,6 +422,7 @@ function clickprevpage() {
             }
         });
 }
+
 function clicknextpage() {
     //diary?userid=5
     fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
@@ -458,6 +460,30 @@ function clicknextpage() {
             }
 
 
+        });
+}
+
+function write() {
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'POST' }).then((response) => response.json())
+        .then((data) => {
+            document.getElementById('sunny').style.color = 'var(--color-main)';
+            document.getElementById('cloudy').style.color = 'var(--color-main)';
+            document.getElementById('rainy').style.color = 'var(--color-main)';
+            document.getElementById('snowy').style.color = 'var(--color-main)';
+            document.getElementById('active').style.color = 'var(--color-main)';
+            document.getElementById('joy').style.color = 'var(--color-main)';
+            document.getElementById('peaceful').style.color = 'var(--color-main)';
+            document.getElementById('neutral').style.color = 'var(--color-main)';
+            document.getElementById('relaxed').style.color = 'var(--color-main)';
+            document.getElementById('content').style.color = 'var(--color-main)';
+            document.getElementById('tired').style.color = 'var(--color-main)';
+            document.getElementById('sleepy').style.color = 'var(--color-main)';
+            document.getElementById('disgust').style.color = 'var(--color-main)';
+            document.getElementById('year').value = '';
+            document.getElementById('month').value = '';
+            document.getElementById('day').value = '';
+            document.getElementById('title').value = '';
+            document.getElementById('setInput').value = '';
         });
 }
 
