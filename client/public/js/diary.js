@@ -496,7 +496,7 @@ function close() {
 }
 
 function close2() {
-  document.querySelector(".background2").className = "background2";
+    document.querySelector(".background2").className = "background2";
 }
 function print() {
     console.log(document.querySelector(".img__wrapbox"));
@@ -506,24 +506,35 @@ document.querySelector("#show").addEventListener('click', show);
 function return1() {
     document.getElementsByClassName('popup').id = "1";
     close();
+    result();
 }
 function return2() {
     document.getElementsByClassName('popup').id = "2";
     close();
+    result();
 }
 function return3() {
     document.getElementsByClassName('popup').id = "3";
     close();
+    result();
 }
 function return4() {
     document.getElementsByClassName('popup').id = "4";
     close();
+    result();
 }
 function return5() {
     document.getElementsByClassName('popup').id = "5";
     close();
+    result();
 }
 function loading() {
-  document.querySelector(".background").className = "background show";
-  
+    document.querySelector(".background2").className = "background2 show";
+}
+function change() {
+    close2();
+}
+
+function result() {
+    close2();
 }
