@@ -15,9 +15,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://kit.fontawesome.com/555ffe8d45.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-    <link rel="stylesheet" href="../css/tempdiary.css">
-    <script src="../js/tempdiary.js" defer></script>
+    <link rel="stylesheet" href="../css/diary.css">
+    <script src="../js/diary.js" defer></script>
     <script src="../../../server/controller/auth.js" defer></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
 </head>
 
 <body onload="loadDiary()">
@@ -45,28 +46,28 @@
                     <div class="left__thirdrow">
                         <div class="picture">
                             <div class="container">
-                                <!-- <div class="image-upload" id="image-upload">
+                                <div class="image-upload" id="image-upload">
                                     <p><br></p>
-                                    <!-- <form method="post" enctype="multipart/form-data">
-                                        <!-- <div class="button">
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div class="button">
                                             <label for="chooseFile">
                                                 👉 CLICK HERE! 👈
                                             </label>
                                         </div>
-                                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" onclick="createBackground()"> 
-                                    </form> -->
+                                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" onclick="createBackground()">
+                                    </form>
                         
-                                    <!--<div class="fileContainer">
+                                    <div class="fileContainer">
                                         <div class="fileInput">
                                             <p>FILE NAME: </p>
                                             <p id="fileName"></p>
                                         </div>
                                         <div class="buttonContainer">
                                             <!-- 사진 파일 저장 -->
-                                            <!--<div class="submitButton" id="submitButton">SUBMIT</div>
+                                            <div class="submitButton" id="submitButton">SUBMIT</div>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="image-show" id="image-show"></div>
                             </div>
                         </div>
@@ -118,10 +119,10 @@
                         <!--저장 버튼 기능 추가-->
                         <div class="btn__flexbox">
                             <div class="write_container">
-                                <div class="writeDiary" id="blank" onclick="location.href='diary.html'">WRITE</div>
+                                <div class="writeDiary" id="blank" onclick="write()">WRITE</div>
                             </div>
                             <div class="save_container">
-                                <div class="btnSetLocalData" id="savebutton" onclick="location.href='loading.html'" >SAVE</div>
+                                <div class="btnSetLocalData" id="savebutton" onclick="loading()">SAVE</div>
                             </div>
                         </div>                        
                     </div>
@@ -131,6 +132,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="background">
+          <div class="window">
+              <div class="popup">
+                  <div class="popup__inside">
+                    <i class="fas fa-spinner fa-10x fa-spin"></i>
+                  </div>
+              </div>
+          </div>
+      </div>
 
         <button id="show">팝업열기</button>
         <div class="background">

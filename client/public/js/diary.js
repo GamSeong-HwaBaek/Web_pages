@@ -1,5 +1,5 @@
-// var submit = document.getElementById('submitButton');
-// submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
+var submit = document.getElementById('submitButton');
+submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 
 /* 버튼 */
 const btnSLD = document.querySelector('.btnSetLocalData');
@@ -201,24 +201,6 @@ function loadFile(input) {
     document.getElementById('image-show').style.opacity = "0";
 };
 
-function loadImg() {
-    var file = '그림1.png';
-
-    // var name = document.getElementById('fileName');
-    // name.textContent = file;
-
-    var newImage = document.createElement("img");
-    newImage.setAttribute("class", 'img');
-
-    // newImage.src = URL.createObjectURL(file);
-
-    document.getElementById('image-show').style.backgroundImage = file;
-    document.getElementById('image-show').style.background.width = "100%";
-    document.getElementById('image-show').style.backgroundSize = "contain";
-    document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
-    document.getElementById('image-show').style.opacity = "0";
-};
-
 function clicksunny() {
     if (sunnycolor == "var(--color-orange)") {
         document.getElementById('sunny').style.color = "var(--color-main)";
@@ -385,134 +367,124 @@ function serchemotion(emotion) {
     }
 }
 
-function loadDiary() {
-    // var newImage = document.createElement("img");
-    // newImage.setAttribute("class", 'img');
+// function loadDiary() {
+//     fetch('http://localhost:8080/diary?userid=5', { method: 'GET' }).then((response) => response.json())
+//         .then((data) => {
 
-    // newImage.src = URL.createObjectURL('../img/그림1.png');
+//             if (data.length == 0) {
+//                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
+//                 document.getElementById('sunny').style.color = 'var(--color-main)';
+//                 document.getElementById('cloudy').style.color = 'var(--color-main)';
+//                 document.getElementById('rainy').style.color = 'var(--color-main)';
+//                 document.getElementById('snowy').style.color = 'var(--color-main)';
+//                 document.getElementById('active').style.color = 'var(--color-main)';
+//                 document.getElementById('joy').style.color = 'var(--color-main)';
+//                 document.getElementById('peaceful').style.color = 'var(--color-main)';
+//                 document.getElementById('neutral').style.color = 'var(--color-main)';
+//                 document.getElementById('relaxed').style.color = 'var(--color-main)';
+//                 document.getElementById('content').style.color = 'var(--color-main)';
+//                 document.getElementById('tired').style.color = 'var(--color-main)';
+//                 document.getElementById('sleepy').style.color = 'var(--color-main)';
+//                 document.getElementById('disgust').style.color = 'var(--color-main)';
+//             } else {
+//                 firstpage = data[0];//로드시 처음 페이지
+//                 document.getElementsByClassName('mydiary__container').id = 0;
+//                 document.getElementById('year').value = firstpage.date.slice(0, 4);
+//                 document.getElementById('month').value = firstpage.date.slice(5, 7);
+//                 document.getElementById('day').value = firstpage.date.slice(8, 10);
+//                 document.getElementById('title').value = firstpage.title;
+//                 document.getElementById('setInput').value = firstpage.contents;
+//                 serchemotion(firstpage.emotion);
+//                 serchweather(firstpage.weather);
+//             }
+//         });
+// }
 
-    // document.getElementById('image-show').style.backgroundImage = "url(" + String(newImage.src) + ")";
-    // document.getElementById('image-show').style.background.width = "100%";
-    // document.getElementById('image-show').style.backgroundSize = "contain";
-    // document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
-    // document.getElementById('image-show').style.opacity = "0";
-    fetch('http://localhost:8080/diary?userid=5', { method: 'GET' }).then((response) => response.json())
-        .then((data) => {
-            if (data.length == 0) {
-                alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
-                document.getElementById('sunny').style.color = 'var(--color-main)';
-                document.getElementById('cloudy').style.color = 'var(--color-main)';
-                document.getElementById('rainy').style.color = 'var(--color-main)';
-                document.getElementById('snowy').style.color = 'var(--color-main)';
-                document.getElementById('active').style.color = 'var(--color-main)';
-                document.getElementById('joy').style.color = 'var(--color-main)';
-                document.getElementById('peaceful').style.color = 'var(--color-main)';
-                document.getElementById('neutral').style.color = 'var(--color-main)';
-                document.getElementById('relaxed').style.color = 'var(--color-main)';
-                document.getElementById('content').style.color = 'var(--color-main)';
-                document.getElementById('tired').style.color = 'var(--color-main)';
-                document.getElementById('sleepy').style.color = 'var(--color-main)';
-                document.getElementById('disgust').style.color = 'var(--color-main)';
-            } else {
-                firstpage = data[0];//로드시 처음 페이지
-                document.getElementsByClassName('mydiary__container').id = 0;
-                document.getElementById('year').value = firstpage.date.slice(0, 4);
-                document.getElementById('month').value = firstpage.date.slice(5, 7);
-                document.getElementById('day').value = firstpage.date.slice(8, 10);
-                document.getElementById('title').value = firstpage.title;
-                document.getElementById('setInput').value = firstpage.contents;
-                serchemotion(firstpage.emotion);
-                serchweather(firstpage.weather);
-                loadImg();
-            }
-        });
-}
+// function clickprevpage() {
+//     //diary?userid=5
+//     fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+//         .then((data) => {
+//             len = data.length;
+//             nowpage = document.getElementsByClassName('mydiary__container').id;
+//             if (nowpage == 0) {
+//                 alert('첫번째페이지입니다');
+//             } else {
+//                 next = nowpage - 1;
+//                 nextpage = data[next];
+//                 document.getElementsByClassName('mydiary__container').id = next;
+//                 document.getElementById('year').value = nextpage.date.slice(0, 4);
+//                 document.getElementById('month').value = nextpage.date.slice(5, 7);
+//                 document.getElementById('day').value = nextpage.date.slice(8, 10);
+//                 document.getElementById('title').value = nextpage.title;
+//                 document.getElementById('setInput').value = nextpage.contents;
+//                 serchemotion(nextpage.emotion);
+//                 serchweather(nextpage.weather);
+//             }
+//         });
+// }
 
-function clickprevpage() {
-    //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
-        .then((data) => {
-            len = data.length;
-            nowpage = document.getElementsByClassName('mydiary__container').id;
-            if (nowpage == 0) {
-                alert('첫번째페이지입니다');
-            } else {
-                next = nowpage - 1;
-                nextpage = data[next];
-                document.getElementsByClassName('mydiary__container').id = next;
-                document.getElementById('year').value = nextpage.date.slice(0, 4);
-                document.getElementById('month').value = nextpage.date.slice(5, 7);
-                document.getElementById('day').value = nextpage.date.slice(8, 10);
-                document.getElementById('title').value = nextpage.title;
-                document.getElementById('setInput').value = nextpage.contents;
-                serchemotion(nextpage.emotion);
-                serchweather(nextpage.weather);
-            }
-        });
-}
+// function clicknextpage() {
+//     //diary?userid=5
+//     fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+//         .then((data) => {
+//             len = data.length;
+//             nowpage = document.getElementsByClassName('mydiary__container').id;
+//             if (nowpage == len) {
+//                 alert('일기를 작성해 주세요');
+//             } else if (nowpage == len - 1) {
+//                 next = nowpage + 1;
+//                 nextpage = data[next];
+//                 document.getElementsByClassName('mydiary__container').id = next;
+//                 document.getElementById('year').value = '';
+//                 document.getElementById('month').value = '';
+//                 document.getElementById('day').value = '';
+//                 document.getElementById('title').value = '';
+//                 document.getElementById('setInput').value = '';
 
-function clicknextpage() {
-    //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
-        .then((data) => {
-            len = data.length;
-            nowpage = document.getElementsByClassName('mydiary__container').id;
-            if (nowpage == len) {
-                alert('일기를 작성해 주세요');
-            } else if (nowpage == len - 1) {
-                next = nowpage + 1;
-                nextpage = data[next];
-                document.getElementsByClassName('mydiary__container').id = next;
-                document.getElementById('year').value = '';
-                document.getElementById('month').value = '';
-                document.getElementById('day').value = '';
-                document.getElementById('title').value = '';
-                document.getElementById('setInput').value = '';
-
-                document.getElementById('sunny').style.color = 'var(--color-main)';
-                document.getElementById('cloudy').style.color = 'var(--color-main)';
-                document.getElementById('rainy').style.color = 'var(--color-main)';
-                document.getElementById('snowy').style.color = 'var(--color-main)';
-            }
-            else {
-                next = nowpage + 1;
-                nextpage = data[next];
-                document.getElementsByClassName('mydiary__container').id = next;
-                document.getElementById('year').value = nextpage.date.slice(0, 4);
-                document.getElementById('month').value = nextpage.date.slice(5, 7);
-                document.getElementById('day').value = nextpage.date.slice(8, 10);
-                document.getElementById('title').value = nextpage.title;
-                document.getElementById('setInput').value = nextpage.contents;
-                serchemotion(nextpage.emotion);
-                serchweather(nextpage.weather);
-            }
+//                 document.getElementById('sunny').style.color = 'var(--color-main)';
+//                 document.getElementById('cloudy').style.color = 'var(--color-main)';
+//                 document.getElementById('rainy').style.color = 'var(--color-main)';
+//                 document.getElementById('snowy').style.color = 'var(--color-main)';
+//             }
+//             else {
+//                 next = nowpage + 1;
+//                 nextpage = data[next];
+//                 document.getElementsByClassName('mydiary__container').id = next;
+//                 document.getElementById('year').value = nextpage.date.slice(0, 4);
+//                 document.getElementById('month').value = nextpage.date.slice(5, 7);
+//                 document.getElementById('day').value = nextpage.date.slice(8, 10);
+//                 document.getElementById('title').value = nextpage.title;
+//                 document.getElementById('setInput').value = nextpage.contents;
+//                 serchemotion(nextpage.emotion);
+//                 serchweather(nextpage.weather);
+//             }
 
 
-        });
-}
+//         });
+// }
 
 function write() {
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'POST' }).then((response) => response.json())
-        .then((data) => {
-            document.getElementById('sunny').style.color = 'var(--color-main)';
-            document.getElementById('cloudy').style.color = 'var(--color-main)';
-            document.getElementById('rainy').style.color = 'var(--color-main)';
-            document.getElementById('snowy').style.color = 'var(--color-main)';
-            document.getElementById('active').style.color = 'var(--color-main)';
-            document.getElementById('joy').style.color = 'var(--color-main)';
-            document.getElementById('peaceful').style.color = 'var(--color-main)';
-            document.getElementById('neutral').style.color = 'var(--color-main)';
-            document.getElementById('relaxed').style.color = 'var(--color-main)';
-            document.getElementById('content').style.color = 'var(--color-main)';
-            document.getElementById('tired').style.color = 'var(--color-main)';
-            document.getElementById('sleepy').style.color = 'var(--color-main)';
-            document.getElementById('disgust').style.color = 'var(--color-main)';
-            document.getElementById('year').value = '';
-            document.getElementById('month').value = '';
-            document.getElementById('day').value = '';
-            document.getElementById('title').value = '';
-            document.getElementById('setInput').value = '';
-        });
+    // fetch('http://localhost:8080/diary/?userid=5', { method: 'POST' }).then((response) => response.json())
+    //     .then((data) => {
+    //         document.getElementById('sunny').style.color = 'var(--color-main)';
+    //         document.getElementById('cloudy').style.color = 'var(--color-main)';
+    //         document.getElementById('rainy').style.color = 'var(--color-main)';
+    //         document.getElementById('snowy').style.color = 'var(--color-main)';
+    //         document.getElementById('active').style.color = 'var(--color-main)';
+    //         document.getElementById('joy').style.color = 'var(--color-main)';
+    //         document.getElementById('peaceful').style.color = 'var(--color-main)';
+    //         document.getElementById('neutral').style.color = 'var(--color-main)';
+    //         document.getElementById('relaxed').style.color = 'var(--color-main)';
+    //         document.getElementById('content').style.color = 'var(--color-main)';
+    //         document.getElementById('tired').style.color = 'var(--color-main)';
+    //         document.getElementById('sleepy').style.color = 'var(--color-main)';
+    //         document.getElementById('disgust').style.color = 'var(--color-main)';
+    //         document.getElementById('year').value = '';
+    //         document.getElementById('month').value = '';
+    //         document.getElementById('day').value = '';
+    //         document.getElementById('title').value = '';
+    //         document.getElementById('setInput').value = '';
+    //     });
 }
 
 function show() {
@@ -521,6 +493,10 @@ function show() {
 
 function close() {
     document.querySelector(".background").className = "background";
+}
+
+function close2() {
+  document.querySelector(".background2").className = "background2";
 }
 function print() {
     console.log(document.querySelector(".img__wrapbox"));
@@ -546,4 +522,8 @@ function return4() {
 function return5() {
     document.getElementsByClassName('popup').id = "5";
     close();
+}
+function loading() {
+  document.querySelector(".background").className = "background show";
+  
 }
