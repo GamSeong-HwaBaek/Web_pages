@@ -225,6 +225,11 @@ function reloading() {
                     flexboxn.style.borderRadius = "30px";
                     flexboxn.style.marginBottom = "2%";
                     flexboxn.style.boxShadow = "-5px 10px 10px #1a1f3ada";
+                    if (String(data[everynum].GalleryID).length == 1) {
+                        flexboxn.style.backgroundImage = "url('../img/gallery_img/00" + String(data[everynum].GalleryID) + ".jpg')";
+                    } else {
+                        flexboxn.style.backgroundImage = "url('../img/gallery_img/0" + String(data[everynum].GalleryID) + ".jpg')";
+                    }
 
                     //flexboxn.style.backgroundImage = "url('../img/gallery_img/20220507.jpg')";
                     flexboxn.style.backgroundSize = "cover";
@@ -310,8 +315,10 @@ function reloading() {
                     });
 
                     flexboxnicon.appendChild(iclass1);
+                    iclass1 = null;
                     //flexboxnicon.appendChild(iclass2);
                     flexboxnicon.appendChild(iclass3);
+                    iclass3 = null;
                     //////
                     //////
                     let flexboxinside = document.createElement("div");
@@ -424,7 +431,9 @@ function reloading() {
                     }
 
                     insidecontents.appendChild(contentsh1);
+                    contentsh1 = null;
                     insidecontents.appendChild(contentsh4);
+                    contentsh4 = null;
                     ///
 
                     ///
@@ -489,6 +498,7 @@ function reloading() {
                     projecttitle.textContent = "0" + String(yearnum) + " " + String(data[everynum].GalleryName);
                     projecttitle.style.color = "var(--color-orange)";
                     insidedescrition.appendChild(projecttitle);
+                    projecttitle = null;
 
                     //그림 제목들
                     let nowDiaryList = String(data[everynum].DiaryID.diaries);
@@ -563,17 +573,17 @@ function reloading() {
                     flexboxntemp.style.backgroundPosition = "center";
                     //flexboxntemp.style.visibility = "invisible";
                     elementyearflexbox.appendChild(flexboxntemp);//div
+                    flexboxntemp = null;
                 }
 
                 elementyear.appendChild(elementyearh3);//h3
                 elementyear.appendChild(elementyearflexbox);//div
-
+                elementyearh3 = null;
+                elementyearflexbox = null;
                 parent = document.getElementById("main");
                 parent.appendChild(elementyear);
+                elementyear = null;
+                parent = null;
             });
         });
-}
-
-function newExhitiionCreate() {
-    //main의 3 -> 2 -> 1 자식노드의 색을 주황색으로!
 }
