@@ -29,7 +29,7 @@ app.use('/diary', diaryRouter);
 app.use('/exhibition', exhibitionRouter);
 
 app.use((req, res, next) => {
-  res.sendFile(path.join(__dirname, "..", "client/public/views/logo_page.html"));
+  res.sendFile(path.join(__dirname, "..", "client/public/views/frontpage.html"));
 });
 
 app.use((error, req, res, next) => {

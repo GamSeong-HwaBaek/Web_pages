@@ -53,7 +53,7 @@ function setData() {
     /*전시 생성부분-수정하지 말아주세요(-choi)*/
     //다이어리 정보 가져오기
 
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {//최신 날짜순
             var onlyyeardic = {};
             var yeardic = {}; //{"2022": [JSON, JSON], "2021" : [JSON, JSON]} 형태
@@ -107,7 +107,7 @@ function setData() {
                     yearweather[nowyear] = [];
                     yearweather[nowyear][nowweather] = [diaryelement.id];
                 }
-            });
+            });createback
             console.log(onlyyeardic); //년도별 다이어리 id
             console.log(yeardic); //년-season별 다이어리 id
             console.log(yearweather); //년-날씨별 다이어리 id
@@ -399,7 +399,7 @@ function loadDiary() {
     // document.getElementById('image-show').style.backgroundSize = "contain";
     // document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
     // document.getElementById('image-show').style.opacity = "0";
-    fetch('http://localhost:8080/diary?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             if (data.length == 0) {
                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
@@ -429,11 +429,11 @@ function loadDiary() {
                 /*여기 수정*/
 
                 //console.log(data[0].afterImg.data);
-                tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data[0].afterImg.data)));
+                //tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data[0].afterImg.data)));
                 var newImage = document.createElement("img");
                 newImage.setAttribute("class", 'img');
                 newImage.id = "nowImage";
-                newImage.src = tempimgsrc;
+                newImage.src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림1.png";
                 document.getElementById('image-show').appendChild(newImage);
 
 
@@ -446,7 +446,7 @@ function loadDiary() {
 
 function clickprevpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -460,9 +460,12 @@ function clickprevpage() {
                 document.getElementById('month').value = nextpage.date.slice(5, 7);
                 document.getElementById('day').value = nextpage.date.slice(8, 10);
                 document.getElementById('title').value = nextpage.title;
-                document.getElementById('setInput').value = nextpage.contents;
+                document.getElementById('setInput').value = nextpage.contents;  
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
+
+                document.getElementById('nowImage').src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림"+ (next+1)+".png";
+                
 
             }
         });
@@ -470,7 +473,7 @@ function clickprevpage() {
 
 function clicknextpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -502,6 +505,9 @@ function clicknextpage() {
                 document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
+
+                document.getElementById('nowImage').src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림"+ (next+1)+".png";
+                
             }
 
 
@@ -509,7 +515,7 @@ function clicknextpage() {
 }
 
 function write() {
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'POST' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=5', { method: 'POST' }).then((response) => response.json())
         .then((data) => {
             document.getElementById('sunny').style.color = 'var(--color-main)';
             document.getElementById('cloudy').style.color = 'var(--color-main)';
