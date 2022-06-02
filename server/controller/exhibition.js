@@ -37,6 +37,13 @@ export async function getbyId(req, res, next) {
 
 export async function create(req, res, next) {
   const { GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby } = req.body;
+  console.log(GalleryID);
+  console.log(GalleryName);
+  console.log(DiaryID);
+  console.log(GalleryDate);
+  console.log(Img_Num);
+  console.log(OwnerID);
+  console.log(Createby);
   const data = await exhibitionRepository.create(GalleryID, GalleryName, DiaryID, GalleryDate, Img_Num, OwnerID, Createby);
   res.status(201).json(data);
 }

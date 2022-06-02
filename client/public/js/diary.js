@@ -488,19 +488,24 @@ function write() {
 }
 
 function show() {
-    document.querySelector(".background").className = "background show";
+    document.querySelector("#select").className = "background show";
 }
 
 function close() {
-    document.querySelector(".background").className = "background";
+    document.querySelector("#select").className = "background";
+}
+
+function close3() {
+    document.querySelector("#spin2").className = "background";
 }
 
 function close2() {
-    document.querySelector(".background2").className = "background2";
+    document.querySelector("#spin").className = "background";
 }
 function print() {
     console.log(document.querySelector(".img__wrapbox"));
 }
+document.querySelector("#savebutton").addEventListener('click', loading);
 document.querySelector("#show").addEventListener('click', show);
 
 function return1() {
@@ -529,12 +534,27 @@ function return5() {
     result();
 }
 function loading() {
-    document.querySelector(".background2").className = "background2 show";
+    document.querySelector("#spin").className = "background show";
 }
 function change() {
     close2();
+    show();
 }
 
 function result() {
-    close2();
+    document.querySelector("#spin2").className = "background show";
+} 
+
+function finish(){
+    close3();
+    removeImage();
+    var newImage = document.createElement("img");
+    newImage.setAttribute("class", 'img');
+    newImage.id = "nowImage";
+    newImage.src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림5.png";
+    document.getElementById('image-show').appendChild(newImage);
+}
+function removeImage() {
+    document.getElementById('image-show').classList.remove('image-show');
+    document.getElementById('image-upload').classList.remove('image-upload');
 }
