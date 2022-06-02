@@ -24,13 +24,15 @@
     <script>
         var loginid = login();
     </script>
-    <section id = "all">
+    <section id="all">
         <div class="navbar">
             <img src="../img/logo_no.png" alt="감성화백" class="fav_logo"></img>
             <div class="menu">
-                <p id="diary_btn" , onclick="location.href='tempdiary.html'"><span class="to-right-underline">Diary</span></p>
+                <p id="diary_btn" , onclick="location.href='tempdiary.html'"><span
+                        class="to-right-underline">Diary</span></p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p id="exhibition_btn" , onclick="location.href='exhibitionpage.html'"><span class="to-right-underline">Exhibition</span></p>
+                <p id="exhibition_btn" , onclick="location.href='exhibitionpage.html'"><span
+                        class="to-right-underline">Exhibition</span></p>
             </div>
         </div>
 
@@ -53,10 +55,13 @@
                                                 👉 CLICK HERE! 👈
                                             </label>
                                         </div>
-                                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" onclick="createBackground()"> 
-                                    </form> -->
-                        
-                                    <!--<div class="fileContainer">
+
+
+                                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*"
+                                            onchange="loadFile(this)" onclick="createBackground()">
+                                    </form>
+
+                                    <div class="fileContainer">
                                         <div class="fileInput">
                                             <p>FILE NAME: </p>
                                             <p id="fileName"></p>
@@ -72,7 +77,7 @@
                         </div>
                     </div>
                     <div class="left__lastrow">
-                        <i class="fa-solid fa-caret-left" , id="openPrevpage", onclick="clickprevpage()"></i>
+                        <i class="fa-solid fa-caret-left" , id="openPrevpage" , onclick="clickprevpage()"></i>
                     </div>
                 </div>
                 <div class="right">
@@ -84,46 +89,53 @@
                                 <input type="text" , id="day" , size="1">일
                             </div>
                             <div class="weather">날씨 :
-                                <i class="fa-solid fa-sun fa-lg", id="sunny", onclick="clicksunny()"></i>
-                                <i class="fa-solid fa-cloud fa-lg", id="cloudy", onclick="clickcloudy()"></i>
-                                <i class="fa-solid fa-cloud-showers-heavy fa-lg", id="rainy", onclick="clickrainy()"></i>
-                                <i class="fa-solid fa-snowflake fa-lg", id="snowy", onclick="clicksnowy()"></i>
+                                <i class="fa-solid fa-sun fa-lg" , id="sunny" , onclick="clicksunny()"></i>
+                                <i class="fa-solid fa-cloud fa-lg" , id="cloudy" , onclick="clickcloudy()"></i>
+                                <i class="fa-solid fa-cloud-showers-heavy fa-lg" , id="rainy" ,
+                                    onclick="clickrainy()"></i>
+                                <i class="fa-solid fa-snowflake fa-lg" , id="snowy" , onclick="clicksnowy()"></i>
                             </div>
                         </div>
                     </div>
                     <div class="secondrowwrap">
                         <div class="secondrow">감정 :
                             <div class="emotion">
-                                <i class="fa-solid fa-face-grin-stars", id = 'active', onclick="clickactive()"> active</i>
-                                <i class="fa-solid fa-face-laugh-beam", id = 'joy', onclick="clickjoy()"> joy</i>
-                                <i class="fa-solid fa-face-smile-wink", id = 'peaceful', onclick="clickpeaceful()"> peaceful</i>
-                                <i class="fa-solid fa-face-meh-blank", id = 'neutral', onclick="clickneutral()"> neutral</i>
-                                <i class="fa-solid fa-face-smile", id = 'relaxed', onclick="clickrelaxed()"> relaxed</i>
-                                <i class="fa-solid fa-face-laugh-beam", id = 'content', onclick="clickcontent()"> content</i>
-                                <i class="fa-solid fa-face-meh", id = 'tired', onclick="clicktired()"> tired</i>
-                                <i class="fa-solid fa-bed", id = 'sleepy', onclick="clicksleepy()"> sleepy</i>
-                                <i class="fa-solid fa-face-tired", id = 'disgust', onclick="clickdisgust    ()"> disgust</i>
+                                <i class="fa-solid fa-face-grin-stars" , id='active' , onclick="clickactive()">
+                                    active</i>
+                                <i class="fa-solid fa-face-laugh-beam" , id='joy' , onclick="clickjoy()"> joy</i>
+                                <i class="fa-solid fa-face-smile-wink" , id='peaceful' , onclick="clickpeaceful()">
+                                    peaceful</i>
+                                <i class="fa-solid fa-face-meh-blank" , id='neutral' , onclick="clickneutral()">
+                                    neutral</i>
+                                <i class="fa-solid fa-face-smile" , id='relaxed' , onclick="clickrelaxed()"> relaxed</i>
+                                <i class="fa-solid fa-face-laugh-beam" , id='content' , onclick="clickcontent()">
+                                    content</i>
+                                <i class="fa-solid fa-face-meh" , id='tired' , onclick="clicktired()"> tired</i>
+                                <i class="fa-solid fa-bed" , id='sleepy' , onclick="clicksleepy()"> sleepy</i>
+                                <i class="fa-solid fa-face-tired" , id='disgust' , onclick="clickdisgust    ()">
+                                    disgust</i>
                             </div>
                         </div>
                     </div>
                     <div class="thirdrowwrap">
                         <div class="thirdrow">
                             <div class="title">제목 :
-                                <input type="text" , class="title__input", id="title">
+                                <input type="text" , class="title__input" , id="title">
                             </div>
                         </div>
                     </div>
                     <div class="content">
-                        <textarea class="content__input" id = "setInput", cols="70" rows="10"></textarea>
+                        <textarea class="content__input" id="setInput" , cols="70" rows="10"></textarea>
                         <!--저장 버튼 기능 추가-->
                         <div class="btn__flexbox">
                             <div class="write_container">
                                 <div class="writeDiary" id="blank" onclick="location.href='diary.html'">WRITE</div>
                             </div>
                             <div class="save_container">
-                                <div class="btnSetLocalData" id="savebutton" onclick="location.href='loading.html'" >SAVE</div>
+                                <div class="btnSetLocalData" id="savebutton" onclick="location.href='loading.html'">SAVE
+                                </div>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="right__lastrow">
                         <i class="fa-solid fa-caret-left" , id="openNextpage" onclick="clicknextpage()"></i>
@@ -134,25 +146,31 @@
 
         <button id="show">팝업열기</button>
         <div class="background">
-        <div class="window">
-        <div class="popup"> <!-- id에 몇번 그림 선택했는지 저장-->
-            <i class="fa-solid fa-xmark" , id="close", onclick="close()"></i>
-        <div class="img__wrap">
-            <div class="img__wrapbox", id="img__wrapbox1", onclick="return1(), location.href='loading.html'">
-                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
-            </div>
-            <div class="img__wrapbox", id="img__wrapbox2", onclick="return2(), location.href='loading.html'">
-                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
-            </div>
-            <div class="img__wrapbox", id="img__wrapbox3", onclick="return3(), location.href='loading.html'">
-                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
-            </div>
-            <div class="img__wrapbox", id="img__wrapbox4", onclick="return4(), location.href='loading.html'">
-                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
-            </div>
-            <div class="img__wrapbox", id="img__wrapbox5", onclick="return5(), location.href='loading.html'">
-                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
-            </div>
-        </div>
+            <div class="window">
+                <div class="popup">
+                    <!-- id에 몇번 그림 선택했는지 저장-->
+                    <i class="fa-solid fa-xmark" , id="close" , onclick="close()"></i>
+                    <div class="img__wrap">
+                        <div class="img__wrapbox" , id="img__wrapbox1" ,
+                            onclick="return1(), location.href='loading.html'">
+                            <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+                        </div>
+                        <div class="img__wrapbox" , id="img__wrapbox2" ,
+                            onclick="return2(), location.href='loading.html'">
+                            <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+                        </div>
+                        <div class="img__wrapbox" , id="img__wrapbox3" ,
+                            onclick="return3(), location.href='loading.html'">
+                            <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+                        </div>
+                        <div class="img__wrapbox" , id="img__wrapbox4" ,
+                            onclick="return4(), location.href='loading.html'">
+                            <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+                        </div>
+                        <div class="img__wrapbox" , id="img__wrapbox5" ,
+                            onclick="return5(), location.href='loading.html'">
+                            <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+                        </div>
+                    </div>
     </section>
 </body>

@@ -60,11 +60,13 @@ textarea {
 i:hover {
     color: var(--color-orange);
 }
+
 #all {
     width: 100%;
     height: 600px;
     background-color: var(--color-defaultbackground);
 }
+
 .navbar {
     display: flex;
 }
@@ -133,9 +135,11 @@ i:hover {
     height: 50px;
     border-bottom: thin solid;
 }
-.end{
+
+.end {
     height: 50px;
 }
+
 .year__flexbox {
     display: flex;
     width: 100%;
@@ -183,6 +187,7 @@ i:hover {
     background-size: cover;
     background-position: center;
 }
+
 #y2020__02 {
     background-image: url('../img/gallery_img/20220507.jpg');
     background-size: cover;
@@ -370,7 +375,8 @@ i:hover {
     z-index: 1000;
     transition: all .5s;
 }
-.popup__top{
+
+.popup__top {
     color: whitesmoke;
     display: flex;
     height: 25%;
@@ -379,6 +385,7 @@ i:hover {
     align-items: center;
     margin-left: 3%;
 }
+
 #close_popup {
     display: flex;
     text-align: right;
@@ -410,10 +417,11 @@ i:hover {
     margin: auto;
 }
 
-#texpinput{
+#texpinput {
     text-align: left;
     color: whitesmoke;
 }
+
 .to-right-underline {
     position: relative;
 }

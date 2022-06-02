@@ -19,42 +19,46 @@
 <body onload="reloading()">
     <div class="navbar">
         <div class="navbar">
-            <img src="../img/logo_no.png" alt="감성화백" class="fav_logo" onclick="toDataURL()"></img>
+            <img src="../img/logo_no.png" alt="감성화백" class="fav_logo" onclick="newExhitiionCreate()"></img>
             <div class="menu">
-                <p id="diary_btn" , onclick="location.href='tempdiary.html'"><span class="to-right-underline">Diary</span></p>
+                <p id="diary_btn" , onclick="location.href='tempdiary.html'"><span
+                        class="to-right-underline">Diary</span></p>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <p id="exhibition_btn" , onclick="location.href='exhibitionpage.html'"><span class="to-right-underline">Exhibition</span></p>
+                <p id="exhibition_btn" , onclick="location.href='exhibitionpage.html'"><span
+                        class="to-right-underline">Exhibition</span></p>
             </div>
         </div>
     </div>
     <div id="main">
-        <h1 class="title", id="title">나만의 미술관</h1>
-        <div class="background", id="background">
+        <h1 class="title" , id="title">나만의 미술관</h1>
+        <div class="background" , id="background">
             <div class="window">
                 <div class="popup">
                     <div class="popup__top">
                         <div class="title">제목 :
-                            <input type="text" value='defult', id="texpinput">
+                            <input type="text" value='제목을 입력하세요' , id="texpinput">
                         </div>
                         <i class="fa-solid fa-xmark" , id="close_popup" onclick="closePopup()"></i>
                     </div>
                     <div class="popup__inside">
-                        <div class="arrow_left", onclick="click_arrowleft()">
+                        <div class="arrow_left" , onclick="click_arrowleft()">
                             <div class="left__scroll-arrow"></div>
                             <div class="left__scroll-arrow"></div>
                             <div class="left__scroll-arrow"></div>
                         </div>
-                        <div class="picture"> <!--exhibitionid+diaryid-->
-                            <img src="../img/slide2.jpg" id="the_picture", ondblclick="ClicktoDownLoad()">
+                        <div class="picture">
+                            <!--exhibitionid+diaryid-->
+                            <img id="the_picture" , ondblclick="ClicktoDownLoad()">
                             <div id="about">
                                 <h2 id="the_title"></h2>
                                 <div class="edit">
-                                    <p id="the_date">2020-11-11</p>
-                                    <i class="fa-solid fa-trash-can fa-1x", id="trashcan", onclick="click_trashcan()"></i>
+                                    <p id="the_date"></p>
+                                    <i class="fa-solid fa-trash-can fa-1x" , id="trashcan" ,
+                                        onclick="click_trashcan()"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="arrow_right", onclick="click_arrowright()">
+                        <div class="arrow_right" , onclick="click_arrowright()">
                             <div class="right__scroll-arrow"></div>
                             <div class="right__scroll-arrow"></div>
                             <div class="right__scroll-arrow"></div>

@@ -2,7 +2,7 @@ import { db } from '../db/database.js';
 // 데이터에 이미지 추가 필요
 
 const SELECT_JOIN =
-  'SELECT di.id, di.date, di.emotion, di.weather, di.title, di.contents, us.name FROM diary as di JOIN users as us ON di.userid=us.userid';
+  'SELECT di.id, di.date, di.emotion, di.weather, di.title, di.contents, di.beforeImg, di.afterImg, us.name FROM diary as di JOIN users as us ON di.userid=us.userid';
 const ORDER_DESC =
   'ORDER BY di.date DESC';
 
