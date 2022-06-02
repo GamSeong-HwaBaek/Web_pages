@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>감성화백</title>
+    <meta name="description" content="2022 Capstone Design2 Team 어때요, 참 쉽죠?">
+    <meta name="author" content="Haeun">
+    <link rel="icon" type="image/png" href="../img/logo_no.png">
+    <script src="https://kit.fontawesome.com/9ff9f6bf5f.js" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://kit.fontawesome.com/555ffe8d45.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <link rel="stylesheet" href="../css/diary.css">
+    <script src="../js/diary.js" defer></script>
+    <script src="../../../server/controller/auth.js" defer></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+</head>
+
+<body onload="loadDiary()">
+    <script>
+        var loginid = login();
+    </script>
+    <section id = "all">
+        <div class="navbar">
+            <img src="../img/logo_no.png" alt="감성화백" class="fav_logo"></img>
+            <div class="menu">
+                <p id="diary_btn" , onclick="location.href='tempdiary.html'"><span class="to-right-underline">Diary</span></p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p id="exhibition_btn" , onclick="location.href='exhibitionpage.html'"><span class="to-right-underline">Exhibition</span></p>
+            </div>
+        </div>
+
+        <div class="mydiary__container">
+            <div class="mydiary">
+                <div class="left">
+                    <div class="left__firstrow">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" , id="question__bar" , size="10">
+                    </div>
+
+                    <div class="left__thirdrow">
+                        <div class="picture">
+                            <div class="container">
+                                <div class="image-upload" id="image-upload">
+                                    <p><br></p>
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div class="button">
+                                            <label for="chooseFile">
+                                                👉 CLICK HERE! 👈
+                                            </label>
+                                        </div>
+                                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)" onclick="createBackground()">
+                                    </form>
+                        
+                                    <div class="fileContainer">
+                                        <div class="fileInput">
+                                            <p>FILE NAME: </p>
+                                            <p id="fileName"></p>
+                                        </div>
+                                        <div class="buttonContainer">
+                                            <!-- 사진 파일 저장 -->
+                                            <div class="submitButton" id="submitButton">SUBMIT</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="image-show" id="image-show"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left__lastrow">
+                        <i class="fa-solid fa-caret-left" , id="openPrevpage", onclick="clickprevpage()"></i>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="fistrowrap">
+                        <div class="firstrow">
+                            <div class="date">
+                                <input type="text" , id="year" , size="1">년
+                                <input type="text" , id="month" , size="1">월
+                                <input type="text" , id="day" , size="1">일
+                            </div>
+                            <div class="weather">날씨 :
+                                <i class="fa-solid fa-sun fa-lg", id="sunny", onclick="clicksunny()"></i>
+                                <i class="fa-solid fa-cloud fa-lg", id="cloudy", onclick="clickcloudy()"></i>
+                                <i class="fa-solid fa-cloud-showers-heavy fa-lg", id="rainy", onclick="clickrainy()"></i>
+                                <i class="fa-solid fa-snowflake fa-lg", id="snowy", onclick="clicksnowy()"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="secondrowwrap">
+                        <div class="secondrow">감정 :
+                            <div class="emotion">
+                                <i class="fa-solid fa-face-grin-stars", id = 'active', onclick="clickactive()"> active</i>
+                                <i class="fa-solid fa-face-laugh-beam", id = 'joy', onclick="clickjoy()"> joy</i>
+                                <i class="fa-solid fa-face-smile-wink", id = 'peaceful', onclick="clickpeaceful()"> peaceful</i>
+                                <i class="fa-solid fa-face-meh-blank", id = 'neutral', onclick="clickneutral()"> neutral</i>
+                                <i class="fa-solid fa-face-smile", id = 'relaxed', onclick="clickrelaxed()"> relaxed</i>
+                                <i class="fa-solid fa-face-laugh-beam", id = 'content', onclick="clickcontent()"> content</i>
+                                <i class="fa-solid fa-face-meh", id = 'tired', onclick="clicktired()"> tired</i>
+                                <i class="fa-solid fa-bed", id = 'sleepy', onclick="clicksleepy()"> sleepy</i>
+                                <i class="fa-solid fa-face-tired", id = 'disgust', onclick="clickdisgust    ()"> disgust</i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="thirdrowwrap">
+                        <div class="thirdrow">
+                            <div class="title">제목 :
+                                <input type="text" , class="title__input", id="title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <textarea class="content__input" id = "setInput", cols="70" rows="10"></textarea>
+                        <!--저장 버튼 기능 추가-->
+                        <div class="btn__flexbox">
+                            <div class="write_container">
+                                <div class="writeDiary" id="blank" onclick="write()">WRITE</div>
+                            </div>
+                            <div class="save_container">
+                                <div class="btnSetLocalData" id="savebutton" onclick="loading()">SAVE</div>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="right__lastrow">
+                        <i class="fa-solid fa-caret-left" , id="openNextpage" onclick="clicknextpage()"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="background2">
+            <div class="window">
+                <div class="popup">
+                    <div class="popup__inside">
+                        <i class="fas fa-spinner fa-10x fa-spin", id="load", onclick="close2()"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="show">팝업열기</button>
+        <div class="background">
+        <div class="window">
+        <div class="popup"> <!-- id에 몇번 그림 선택했는지 저장-->
+            <i class="fa-solid fa-xmark" , id="close", onclick="close()"></i>
+        <div class="img__wrap">
+            <div class="img__wrapbox", id="img__wrapbox1", onclick="return1()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox2", onclick="return2()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox3", onclick="return3()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox4", onclick="return4()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+            <div class="img__wrapbox", id="img__wrapbox5", onclick="return5()">
+                <img src="../img/logo_no.png" alt="감성화백" class="wrapbox__img"></img>
+            </div>
+        </div>
+    </section>
+</body>
