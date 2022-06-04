@@ -551,7 +551,11 @@ function finish(){
     var newImage = document.createElement("img");
     newImage.setAttribute("class", 'img');
     newImage.id = "nowImage";
-    newImage.src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림5.png";
+    newImage.src = "../img/그림5.png";
+    newImage.style.width = "300px";
+    newImage.style.height = "400px";
+    newImage.style.paddingLeft = "20px";
+    newImage.style.paddingBottom = "30px";
     document.getElementById('image-show').appendChild(newImage);
 }
 function removeImage() {

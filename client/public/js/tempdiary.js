@@ -399,7 +399,7 @@ function loadDiary() {
     // document.getElementById('image-show').style.backgroundSize = "contain";
     // document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
     // document.getElementById('image-show').style.opacity = "0";
-    fetch('http://localhost:8080/diary?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             if (data.length == 0) {
                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
@@ -433,7 +433,7 @@ function loadDiary() {
                 var newImage = document.createElement("img");
                 newImage.setAttribute("class", 'img');
                 newImage.id = "nowImage";
-                newImage.src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림1.png";
+                newImage.src = "../img/그림0.png";
                 document.getElementById('image-show').appendChild(newImage);
 
 
@@ -446,7 +446,7 @@ function loadDiary() {
 
 function clickprevpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -464,7 +464,7 @@ function clickprevpage() {
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
 
-                document.getElementById('nowImage').src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림"+ (next+1)+".png";
+                document.getElementById('nowImage').src = "../img/그림"+ next+".png";
                 
 
             }
@@ -473,7 +473,7 @@ function clickprevpage() {
 
 function clicknextpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -506,7 +506,7 @@ function clicknextpage() {
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
 
-                document.getElementById('nowImage').src = "C:/Users/82108/Desktop/Web_pages/client/public/img/그림"+ (next+1)+".png";
+                document.getElementById('nowImage').src = "../img/그림"+ next+".png";
                 
             }
 

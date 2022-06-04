@@ -530,8 +530,8 @@ function reloading() {
                                     console.log(nowdata.afterImg.data);
                                     document.getElementById('the_title').textContent = (nowdata.title);
                                     document.getElementById('the_date').textContent = (nowdata.date).slice(0, 10);
-                                    tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(nowdata.afterImg.data)));
-                                    document.getElementById('the_picture').src = tempimgsrc;
+                                    /*tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(nowdata.afterImg.data)));*/
+                                    document.getElementById('the_picture').src = "../img/그림2.png";
                                 });
                                 insidedescrition.appendChild(projectspan);
                             });
