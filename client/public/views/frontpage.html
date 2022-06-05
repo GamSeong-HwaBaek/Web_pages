@@ -55,15 +55,15 @@
         <div id="login__title" class="sa sa-up">감성화백, 시작하시겠습니까?</div>
         <div id="login__box" class="sa sa-up">
             <div class="login__message" , id="login__box__inside">Welcome. Please login</div>
-            <input class="login__idbox" , type="text" , placeholder="Username or email address">
-            <input class="login__password" , type="password" , placeholder="Password">
+            <input class="login__idbox" , type="text", id="loginID", placeholder="Username or email address">
+            <input class="login__password" , type="password", id="loginPassword", placeholder="Password">
             <div class="login__help" , id="login__box__inside">
                 <div class="login__create" , id="login__box__inside" , onclick="createNewAccount()">Create new account
                 </div>
                 <div class="login__forget" , id="login__box__inside" , onclick="findIDorPassword()">Forget ID or
                     PASSWORD?</div>
             </div>
-            <button class="login__btn" , id="login__box__inside" , button onclick="location.href='tempdiary.html'">SIGN
+            <button class="login__btn" , id="login__box__inside" , button onclick="signIn()">SIGN
                 IN</button>
             <div class="login__with" , id="login__box__inside">Join with another account
             </div>

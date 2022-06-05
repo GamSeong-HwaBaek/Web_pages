@@ -128,6 +128,22 @@ function closePopup2() {
 
 function signIn() {
     console.log("signIn");
+    var userid = document.getElementById(loginID).value;
+    var userpassword = document.getElementById(loginPassword).value;
+    fetch("http://localhost:8080/auth/login", {
+        method : "POST",
+        body : JSON.stringify({
+            user_account : this.state.username,
+            password : this.state.password
+        })
+    })
+    .then(res => res.json())
+    .then(res => {
+        console.log(res)
+        localStorage.setItem('access-token', res.access_token);
+    })
+    
+
 }
 function relateToGoogle() {
     console.log("relate1");
