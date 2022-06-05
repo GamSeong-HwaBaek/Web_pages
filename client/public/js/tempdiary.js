@@ -107,7 +107,7 @@ function setData() {
                     yearweather[nowyear] = [];
                     yearweather[nowyear][nowweather] = [diaryelement.id];
                 }
-            });createback
+            }); createback
             console.log(onlyyeardic); //년도별 다이어리 id
             console.log(yeardic); //년-season별 다이어리 id
             console.log(yearweather); //년-날씨별 다이어리 id
@@ -460,13 +460,10 @@ function clickprevpage() {
                 document.getElementById('month').value = nextpage.date.slice(5, 7);
                 document.getElementById('day').value = nextpage.date.slice(8, 10);
                 document.getElementById('title').value = nextpage.title;
-                document.getElementById('setInput').value = nextpage.contents;  
+                document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
-
                 document.getElementById('nowImage').src = "../img/그림"+ next+".png";
-                
-
             }
         });
 }
@@ -505,9 +502,7 @@ function clicknextpage() {
                 document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
-
                 document.getElementById('nowImage').src = "../img/그림"+ next+".png";
-                
             }
 
 
