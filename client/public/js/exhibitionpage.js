@@ -4,8 +4,19 @@ function clickTheExhitibion() {
     document.querySelector(".background").className = "background show";
 }
 function closePopup() {
+    /*
+    fetch('http://localhost:8080/exhibition/'+String(nowgalleryid), {
+        method: 'PUT',
+        body: JSON.stringify({ "GalleryName": document.getElementById('texpinput').value }),
+    })
+        .then((response) => response.json())
+        .then((data) => console.log("성공"))
+        .then(console.log(document.getElementById('texpinput').value));
+        */
+    nowgalleryid = document.getElementsByClassName('title').id;
+    console.log(nowgalleryid);
     document.querySelector(".background").className = "background";
-    window.location.reload();
+    //window.location.reload();
 }
 function click_arrowleft() {
     const aboutGalleryPicture = document.getElementsByClassName('picture').id.split('__');
@@ -42,6 +53,7 @@ function click_arrowleft() {
                     }
                 }).then((response) => response.json())
                     .then((arraydata) => {
+                        document.getElementsByClassName('title').id = String(galleryid);
                         document.getElementById('the_title').textContent = (arraydata.title);
                         document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(arraydata.id);
                         //document.getElementById('the_picture').src = "../img/slide2.jpg";
@@ -89,6 +101,7 @@ function click_arrowright() {
             } else {
                 fetch('http://localhost:8080/diary/' + String(findnextelement), { method: 'GET' }).then((response) => response.json())
                     .then((data) => {
+                        document.getElementsByClassName('title').id = String(galleryid);
                         document.getElementById('the_title').textContent = (data.title);
                         document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(data.id);
                         //document.getElementById('the_picture').src = "../img/slide2.jpg";
@@ -550,6 +563,7 @@ function reloading() {
                                     projectspan.style.transform = "scale(1)";
                                 });
                                 projectspan.addEventListener('click', function () {
+                                    document.getElementsByClassName('title').id = element;
                                     document.querySelector(".background").className = "background show";
 
                                     projectspan.style.color = "white";
@@ -628,6 +642,43 @@ function reloading() {
             });
         });
 }
+function saveTitle() {
+    var keycode = event.keycode;
+    alert(keycode);
+}
 function hi() {
-
+    now = document.getElementById('texpinput').value;
+    console.log(now);
+    /*
+    fetch('http://localhost:8080/exhibition/', {
+        method: 'POST',
+        body: JSON.stringify({
+            "GalleryID": 6,
+            "GalleryName": "06집이 좋아요",
+            "DiaryID": {
+                "diaries": [
+                    20,
+                    21,
+                    22,
+                    23,
+                    24,
+                    25,
+                    26,
+                    27,
+                    28,
+                    29
+                ]
+            },
+            "GalleryDate": "20220509",
+            "Img_Num": "10",
+            "OwnerID": "20",
+            "Createby": {
+                "emotions": "happy"
+            }
+        })
+    }).then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        });
+        */
 }
