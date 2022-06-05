@@ -48,7 +48,13 @@ function click_arrowleft() {
                         document.getElementById('the_title').textContent = (arraydata.title);
                         document.getElementById('the_date').textContent = (arraydata.date).slice(0, 10);
 
-                        tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(arraydata.afterImg.data)));
+                        var binary = '';
+                        var bytes = new Uint8Array(arraydata.afterImg.data);
+                        var len = bytes.byteLength;
+                        for (var i = 0; i < len; i++) {
+                            binary += String.fromCharCode(bytes[i]);
+                        }
+                        tempimgsrc = "data:image/png;base64," + btoa(binary);
                         document.getElementById('the_picture').src = tempimgsrc;
                     });
             }
@@ -89,7 +95,13 @@ function click_arrowright() {
                         document.getElementById('the_title').textContent = (data.title);
                         document.getElementById('the_date').textContent = (data.date).slice(0, 10);
 
-                        tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data.afterImg.data)));
+                        var binary = '';
+                        var bytes = new Uint8Array(data.afterImg.data);
+                        var len = bytes.byteLength;
+                        for (var i = 0; i < len; i++) {
+                            binary += String.fromCharCode(bytes[i]);
+                        }
+                        tempimgsrc = "data:image/png;base64," + btoa(binary);
                         document.getElementById('the_picture').src = tempimgsrc;
                     });
             }
@@ -225,11 +237,30 @@ function reloading() {
                     flexboxn.style.borderRadius = "30px";
                     flexboxn.style.marginBottom = "2%";
                     flexboxn.style.boxShadow = "-5px 10px 10px #1a1f3ada";
+
+
                     if (String(data[everynum].GalleryID).length == 1) {
                         flexboxn.style.backgroundImage = "url('../img/gallery_img/00" + String(data[everynum].GalleryID) + ".jpg')";
                     } else {
                         flexboxn.style.backgroundImage = "url('../img/gallery_img/0" + String(data[everynum].GalleryID) + ".jpg')";
                     }
+                    fetch('http://localhost:8080/diary/' + data[everynum].DiaryID.diaries[0], {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': String(Authorization)
+                        }
+                    }).then((response) => response.json())
+                        .then((nowdata) => {
+                            console.log(nowdata);
+                            var binary = '';
+                            var bytes = new Uint8Array(nowdata.afterImg.data);
+                            var len = bytes.byteLength;
+                            for (var i = 0; i < len; i++) {
+                                binary += String.fromCharCode(bytes[i]);
+                            }
+                            tempimgsrc = "data:image/png;base64," + btoa(binary);
+                            flexboxn.style.backgroundImage = tempimgsrc;
+                        });
 
                     //flexboxn.style.backgroundImage = "url('../img/gallery_img/20220507.jpg')";
                     flexboxn.style.backgroundSize = "cover";
@@ -526,12 +557,22 @@ function reloading() {
                                     document.getElementById('texpinput').value = String(nowgalleryName);
                                     document.getElementsByClassName('picture').id = String(nowgalleryid) + "__" + String(nowdata.id);
 
+                                    /*
                                     console.log(nowdata.beforeImg.data);
                                     console.log(nowdata.afterImg.data);
+                                    */
                                     document.getElementById('the_title').textContent = (nowdata.title);
                                     document.getElementById('the_date').textContent = (nowdata.date).slice(0, 10);
-                                    /*tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(nowdata.afterImg.data)));*/
-                                    document.getElementById('the_picture').src = "../img/그림2.png";
+
+                                    var binary = '';
+                                    var bytes = new Uint8Array(nowdata.afterImg.data);
+                                    var len = bytes.byteLength;
+                                    for (var i = 0; i < len; i++) {
+                                        binary += String.fromCharCode(bytes[i]);
+                                    }
+                                    tempimgsrc = "data:image/png;base64," + btoa(binary);
+                                    document.getElementById('the_picture').src = tempimgsrc;
+                                    document.getElementById('the_picture').style = "object-fit : cover";
                                 });
                                 insidedescrition.appendChild(projectspan);
                             });
@@ -586,4 +627,7 @@ function reloading() {
                 parent = null;
             });
         });
+}
+function hi() {
+
 }

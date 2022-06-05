@@ -203,8 +203,7 @@ function loadFile(input) {
 
 function loadImg() {
     //console.log(data[0].afterImg.data);
-    //tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data[0].afterImg.data)));
-    //console.log(tempimgsrc);
+
     var file = 'url(../img/그림1.png)';
 
     // var name = document.getElementById('fileName');
