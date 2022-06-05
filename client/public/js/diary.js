@@ -53,7 +53,7 @@ function setData() {
     /*전시 생성부분-수정하지 말아주세요(-choi)*/
     //다이어리 정보 가져오기
 
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {//최신 날짜순
             var onlyyeardic = {};
             var yeardic = {}; //{"2022": [JSON, JSON], "2021" : [JSON, JSON]} 형태
@@ -146,8 +146,8 @@ function setData() {
                         */
                     }
                 }
-                if ((yearweather[tempyear][tempweather]).length % 10 == 0) {
-                    //갤러리 정보 가져와서 각 항목별로 10의 배수이면 다이어리 추가or생성
+                if ((yearweather[tempyear][tempweather]).length % 5 == 0) {
+                    //갤러리 정보 가져와서 각 항목별로 5의 배수이면 다이어리 추가or생성
                     if ((yearweather[tempyear][tempweather]).length / 5 == 1) {
                         console.log('아예 새로 생성');
                         /*                        
@@ -368,7 +368,7 @@ function serchemotion(emotion) {
 }
 
 // function loadDiary() {
-//     fetch('http://localhost:8080/diary?userid=5', { method: 'GET' }).then((response) => response.json())
+//     fetch('http://localhost:8080/diary?userid=20', { method: 'GET' }).then((response) => response.json())
 //         .then((data) => {
 
 //             if (data.length == 0) {
@@ -402,7 +402,7 @@ function serchemotion(emotion) {
 
 // function clickprevpage() {
 //     //diary?userid=5
-//     fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+//     fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
 //         .then((data) => {
 //             len = data.length;
 //             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -425,7 +425,7 @@ function serchemotion(emotion) {
 
 // function clicknextpage() {
 //     //diary?userid=5
-//     fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+//     fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
 //         .then((data) => {
 //             len = data.length;
 //             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -464,7 +464,7 @@ function serchemotion(emotion) {
 // }
 
 function write() {
-    // fetch('http://localhost:8080/diary/?userid=5', { method: 'POST' }).then((response) => response.json())
+    // fetch('http://localhost:8080/diary/?userid=20', { method: 'POST' }).then((response) => response.json())
     //     .then((data) => {
     //         document.getElementById('sunny').style.color = 'var(--color-main)';
     //         document.getElementById('cloudy').style.color = 'var(--color-main)';
@@ -543,9 +543,9 @@ function change() {
 
 function result() {
     document.querySelector("#spin2").className = "background show";
-} 
+}
 
-function finish(){
+function finish() {
     close3();
     removeImage();
     var newImage = document.createElement("img");

@@ -38,7 +38,7 @@ export async function create(GalleryID, GalleryName, DiaryID, GalleryDate, Img_N
       console.log(result);
       return getbyId(result[0].insertId);
     });
-  
+
 }
 
 //UPDATE `gamsung3`.`gallery` SET `GalleryName` = '안녕하세요!' WHERE (`GalleryID` = '1');
