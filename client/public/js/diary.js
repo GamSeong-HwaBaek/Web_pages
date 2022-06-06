@@ -194,6 +194,8 @@ function loadFile(input) {
 
     newImage.src = URL.createObjectURL(file);
 
+    console.log
+
     document.getElementById('image-show').style.backgroundImage = "url(" + String(newImage.src) + ")";
     document.getElementById('image-show').style.background.width = "100%";
     document.getElementById('image-show').style.backgroundSize = "contain";
@@ -314,24 +316,29 @@ function serchweather(nowweather) {
         document.getElementById('cloudy').style.color = 'var(--color-main)';
         document.getElementById('rainy').style.color = 'var(--color-main)';
         document.getElementById('snowy').style.color = 'var(--color-main)';
+        return 'sunny';
     } else if (nowweather == 'cloudy') {
         document.getElementById('cloudy').style.color = 'var(--color-orange)';
         document.getElementById('sunny').style.color = 'var(--color-main)';
         document.getElementById('rainy').style.color = 'var(--color-main)';
         document.getElementById('snowy').style.color = 'var(--color-main)';
+        return 'cloudy';
     } else if (nowweather == 'rainy') {
         document.getElementById('rainy').style.color = 'var(--color-orange)';
         document.getElementById('sunny').style.color = 'var(--color-main)';
         document.getElementById('cloudy').style.color = 'var(--color-main)';
         document.getElementById('snowy').style.color = 'var(--color-main)';
+        return 'rainy';
     } else if (nowweather == 'snowy') {
         document.getElementById('snowy').style.color = 'var(--color-orange)';
         document.getElementById('sunny').style.color = 'var(--color-main)';
         document.getElementById('cloudy').style.color = 'var(--color-main)';
         document.getElementById('rainy').style.color = 'var(--color-main)';
+        return 'snowy';
     } else {
         console.log('날씨가 입력되어 있지 않습니다.');
     }
+
 }
 
 function serchemotion(emotion) {
@@ -346,22 +353,31 @@ function serchemotion(emotion) {
     document.getElementById('disgust').style.color = 'var(--color-main)';
     if (emotion.di_emotion == 'active') {
         document.getElementById('active').style.color = 'var(--color-orange)';
+        return 'active';
     } else if (emotion.di_emotion == 'joy') {
         document.getElementById('joy').style.color = 'var(--color-orange)';
+        return 'joy';
     } else if (emotion.di_emotion == 'peaceful') {
         document.getElementById('peaceful').style.color = 'var(--color-orange)';
+        return 'peaceful';
     } else if (emotion.di_emotion == 'neutral') {
         document.getElementById('neutral').style.color = 'var(--color-orange)';
+        return 'neutral';
     } else if (emotion.di_emotion == 'relaxed') {
         document.getElementById('relaxed').style.color = 'var(--color-orange)';
+        return 'relaxed';
     } else if (emotion.di_emotion == 'content') {
         document.getElementById('content').style.color = 'var(--color-orange)';
+        return 'content';
     } else if (emotion.di_emotion == 'tired') {
         document.getElementById('tired').style.color = 'var(--color-orange)';
+        return 'tired';
     } else if (emotion.di_emotion == 'sleepy') {
         document.getElementById('sleepy').style.color = 'var(--color-orange)';
+        return 'sleepy';
     } else if (emotion.di_emotion == 'disgust') {
         document.getElementById('disgust').style.color = 'var(--color-orange)';
+        return 'disgust';
     } else {
         console.log('감정이 입력되어 있지 않습니다.');
     }
@@ -463,29 +479,29 @@ function serchemotion(emotion) {
 //         });
 // }
 
-function write() {
-    // fetch('http://localhost:8080/diary/?userid=20', { method: 'POST' }).then((response) => response.json())
-    //     .then((data) => {
-    //         document.getElementById('sunny').style.color = 'var(--color-main)';
-    //         document.getElementById('cloudy').style.color = 'var(--color-main)';
-    //         document.getElementById('rainy').style.color = 'var(--color-main)';
-    //         document.getElementById('snowy').style.color = 'var(--color-main)';
-    //         document.getElementById('active').style.color = 'var(--color-main)';
-    //         document.getElementById('joy').style.color = 'var(--color-main)';
-    //         document.getElementById('peaceful').style.color = 'var(--color-main)';
-    //         document.getElementById('neutral').style.color = 'var(--color-main)';
-    //         document.getElementById('relaxed').style.color = 'var(--color-main)';
-    //         document.getElementById('content').style.color = 'var(--color-main)';
-    //         document.getElementById('tired').style.color = 'var(--color-main)';
-    //         document.getElementById('sleepy').style.color = 'var(--color-main)';
-    //         document.getElementById('disgust').style.color = 'var(--color-main)';
-    //         document.getElementById('year').value = '';
-    //         document.getElementById('month').value = '';
-    //         document.getElementById('day').value = '';
-    //         document.getElementById('title').value = '';
-    //         document.getElementById('setInput').value = '';
-    //     });
-}
+// function write() {
+    
+//     fetch('http://localhost:8080/diary/?userid=20', {
+//         method: 'POST',
+//         headers: {
+//             "Content-Type": "multipart/form-data"
+//         },
+//         body: JSON.stringify({  
+//             "date" : document.getElementById('year').value,
+//             "emotion" : {"di_emotion" : },
+//             "weather" : ,
+//             "title" : document.getElementById('title').value,
+//             "contents" : document.getElementById('setInput').value,
+//             "beforeImg" : document.
+
+//         }),
+//     }).then((response) => response.json())
+//         .then((data) => {
+//             console.log(data);
+//         });
+    
+    
+// }
 
 function show() {
     document.querySelector("#select").className = "background show";

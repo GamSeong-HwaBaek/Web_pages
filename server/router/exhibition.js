@@ -25,7 +25,7 @@ router.get('/:GalleryID', exhibitionController.getbyId);
 router.post('/', exhibitionController.create);
 
 //PUT /exhibition/:id
-router.put('/:GalleryID', exhibitionController.update);
+router.patch('/:GalleryID', exhibitionController.update);
 
 //DELETE /exhibition/:id
 router.delete('/:GalleryID', exhibitionController.remove);

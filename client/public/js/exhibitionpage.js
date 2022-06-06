@@ -4,18 +4,33 @@ function clickTheExhitibion() {
     document.querySelector(".background").className = "background show";
 }
 function closePopup() {
-    /*
-    fetch('http://localhost:8080/exhibition/'+String(nowgalleryid), {
-        method: 'PUT',
-        body: JSON.stringify({ "GalleryName": document.getElementById('texpinput').value }),
-    })
-        .then((response) => response.json())
-        .then((data) => console.log("성공"))
-        .then(console.log(document.getElementById('texpinput').value));
-        */
     nowgalleryid = document.getElementsByClassName('title').id;
+    console.log("지금 제목 아이디");
     console.log(nowgalleryid);
+    console.log(document.getElementById('texpinput').value);
+
+    fetch('http://localhost:8080/exhibition/' + String(nowgalleryid), {
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "GalleryName": document.getElementById('texpinput').value.slice(3,) }),
+    })
+
+    ////여기까지
+    fetch('http://localhost:8080/exhibition/' + String(nowgalleryid), {
+        method: 'GET',
+        headers: {
+            'Authorization': String(Authorization)
+        }
+    }).then((response) => response.json())
+        .then((data) => {
+            console.log("진입");
+            console.log(data);
+        });
+    /////
     document.querySelector(".background").className = "background";
+    // 코드 작성 완료 시 주석 해제
     //window.location.reload();
 }
 function click_arrowleft() {
@@ -54,6 +69,8 @@ function click_arrowleft() {
                 }).then((response) => response.json())
                     .then((arraydata) => {
                         document.getElementsByClassName('title').id = String(galleryid);
+                        console.log("현재 전시 정보 left");
+                        console.log(String(galleryid));
                         document.getElementById('the_title').textContent = (arraydata.title);
                         document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(arraydata.id);
                         //document.getElementById('the_picture').src = "../img/slide2.jpg";
@@ -102,6 +119,8 @@ function click_arrowright() {
                 fetch('http://localhost:8080/diary/' + String(findnextelement), { method: 'GET' }).then((response) => response.json())
                     .then((data) => {
                         document.getElementsByClassName('title').id = String(galleryid);
+                        console.log("현재 전시 정보 right");
+                        console.log(String(galleryid));
                         document.getElementById('the_title').textContent = (data.title);
                         document.getElementsByClassName('picture').id = String(galleryid) + "__" + String(data.id);
                         //document.getElementById('the_picture').src = "../img/slide2.jpg";
@@ -563,7 +582,8 @@ function reloading() {
                                     projectspan.style.transform = "scale(1)";
                                 });
                                 projectspan.addEventListener('click', function () {
-                                    document.getElementsByClassName('title').id = element;
+                                    document.getElementsByClassName('title').id = nowgalleryid;
+                                    console.log(document.getElementsByClassName('title').id);
                                     document.querySelector(".background").className = "background show";
 
                                     projectspan.style.color = "white";
@@ -647,38 +667,44 @@ function saveTitle() {
     alert(keycode);
 }
 function hi() {
-    now = document.getElementById('texpinput').value;
-    console.log(now);
     /*
+    fetch('http://localhost:8080/diary?userid=20/', {
+        method: 'GET',
+    }).then((response) => response.json())
+        .then((data) => {
+            if (data[0].id == 36) {
+                console.log("hi");
+            }
+
+        });
+        */
+
     fetch('http://localhost:8080/exhibition/', {
         method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
         body: JSON.stringify({
             "GalleryID": 6,
-            "GalleryName": "06집이 좋아요",
+            "GalleryName": "06 제목을 입력하세요",
             "DiaryID": {
                 "diaries": [
-                    20,
-                    21,
-                    22,
-                    23,
-                    24,
-                    25,
-                    26,
-                    27,
-                    28,
-                    29
+                    29,
+                    34,
+                    35,
+                    36,
                 ]
             },
-            "GalleryDate": "20220509",
-            "Img_Num": "10",
+            "GalleryDate": "2022-06-10",
+            "Img_Num": "5",
             "OwnerID": "20",
             "Createby": {
-                "emotions": "happy"
+                "weather": "happy"
             }
         })
     }).then((response) => response.json())
         .then((data) => {
             console.log(data);
         });
-        */
+
 }
