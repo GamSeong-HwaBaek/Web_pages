@@ -78,13 +78,15 @@ function click_arrowleft() {
                         document.getElementById('the_title').textContent = (arraydata.title);
                         document.getElementById('the_date').textContent = (arraydata.date).slice(0, 10);
 
-                        var binary = '';
-                        var bytes = new Uint8Array(arraydata.afterImg.data);
-                        var len = bytes.byteLength;
-                        for (var i = 0; i < len; i++) {
-                            binary += String.fromCharCode(bytes[i]);
-                        }
-                        tempimgsrc = "data:image/png;base64," + btoa(binary);
+                        // var binary = '';
+                        // var bytes = new Uint8Array(arraydata.afterImg.data);
+                        // var len = bytes.byteLength;
+                        // for (var i = 0; i < len; i++) {
+                        //     binary += String.fromCharCode(bytes[i]);
+                        // }
+                        // tempimgsrc = "data:image/png;base64," + btoa(binary);
+                        tempimgsrc = "data:image/png;base64," + arraydata.afterImg;
+                        console.log(tempimgsrc)
                         document.getElementById('the_picture').src = tempimgsrc;
                     });
             }
@@ -128,13 +130,15 @@ function click_arrowright() {
                         document.getElementById('the_title').textContent = (data.title);
                         document.getElementById('the_date').textContent = (data.date).slice(0, 10);
 
-                        var binary = '';
-                        var bytes = new Uint8Array(data.afterImg.data);
-                        var len = bytes.byteLength;
-                        for (var i = 0; i < len; i++) {
-                            binary += String.fromCharCode(bytes[i]);
-                        }
-                        tempimgsrc = "data:image/png;base64," + btoa(binary);
+                        // var binary = '';
+                        // var bytes = new Uint8Array(data.afterImg.data);
+                        // var len = bytes.byteLength;
+                        // for (var i = 0; i < len; i++) {
+                        //     binary += String.fromCharCode(bytes[i]);
+                        // }
+                        // tempimgsrc = "data:image/png;base64," + btoa(binary);
+                        tempimgsrc = "data:image/png;base64," + data.afterImg;
+                        console.log(tempimgsrc)
                         document.getElementById('the_picture').src = tempimgsrc;
                     });
             }
@@ -284,14 +288,17 @@ function reloading() {
                         }
                     }).then((response) => response.json())
                         .then((nowdata) => {
-                            console.log(nowdata);
-                            var binary = '';
-                            var bytes = new Uint8Array(nowdata.afterImg.data);
-                            var len = bytes.byteLength;
-                            for (var i = 0; i < len; i++) {
-                                binary += String.fromCharCode(bytes[i]);
-                            }
-                            tempimgsrc = "data:image/png;base64," + btoa(binary);
+                            // console.log(nowdata);
+                            // var binary = '';
+                            // var bytes = new Uint8Array(nowdata.afterImg.data);
+                            // var len = bytes.byteLength;
+                            // for (var i = 0; i < len; i++) {
+                            //     binary += String.fromCharCode(bytes[i]);
+                            // }
+                            // tempimgsrc = "data:image/png;base64," + btoa(binary);
+
+                            tempimgsrc = "data:image/png;base64," + nowdata.afterImg;
+                            console.log(tempimgsrc);
                             flexboxn.style.backgroundImage = tempimgsrc;
                         });
 
@@ -599,13 +606,15 @@ function reloading() {
                                     document.getElementById('the_title').textContent = (nowdata.title);
                                     document.getElementById('the_date').textContent = (nowdata.date).slice(0, 10);
 
-                                    var binary = '';
-                                    var bytes = new Uint8Array(nowdata.afterImg.data);
-                                    var len = bytes.byteLength;
-                                    for (var i = 0; i < len; i++) {
-                                        binary += String.fromCharCode(bytes[i]);
-                                    }
-                                    tempimgsrc = "data:image/png;base64," + btoa(binary);
+                                    // var binary = '';
+                                    // var bytes = new Uint8Array(nowdata.afterImg.data);
+                                    // var len = bytes.byteLength;
+                                    // for (var i = 0; i < len; i++) {
+                                    //     binary += String.fromCharCode(bytes[i]);
+                                    // }
+                                    // tempimgsrc = "data:image/png;base64," + btoa(binary);
+                                    tempimgsrc = "data:image/png;base64," + nowdata.afterImg
+                                    console.log(tempimgsrc)
                                     document.getElementById('the_picture').src = tempimgsrc;
                                     document.getElementById('the_picture').style = "object-fit : cover";
                                 });

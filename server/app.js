@@ -14,7 +14,10 @@ const app = express();
 
 app.use(express.json());
 app.use(helmet());
-app.use(cors());
+const corsOption = {
+  origin: ['http://localhost:63342'],
+};
+app.use(cors(corsOption));
 app.use(morgan('tiny'));
 app.use(express.static('../client/public'));
 
@@ -25,8 +28,8 @@ app.get('/auth', authRouter);
 //app.use('/diary', function(req, res, next){
 //res.sendFile(path.join(__dirname,'..','client/public/views/tempdiary.html'));
 //}, diaryRouter);
-app.get('/diary', diaryRouter);
-app.get('/exhibition', exhibitionRouter);
+app.use('/diary', diaryRouter);
+app.use('/exhibition', exhibitionRouter);
 
 app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "client/public/views/logo_page.html"));

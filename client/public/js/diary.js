@@ -196,7 +196,7 @@ function loadFile(input) {
 
     newImage.src = URL.createObjectURL(file);
 
-    document.getElementById('image-show').value = String(newImage.src);
+    document.getElementById('image-show').value = file;
     document.getElementById('image-show').style.backgroundImage = "url(" + String(newImage.src) + ")";
     document.getElementById('image-show').style.background.width = "100%";
     document.getElementById('image-show').style.backgroundSize = "contain";
@@ -481,8 +481,13 @@ function serchemotion(emotion) {
 //         });
 // }
 
-function writeDiary() {
+async function writeDiary() {
     const img = document.getElementById('image-show').value
+    console.log(img);
+    const base64Img = await toBase64(img);
+    console.log(base64Img);
+
+
     fetch(`${BASE_SERVER_URL}/diary/?userid=20`, {
         method: 'POST',
         headers: {
@@ -494,12 +499,13 @@ function writeDiary() {
             "weather": "sunny",
             "title" : document.getElementById('title').value,
             "contents" : document.getElementById('setInput').value,
-            "beforeImg" : img,
-            "afterImg": img
+            "beforeImg" : base64Img,
+            "afterImg": base64Img
         })
     }).then((response) => response.json())
         .then((data) => {
-            console.log(data);
+            alert('전시가 생성되었습니다~');
+            hi()
         });
 }
 
@@ -579,6 +585,13 @@ function removeImage() {
     document.getElementById('image-upload').classList.remove('image-upload');
 }
 
+const toBase64 = file => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+});
+
 function hi() {
     /*
     fetch('BASE_SERVER_URL /diary?userid=20/', {
@@ -598,8 +611,8 @@ function hi() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "GalleryID": 6,
-            "GalleryName": "06 제목을 입력하세요",
+            "GalleryID": 7,
+            "GalleryName": "07 제목을 입력하세요",
             "DiaryID": {
                 "diaries": [
                     29,

@@ -429,7 +429,7 @@ function loadDiary() {
                 /*여기 수정*/
 
                 // tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data[0].afterImg.data)));
-                const tempimgsrc = "data:image/png;base64," + _arrayBufferToBase64(data[0].afterImg.data);
+                const tempimgsrc = data[0].beforeImg;
                 var newImage = document.createElement("img");
                 newImage.setAttribute("class", 'img');
                 newImage.id = "nowImage";
@@ -464,7 +464,7 @@ function clickprevpage() {
                 document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
-                document.getElementById("nowImage").src = "data:image/png;base64," + _arrayBufferToBase64(data[next].afterImg.data);
+                document.getElementById("nowImage").src = data[next].beforeImg;
                 // document.getElementById('nowImage').src = "../img/그림"+ next+".png";
             }
         });
@@ -504,9 +504,8 @@ function clicknextpage() {
                 document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
-                tempimgsrc = btoa(data[next].afterImg.data);
-                console.log(_arrayBufferToBase64(data[next].beforeImg.data));
-                document.getElementById("nowImage").src = "data:image/png;base64," + _arrayBufferToBase64(data[next].afterImg.data);
+                // tempimgsrc = btoa(data[next].afterImg.data);
+                document.getElementById("nowImage").src = data[next].beforeImg;
             }
 
 
