@@ -1,3 +1,5 @@
+import BASE_SERVER_URL from './constant.js';
+
 var submit = document.getElementById('submitButton');
 submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 
@@ -53,7 +55,7 @@ function setData() {
     /*전시 생성부분-수정하지 말아주세요(-choi)*/
     //다이어리 정보 가져오기
 
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {//최신 날짜순
             var onlyyeardic = {};
             var yeardic = {}; //{"2022": [JSON, JSON], "2021" : [JSON, JSON]} 형태
@@ -132,14 +134,14 @@ function setData() {
                     if ((yeardic[tempyear][tempseason]).length == 1) {
                         console.log('아예 새로 생성');
                         /*                        
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
                         */
                     } else {
                         /* 제목은 그대로 다이어리목록이랑 ImgNum CreateBy만 추가
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
@@ -151,14 +153,14 @@ function setData() {
                     if ((yearweather[tempyear][tempweather]).length / 5 == 1) {
                         console.log('아예 새로 생성');
                         /*                        
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
                         */
                     } else {
                         /* 제목은 그대로 다이어리목록이랑 ImgNum CreateBy만 추가
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
@@ -194,8 +196,7 @@ function loadFile(input) {
 
     newImage.src = URL.createObjectURL(file);
 
-    console.log
-
+    document.getElementById('image-show').value = String(newImage.src);
     document.getElementById('image-show').style.backgroundImage = "url(" + String(newImage.src) + ")";
     document.getElementById('image-show').style.background.width = "100%";
     document.getElementById('image-show').style.backgroundSize = "contain";
@@ -384,7 +385,7 @@ function serchemotion(emotion) {
 }
 
 // function loadDiary() {
-//     fetch('http://localhost:8080/diary?userid=20', { method: 'GET' }).then((response) => response.json())
+//     fetch('BASE_SERVER_URL /diary?userid=20', { method: 'GET' }).then((response) => response.json())
 //         .then((data) => {
 
 //             if (data.length == 0) {
@@ -418,7 +419,7 @@ function serchemotion(emotion) {
 
 // function clickprevpage() {
 //     //diary?userid=5
-//     fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+//     fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
 //         .then((data) => {
 //             len = data.length;
 //             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -441,7 +442,7 @@ function serchemotion(emotion) {
 
 // function clicknextpage() {
 //     //diary?userid=5
-//     fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+//     fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
 //         .then((data) => {
 //             len = data.length;
 //             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -479,29 +480,29 @@ function serchemotion(emotion) {
 //         });
 // }
 
-// function write() {
+function write() {
+    const img = window.btoa(document.getElementById('image-show').value)
+    fetch('BASE_SERVER_URL /diary/?userid=20', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "multipart/form-data"
+        },
+        body: JSON.stringify({
+            "date" : document.getElementById('year').value,
+            "emotion": {"di_emotion": "active"},
+            "weather": "sunny",
+            "title" : document.getElementById('title').value,
+            "contents" : document.getElementById('setInput').value,
+            "beforeImg" : img,
+            "afterImg": img
+        })
+    }).then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        });
     
-//     fetch('http://localhost:8080/diary/?userid=20', {
-//         method: 'POST',
-//         headers: {
-//             "Content-Type": "multipart/form-data"
-//         },
-//         body: JSON.stringify({  
-//             "date" : document.getElementById('year').value,
-//             "emotion" : {"di_emotion" : },
-//             "weather" : ,
-//             "title" : document.getElementById('title').value,
-//             "contents" : document.getElementById('setInput').value,
-//             "beforeImg" : document.
-
-//         }),
-//     }).then((response) => response.json())
-//         .then((data) => {
-//             console.log(data);
-//         });
     
-    
-// }
+}
 
 function show() {
     document.querySelector("#select").className = "background show";

@@ -53,7 +53,7 @@ function setData() {
     /*전시 생성부분-수정하지 말아주세요(-choi)*/
     //다이어리 정보 가져오기
 
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch('BASE_SERVER_URL /diary/?userid=5', { method: 'GET' }).then((response) => response.json())
         .then((data) => {//최신 날짜순
             var onlyyeardic = {};
             var yeardic = {}; //{"2022": [JSON, JSON], "2021" : [JSON, JSON]} 형태
@@ -132,14 +132,14 @@ function setData() {
                     if ((yeardic[tempyear][tempseason]).length == 1) {
                         console.log('아예 새로 생성');
                         /*                        
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
                         */
                     } else {
                         /* 제목은 그대로 다이어리목록이랑 ImgNum CreateBy만 추가
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
@@ -151,14 +151,14 @@ function setData() {
                     if ((yearweather[tempyear][tempweather]).length / 5 == 1) {
                         console.log('아예 새로 생성');
                         /*                        
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'POST' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
                         */
                     } else {
                         /* 제목은 그대로 다이어리목록이랑 ImgNum CreateBy만 추가
-                        fetch('http://localhost:8080/exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
+                        fetch('BASE_SERVER_URL /exhibition/?OwnerID=20', { method: 'Fetch' }).then((response) => response.json())
                             .then((data) => {
                                 console.log(data);
                             });
@@ -398,7 +398,7 @@ function loadDiary() {
     // document.getElementById('image-show').style.backgroundSize = "contain";
     // document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
     // document.getElementById('image-show').style.opacity = "0";
-    fetch('http://localhost:8080/diary?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('BASE_SERVER_URL /diary?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             if (data.length == 0) {
                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
@@ -445,7 +445,7 @@ function loadDiary() {
 
 function clickprevpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -469,7 +469,7 @@ function clickprevpage() {
 
 function clicknextpage() {
     //diary?userid=5
-    fetch('http://localhost:8080/diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -509,7 +509,7 @@ function clicknextpage() {
 }
 
 function write() {
-    fetch('http://localhost:8080/diary/?userid=5', { method: 'POST' }).then((response) => response.json())
+    fetch('BASE_SERVER_URL /diary/?userid=5', { method: 'POST' }).then((response) => response.json())
         .then((data) => {
             document.getElementById('sunny').style.color = 'var(--color-main)';
             document.getElementById('cloudy').style.color = 'var(--color-main)';

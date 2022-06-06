@@ -9,7 +9,7 @@ function closePopup() {
     console.log(nowgalleryid);
     console.log(document.getElementById('texpinput').value);
 
-    fetch('http://localhost:8080/exhibition/' + String(nowgalleryid), {
+    fetch(`${BASE_SERVER_URL}/exhibition/` + String(nowgalleryid), {
         method: 'PATCH',
         headers: {
             "Content-Type": "application/json"
@@ -18,7 +18,7 @@ function closePopup() {
     })
 
     ////여기까지
-    fetch('http://localhost:8080/exhibition/' + String(nowgalleryid), {
+    fetch(`${BASE_SERVER_URL}/exhibition/` + String(nowgalleryid), {
         method: 'GET',
         headers: {
             'Authorization': String(Authorization)
@@ -37,7 +37,7 @@ function click_arrowleft() {
     const aboutGalleryPicture = document.getElementsByClassName('picture').id.split('__');
     galleryid = aboutGalleryPicture[0];
     diaryid = aboutGalleryPicture[1];
-    fetch('http://localhost:8080/exhibition/' + String(galleryid), {
+    fetch(`${BASE_SERVER_URL}/exhibition/` + String(galleryid), {
         method: 'GET',
         headers: {
             'Authorization': String(Authorization)
@@ -61,7 +61,7 @@ function click_arrowleft() {
             if (findnextelement == diaryArr[-1]) {
                 alert('맨 처음 그림입니다.');
             } else {
-                fetch('http://localhost:8080/diary/' + String(findnextelement), {
+                fetch('BASE_SERVER_URL /diary/' + String(findnextelement), {
                     method: 'GET',
                     headers: {
                         'Authorization': String(Authorization)
@@ -93,7 +93,7 @@ function click_arrowright() {
     const aboutGalleryPicture = document.getElementsByClassName('picture').id.split('__');
     galleryid = aboutGalleryPicture[0];
     diaryid = aboutGalleryPicture[1];
-    fetch('http://localhost:8080/exhibition/' + String(galleryid), {
+    fetch(`${BASE_SERVER_URL}/exhibition/` + String(galleryid), {
         method: 'GET', headers: {
             'Authorization': String(Authorization)
         }
@@ -116,7 +116,7 @@ function click_arrowright() {
             if (findnextelement == diaryArr[-1]) {
                 alert('맨 마지막 그림입니다.');
             } else {
-                fetch('http://localhost:8080/diary/' + String(findnextelement), { method: 'GET' }).then((response) => response.json())
+                fetch(`${BASE_SERVER_URL}/diary/` + String(findnextelement), { method: 'GET' }).then((response) => response.json())
                     .then((data) => {
                         document.getElementsByClassName('title').id = String(galleryid);
                         console.log("현재 전시 정보 right");
@@ -194,7 +194,7 @@ function ClicktoDownLoad() {
 var tempimgsrc;
 function reloading() {
     //최신순 정렬
-    fetch('http://localhost:8080/exhibition?OwnerID=20', {
+    fetch(`${BASE_SERVER_URL}/exhibition?OwnerID=20`, {
         method: 'GET',
         headers: {
             'Authorization': String(Authorization)
@@ -276,7 +276,7 @@ function reloading() {
                     } else {
                         flexboxn.style.backgroundImage = "url('../img/gallery_img/0" + String(data[everynum].GalleryID) + ".jpg')";
                     }
-                    fetch('http://localhost:8080/diary/' + data[everynum].DiaryID.diaries[0], {
+                    fetch(`${BASE_SERVER_URL}/diary/` + data[everynum].DiaryID.diaries[0], {
                         method: 'GET',
                         headers: {
                             'Authorization': String(Authorization)
@@ -368,7 +368,7 @@ function reloading() {
 
                     iclass3.addEventListener('click', function () {
                         if (confirm("정말삭제하시겠습니까?") == true) {    //확인
-                            fetch('http://localhost:8080/exhibition/' + nowgalleryid, { method: 'DELETE' }).then((response) => response.json());
+                            fetch(`${BASE_SERVER_URL}/exhibition/` + nowgalleryid, { method: 'DELETE' }).then((response) => response.json());
                             //재로딩해야함.
                             window.location.reload();
                             document.removefrm.submit();
@@ -567,7 +567,7 @@ function reloading() {
                     let nowDiaryList = String(data[everynum].DiaryID.diaries);
                     const DiaryListarr = nowDiaryList.split(',');
                     DiaryListarr.forEach(element => {
-                        fetch('http://localhost:8080/diary/' + element, { method: 'GET' }).then((response) => response.json())
+                        fetch(`${BASE_SERVER_URL}/diary/` + element, { method: 'GET' }).then((response) => response.json())
                             .then((nowdata) => {
                                 let projectspan = document.createElement("span");
                                 projectspan.style.color = "whitesmoke";
@@ -668,7 +668,7 @@ function saveTitle() {
 }
 function hi() {
     /*
-    fetch('http://localhost:8080/diary?userid=20/', {
+    fetch('BASE_SERVER_URL /diary?userid=20/', {
         method: 'GET',
     }).then((response) => response.json())
         .then((data) => {
@@ -679,7 +679,7 @@ function hi() {
         });
         */
 
-    fetch('http://localhost:8080/exhibition/', {
+    fetch(`${BASE_SERVER_URL}/exhibition/`, {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"

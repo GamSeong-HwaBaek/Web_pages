@@ -59,13 +59,13 @@ where di.id=?`, [arrayIndex])
 
 
 
-export async function create(date, emotion, weather, title, contents, userid) {
+export async function create(date, emotion, weather, title, contents, userid, beforeImg, afterImg) {
   return db
     .execute(
-      'INSERT INTO diary (date, emotion, weather, title, contents, userid) VALUES (?,?,?,?,?,?)',
-      [date, emotion, weather, title, contents, userid]
+      'INSERT INTO diary (date, emotion, weather, title, contents, userid, beforeImg, afterImg) VALUES (?,?,?,?,?,?,?,?)',
+      [date, emotion, weather, title, contents, userid, beforeImg, afterImg]
     )
-    .then((result) => getbyId(result[0].insertid));
+    .then((result) => getbyId(result[0].insertId));
 }
 
 

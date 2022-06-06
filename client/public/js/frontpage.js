@@ -130,7 +130,7 @@ function signIn() {
     console.log("signIn");
     var userid = document.getElementById(loginID).value;
     var userpassword = document.getElementById(loginPassword).value;
-    fetch("http://localhost:8080/auth/login", {
+    fetch("BASE_SERVER_URL /auth/login", {
         method : "POST",
         body : JSON.stringify({
             user_account : this.state.username,
