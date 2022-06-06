@@ -1,3 +1,5 @@
+const BASE_SERVER_URL = 'http://localhost:8080';
+
 let trashcan = document.getElementById('trashcan');
 trashcan.addEventListener("mouseover", function (event) {
     //highlight the mouseover target

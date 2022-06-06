@@ -1,10 +1,10 @@
-import BASE_SERVER_URL from './constant.js';
+const BASE_SERVER_URL = 'http://localhost:8080';
 
 var submit = document.getElementById('submitButton');
 submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 
 /* 버튼 */
-const btnSLD = document.querySelector('.btnSetLocalData');
+// const btnSLD = document.querySelector('.btnSetLocalData');
 /* input 텍스트 */
 const setInput = document.querySelector('#setInput');
 
@@ -50,7 +50,7 @@ function setData() {
     setInput.value = '';
 
     /* set Data 버튼 클릭 시 */
-    btnSLD.addEventListener('click', setData);
+    // btnSLD.addEventListener('click', setData);
 
     /*전시 생성부분-수정하지 말아주세요(-choi)*/
     //다이어리 정보 가져오기
@@ -179,7 +179,7 @@ function showImage() {
     imashow.style.display = "block";
     document.getElementById('image-show').style.opacity = "1";
     document.getElementById('image-upload').style.visibility = 'hidden';
-    document.getElementById('fileContainer').style.display = 'none';
+    document.getElementById('fileContainerId').style.display = 'none';
 
     document.getElementById('fileName').textContent = null;     //기존 파일 이름 지우기
 }
@@ -202,7 +202,8 @@ function loadFile(input) {
     document.getElementById('image-show').style.backgroundSize = "contain";
     document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
     document.getElementById('image-show').style.opacity = "0";
-};
+}
+
 
 function clicksunny() {
     if (sunnycolor == "var(--color-orange)") {
@@ -480,12 +481,12 @@ function serchemotion(emotion) {
 //         });
 // }
 
-function write() {
-    const img = window.btoa(document.getElementById('image-show').value)
-    fetch('BASE_SERVER_URL /diary/?userid=20', {
+function writeDiary() {
+    const img = document.getElementById('image-show').value
+    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, {
         method: 'POST',
         headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
             "date" : document.getElementById('year').value,
@@ -500,8 +501,6 @@ function write() {
         .then((data) => {
             console.log(data);
         });
-    
-    
 }
 
 function show() {
@@ -522,7 +521,7 @@ function close2() {
 function print() {
     console.log(document.querySelector(".img__wrapbox"));
 }
-document.querySelector("#savebutton").addEventListener('click', loading);
+// document.querySelector("#savebutton").addEventListener('click', loading);
 document.querySelector("#show").addEventListener('click', show);
 
 function return1() {
@@ -579,3 +578,47 @@ function removeImage() {
     document.getElementById('image-show').classList.remove('image-show');
     document.getElementById('image-upload').classList.remove('image-upload');
 }
+
+function hi() {
+    /*
+    fetch('BASE_SERVER_URL /diary?userid=20/', {
+        method: 'GET',
+    }).then((response) => response.json())
+        .then((data) => {
+            if (data[0].id == 36) {
+                console.log("hi");
+            }
+
+        });
+        */
+
+    fetch(`${BASE_SERVER_URL}/exhibition/`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            "GalleryID": 6,
+            "GalleryName": "06 제목을 입력하세요",
+            "DiaryID": {
+                "diaries": [
+                    29,
+                    34,
+                    35,
+                    36,
+                ]
+            },
+            "GalleryDate": "2022-06-10",
+            "Img_Num": "5",
+            "OwnerID": "20",
+            "Createby": {
+                "weather": "happy"
+            }
+        })
+    }).then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+        });
+
+}
+

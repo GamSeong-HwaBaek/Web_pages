@@ -1,3 +1,5 @@
+const BASE_SERVER_URL = 'http://localhost:8080';
+
 function createNewAccount() {
     document.querySelector(".background").className = "background show";
 }

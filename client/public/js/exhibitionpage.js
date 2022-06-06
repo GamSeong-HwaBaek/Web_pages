@@ -1,3 +1,4 @@
+const BASE_SERVER_URL = 'http://localhost:8080';
 let Authorization = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTM4MzE3ODAsImV4cCI6MTY1NDAwNDU4MH0.hKX9hphNAwF_kE_L9FjKMmOt4RMI-_yy9mTOjKlLfKs';
 
 function clickTheExhitibion() {
@@ -61,7 +62,7 @@ function click_arrowleft() {
             if (findnextelement == diaryArr[-1]) {
                 alert('맨 처음 그림입니다.');
             } else {
-                fetch('BASE_SERVER_URL /diary/' + String(findnextelement), {
+                fetch(`${BASE_SERVER_URL}/exhibition/` + String(findnextelement), {
                     method: 'GET',
                     headers: {
                         'Authorization': String(Authorization)
@@ -116,7 +117,7 @@ function click_arrowright() {
             if (findnextelement == diaryArr[-1]) {
                 alert('맨 마지막 그림입니다.');
             } else {
-                fetch(`${BASE_SERVER_URL}/diary/` + String(findnextelement), { method: 'GET' }).then((response) => response.json())
+                fetch(`${BASE_SERVER_URL}/exhibition/` + String(findnextelement), { method: 'GET' }).then((response) => response.json())
                     .then((data) => {
                         document.getElementsByClassName('title').id = String(galleryid);
                         console.log("현재 전시 정보 right");
@@ -276,7 +277,7 @@ function reloading() {
                     } else {
                         flexboxn.style.backgroundImage = "url('../img/gallery_img/0" + String(data[everynum].GalleryID) + ".jpg')";
                     }
-                    fetch(`${BASE_SERVER_URL}/diary/` + data[everynum].DiaryID.diaries[0], {
+                    fetch(`${BASE_SERVER_URL}/exhibition/` + data[everynum].DiaryID.diaries[0], {
                         method: 'GET',
                         headers: {
                             'Authorization': String(Authorization)

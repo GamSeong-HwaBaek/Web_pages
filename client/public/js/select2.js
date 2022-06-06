@@ -1,3 +1,4 @@
+const BASE_SERVER_URL = 'http://localhost:8080';
 const pathLength = 68 * 2 + 200;
 
 class BtnGroup {

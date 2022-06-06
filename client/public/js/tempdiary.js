@@ -1,3 +1,4 @@
+const BASE_SERVER_URL = 'http://localhost:8080';
 // var submit = document.getElementById('submitButton');
 // submit.onclick = showImage;     //Submit 버튼 클릭시 이미지 보여주기
 
@@ -53,7 +54,7 @@ function setData() {
     /*전시 생성부분-수정하지 말아주세요(-choi)*/
     //다이어리 정보 가져오기
 
-    fetch('BASE_SERVER_URL /diary/?userid=5', { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {//최신 날짜순
             var onlyyeardic = {};
             var yeardic = {}; //{"2022": [JSON, JSON], "2021" : [JSON, JSON]} 형태
@@ -398,7 +399,7 @@ function loadDiary() {
     // document.getElementById('image-show').style.backgroundSize = "contain";
     // document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
     // document.getElementById('image-show').style.opacity = "0";
-    fetch('BASE_SERVER_URL /diary?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             if (data.length == 0) {
                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
@@ -427,12 +428,13 @@ function loadDiary() {
                 serchweather(firstpage.weather);
                 /*여기 수정*/
 
-                //console.log(data[0].afterImg.data);
-                //tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data[0].afterImg.data)));
+                // tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data[0].afterImg.data)));
+                const tempimgsrc = "data:image/png;base64," + _arrayBufferToBase64(data[0].afterImg.data);
                 var newImage = document.createElement("img");
                 newImage.setAttribute("class", 'img');
                 newImage.id = "nowImage";
-                newImage.src = "../img/그림0.png";
+                newImage.src = tempimgsrc;
+                // newImage.src = "../img/그림0.png";
                 document.getElementById('image-show').appendChild(newImage);
 
 
@@ -445,7 +447,7 @@ function loadDiary() {
 
 function clickprevpage() {
     //diary?userid=5
-    fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -462,14 +464,15 @@ function clickprevpage() {
                 document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
-                document.getElementById('nowImage').src = "../img/그림"+ next+".png";
+                document.getElementById("nowImage").src = "data:image/png;base64," + _arrayBufferToBase64(data[next].afterImg.data);
+                // document.getElementById('nowImage').src = "../img/그림"+ next+".png";
             }
         });
 }
 
 function clicknextpage() {
     //diary?userid=5
-    fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -501,15 +504,27 @@ function clicknextpage() {
                 document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
-                document.getElementById('nowImage').src = "../img/그림"+ next+".png";
+                tempimgsrc = btoa(data[next].afterImg.data);
+                console.log(_arrayBufferToBase64(data[next].beforeImg.data));
+                document.getElementById("nowImage").src = "data:image/png;base64," + _arrayBufferToBase64(data[next].afterImg.data);
             }
 
 
         });
 }
 
+function _arrayBufferToBase64( buffer ) {
+    var binary = '';
+    var bytes = new Uint8Array( buffer );
+    var len = bytes.byteLength;
+    for (var i = 0; i < len; i++) {
+        binary += String.fromCharCode( bytes[ i ] );
+    }
+    return window.btoa( binary );
+}
+
 function write() {
-    fetch('BASE_SERVER_URL /diary/?userid=5', { method: 'POST' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'POST' }).then((response) => response.json())
         .then((data) => {
             document.getElementById('sunny').style.color = 'var(--color-main)';
             document.getElementById('cloudy').style.color = 'var(--color-main)';

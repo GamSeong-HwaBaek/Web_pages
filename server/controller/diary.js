@@ -55,9 +55,10 @@ export async function getbyEmotion(req, res, next) {
 
 
 export async function create(req, res, next) {
-  const userId = req.params.userId
-  const { date, emotion, weather, title, contents, beforeImg, afterImg } = req.body;
-  const data = await diaryRepository.create(date, emotion, weather, title, contents, userId, beforeImg, afterImg);
+  const userId = req.query.userid;
+  const { emotion, weather, title, contents, beforeImg, afterImg } = req.body;
+  const nowDate = "2019-03-24";
+  const data = await diaryRepository.create(nowDate, emotion, weather, title, contents, userId, beforeImg, afterImg);
   res.status(201).json(data);
 }
 

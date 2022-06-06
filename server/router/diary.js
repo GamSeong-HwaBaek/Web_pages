@@ -7,13 +7,13 @@ import { validate } from '../middleware/validator.js';
 
 const router = express.Router();
 
-const validateDiary = [
-  body('title')
-    .trim()
-    .isLength({ min: 3 })
-    .withMessage('text should be at least 3 characters'),
-  validate,
-];
+// const validateDiary = [
+//   body('title')
+//     .trim()
+//     .isLength({ min: 3 })
+//     .withMessage('text should be at least 3 characters'),
+//   validate,
+// ];
 
 //GET /diary
 
@@ -30,10 +30,12 @@ router.get('/:date', diaryController.getData);
 
 
 //POST /diary
-router.post('/', validateDiary, diaryController.create);
+// router.post('/', validateDiary, diaryController.create);
+router.post('/', diaryController.create);
 
 //PUT /diary/:date
-router.put('/:date', validateDiary, diaryController.update);
+// router.put('/:date', validateDiary, diaryController.update);
+router.put('/:date', diaryController.update);
 
 
 router.delete('/:id', diaryController.remove);
