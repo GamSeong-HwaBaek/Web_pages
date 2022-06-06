@@ -16,27 +16,27 @@ app.use(express.json());
 app.use(helmet());
 app.use(cors());
 app.use(morgan('tiny'));
-app.use(express.static('public'));
+app.use(express.static('../client/public'));
 
 const __dirname = path.resolve();
 
 
-app.use('/auth', authRouter);
+app.get('/auth', authRouter);
 //app.use('/diary', function(req, res, next){
 //res.sendFile(path.join(__dirname,'..','client/public/views/tempdiary.html'));
 //}, diaryRouter);
-app.use('/diary', diaryRouter);
-app.use('/exhibition', exhibitionRouter);
+app.get('/diary', diaryRouter);
+app.get('/exhibition', exhibitionRouter);
 
-app.use('/', (req, res, next) => {
+app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "client/public/views/logo_page.html"));
 });
 
-app.use('/front', (req, res, next) => {
+app.get('/front', (req, res, next) => {
   res.sendFile(path.join(__dirname, "..", "client/public/views/fronpage.html"));
 });
 
-app.use((error, req, res, next) => {
+app.get((error, req, res, next) => {
   console.error(error);
   res.sendStatus(500);
 });
