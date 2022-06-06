@@ -11,19 +11,19 @@ function required(key, defaultValue = undefined) {
 
 export const config = {
   jwt: {
-    secretKey: required('JWT_SECRET'),
-    expiresInSec: parseInt(required('JWT_EXPIRES_SEC', 172800)),
+    secretKey: 'F2dN7x8HVzBWaQuEEDnhsvHXRWqAR63z',
+    expiresInSec: 172800,
   },
   bcrypt: {
-    saltRounds: parseInt(required('BCRYPT_SALT_ROUNDS', 12)),
+    saltRounds: 12,
   },
   host: {
-    port: parseInt(required('HOST_PORT', 8080)),
+    port: 8080,
   },
   db: {
-    host: required('DB_HOST'),
-    user: required('DB_USER'),
-    database: required('DB_DATABASE'),
-    password: required('DB_PASSWORD')
+    host: '127.0.0.1',
+    user: 'root',
+    database: 'Gamsung',
+    password: 'haeun0987'
   }
 };
