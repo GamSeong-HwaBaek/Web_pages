@@ -54,7 +54,7 @@ function setData() {
     /*전시 생성부분-수정하지 말아주세요(-choi)*/
     //다이어리 정보 가져오기
 
-    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {//최신 날짜순
             var onlyyeardic = {};
             var yeardic = {}; //{"2022": [JSON, JSON], "2021" : [JSON, JSON]} 형태
@@ -202,25 +202,6 @@ function loadFile(input) {
     document.getElementById('image-show').style.opacity = "0";
 };
 
-function loadImg() {
-    //console.log(data[0].afterImg.data);
-
-    var file = 'url(../img/그림1.png)';
-
-    // var name = document.getElementById('fileName');
-    // name.textContent = file;
-
-    var newImage = document.createElement("img");
-    newImage.setAttribute("class", 'img');
-
-    // newImage.src = URL.createObjectURL(file);
-
-    document.getElementById('image-show').style.backgroundImage = file;
-    document.getElementById('image-show').style.background.width = "100%";
-    document.getElementById('image-show').style.backgroundSize = "contain";
-    document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
-    document.getElementById('image-show').style.opacity = "1";
-};
 
 function clicksunny() {
     if (sunnycolor == "var(--color-orange)") {
@@ -365,23 +346,23 @@ function serchemotion(emotion) {
     document.getElementById('tired').style.color = 'var(--color-main)';
     document.getElementById('sleepy').style.color = 'var(--color-main)';
     document.getElementById('disgust').style.color = 'var(--color-main)';
-    if (emotion.di_emotion == 'active') {
+    if (emotion.di_emotion1 == 'active') {
         document.getElementById('active').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'joy') {
+    } else if (emotion.di_emotion2 == 'joy') {
         document.getElementById('joy').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'peaceful') {
+    } else if (emotion.di_emotion3 == 'peaceful') {
         document.getElementById('peaceful').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'neutral') {
+    } else if (emotion.di_emotion4 == 'neutral') {
         document.getElementById('neutral').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'relaxed') {
+    } else if (emotion.di_emotion5 == 'relaxed') {
         document.getElementById('relaxed').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'content') {
+    } else if (emotion.di_emotion6 == 'content') {
         document.getElementById('content').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'tired') {
+    } else if (emotion.di_emotion7 == 'tired') {
         document.getElementById('tired').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'sleepy') {
+    } else if (emotion.di_emotion8 == 'sleepy') {
         document.getElementById('sleepy').style.color = 'var(--color-orange)';
-    } else if (emotion.di_emotion == 'disgust') {
+    } else if (emotion.di_emotion9 == 'disgust') {
         document.getElementById('disgust').style.color = 'var(--color-orange)';
     } else {
         console.log('감정이 입력되어 있지 않습니다.');
@@ -389,17 +370,8 @@ function serchemotion(emotion) {
 }
 
 function loadDiary() {
-    // var newImage = document.createElement("img");
-    // newImage.setAttribute("class", 'img');
-
-    // newImage.src = URL.createObjectURL('../img/그림1.png');
-
-    // document.getElementById('image-show').style.backgroundImage = "url(" + String(newImage.src) + ")";
-    // document.getElementById('image-show').style.background.width = "100%";
-    // document.getElementById('image-show').style.backgroundSize = "contain";
-    // document.getElementById('image-show').style.backgroundRepeat = "no-repeat";
-    // document.getElementById('image-show').style.opacity = "0";
-    fetch(`${BASE_SERVER_URL}/diary?userid=20`, { method: 'GET' }).then((response) => response.json())
+    console.log("Start Loading Diary");
+    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())  
         .then((data) => {
             if (data.length == 0) {
                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
@@ -417,6 +389,7 @@ function loadDiary() {
                 document.getElementById('sleepy').style.color = 'var(--color-main)';
                 document.getElementById('disgust').style.color = 'var(--color-main)';
             } else {
+                console.log("Loading First Page");
                 firstpage = data[0];//로드시 처음 페이지
                 document.getElementsByClassName('mydiary__container').id = 0;
                 document.getElementById('year').value = firstpage.date.slice(0, 4);
@@ -429,7 +402,7 @@ function loadDiary() {
                 /*여기 수정*/
 
                 // tempimgsrc = "data:image/png;base64," + btoa(String.fromCharCode.apply(null, new Uint8Array(data[0].afterImg.data)));
-                const tempimgsrc = data[0].beforeImg;
+                const tempimgsrc = data[0].afterImg;
                 var newImage = document.createElement("img");
                 newImage.setAttribute("class", 'img');
                 newImage.id = "nowImage";
@@ -447,7 +420,7 @@ function loadDiary() {
 
 function clickprevpage() {
     //diary?userid=5
-    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -464,7 +437,7 @@ function clickprevpage() {
                 document.getElementById('setInput').value = nextpage.contents;
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
-                document.getElementById("nowImage").src = data[next].beforeImg;
+                document.getElementById("nowImage").src = data[next].afterImg;
                 // document.getElementById('nowImage').src = "../img/그림"+ next+".png";
             }
         });
@@ -472,7 +445,7 @@ function clickprevpage() {
 
 function clicknextpage() {
     //diary?userid=5
-    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'GET' }).then((response) => response.json())
+    fetch(`${BASE_SERVER_URL}/diary?userid=20`, { method: 'GET' }).then((response) => response.json())
         .then((data) => {
             len = data.length;
             nowpage = document.getElementsByClassName('mydiary__container').id;
@@ -505,7 +478,7 @@ function clicknextpage() {
                 serchemotion(nextpage.emotion);
                 serchweather(nextpage.weather);
                 // tempimgsrc = btoa(data[next].afterImg.data);
-                document.getElementById("nowImage").src = data[next].beforeImg;
+                document.getElementById("nowImage").src = data[next].afterImg;
             }
 
 
@@ -520,30 +493,6 @@ function _arrayBufferToBase64( buffer ) {
         binary += String.fromCharCode( bytes[ i ] );
     }
     return window.btoa( binary );
-}
-
-function write() {
-    fetch(`${BASE_SERVER_URL}/diary/?userid=20`, { method: 'POST' }).then((response) => response.json())
-        .then((data) => {
-            document.getElementById('sunny').style.color = 'var(--color-main)';
-            document.getElementById('cloudy').style.color = 'var(--color-main)';
-            document.getElementById('rainy').style.color = 'var(--color-main)';
-            document.getElementById('snowy').style.color = 'var(--color-main)';
-            document.getElementById('active').style.color = 'var(--color-main)';
-            document.getElementById('joy').style.color = 'var(--color-main)';
-            document.getElementById('peaceful').style.color = 'var(--color-main)';
-            document.getElementById('neutral').style.color = 'var(--color-main)';
-            document.getElementById('relaxed').style.color = 'var(--color-main)';
-            document.getElementById('content').style.color = 'var(--color-main)';
-            document.getElementById('tired').style.color = 'var(--color-main)';
-            document.getElementById('sleepy').style.color = 'var(--color-main)';
-            document.getElementById('disgust').style.color = 'var(--color-main)';
-            document.getElementById('year').value = '';
-            document.getElementById('month').value = '';
-            document.getElementById('day').value = '';
-            document.getElementById('title').value = '';
-            document.getElementById('setInput').value = '';
-        });
 }
 
 function show() {

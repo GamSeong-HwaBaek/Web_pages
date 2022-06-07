@@ -14,10 +14,11 @@ const app = express();
 
 app.use(express.json());
 app.use(helmet());
-const corsOption = {
-  origin: ['http://localhost:63342'],
-};
-app.use(cors(corsOption));
+// const corsOption = {
+//   origin: ['http://localhost:63342'],
+// };
+// app.use(cors(corsOption));
+app.use(cors());
 app.use(morgan('tiny'));
 app.use(express.static('../client/public'));
 
@@ -36,7 +37,7 @@ app.get('/', (req, res, next) => {
 });
 
 app.get('/front', (req, res, next) => {
-  res.sendFile(path.join(__dirname, "..", "client/public/views/fronpage.html"));
+  res.sendFile(path.join(__dirname, "..", "client/public/views/frontpage.html"));
 });
 
 app.get((error, req, res, next) => {

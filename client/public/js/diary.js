@@ -312,30 +312,14 @@ function clickdisgust() {
 }
 
 
-function serchweather(nowweather) {
-    if (nowweather == 'sunny') {
-        document.getElementById('sunny').style.color = 'var(--color-orange)';
-        document.getElementById('cloudy').style.color = 'var(--color-main)';
-        document.getElementById('rainy').style.color = 'var(--color-main)';
-        document.getElementById('snowy').style.color = 'var(--color-main)';
+function saveweather() {
+    if(document.getElementById('sunny').style.color == 'var(--color-orange)') {
         return 'sunny';
-    } else if (nowweather == 'cloudy') {
-        document.getElementById('cloudy').style.color = 'var(--color-orange)';
-        document.getElementById('sunny').style.color = 'var(--color-main)';
-        document.getElementById('rainy').style.color = 'var(--color-main)';
-        document.getElementById('snowy').style.color = 'var(--color-main)';
+    } else if (document.getElementById('cloudy').style.color == 'var(--color-orange)') {
         return 'cloudy';
-    } else if (nowweather == 'rainy') {
-        document.getElementById('rainy').style.color = 'var(--color-orange)';
-        document.getElementById('sunny').style.color = 'var(--color-main)';
-        document.getElementById('cloudy').style.color = 'var(--color-main)';
-        document.getElementById('snowy').style.color = 'var(--color-main)';
+    } else if (document.getElementById('rainy').style.color == 'var(--color-orange)') {
         return 'rainy';
-    } else if (nowweather == 'snowy') {
-        document.getElementById('snowy').style.color = 'var(--color-orange)';
-        document.getElementById('sunny').style.color = 'var(--color-main)';
-        document.getElementById('cloudy').style.color = 'var(--color-main)';
-        document.getElementById('rainy').style.color = 'var(--color-main)';
+    } else if (document.getElementById('snowy').style.color == 'var(--color-orange)') {
         return 'snowy';
     } else {
         console.log('날씨가 입력되어 있지 않습니다.');
@@ -343,149 +327,43 @@ function serchweather(nowweather) {
 
 }
 
-function serchemotion(emotion) {
-    document.getElementById('active').style.color = 'var(--color-main)';
-    document.getElementById('joy').style.color = 'var(--color-main)';
-    document.getElementById('peaceful').style.color = 'var(--color-main)';
-    document.getElementById('neutral').style.color = 'var(--color-main)';
-    document.getElementById('relaxed').style.color = 'var(--color-main)';
-    document.getElementById('content').style.color = 'var(--color-main)';
-    document.getElementById('tired').style.color = 'var(--color-main)';
-    document.getElementById('sleepy').style.color = 'var(--color-main)';
-    document.getElementById('disgust').style.color = 'var(--color-main)';
-    if (emotion.di_emotion == 'active') {
-        document.getElementById('active').style.color = 'var(--color-orange)';
-        return 'active';
-    } else if (emotion.di_emotion == 'joy') {
-        document.getElementById('joy').style.color = 'var(--color-orange)';
-        return 'joy';
-    } else if (emotion.di_emotion == 'peaceful') {
-        document.getElementById('peaceful').style.color = 'var(--color-orange)';
-        return 'peaceful';
-    } else if (emotion.di_emotion == 'neutral') {
-        document.getElementById('neutral').style.color = 'var(--color-orange)';
-        return 'neutral';
-    } else if (emotion.di_emotion == 'relaxed') {
-        document.getElementById('relaxed').style.color = 'var(--color-orange)';
-        return 'relaxed';
-    } else if (emotion.di_emotion == 'content') {
-        document.getElementById('content').style.color = 'var(--color-orange)';
-        return 'content';
-    } else if (emotion.di_emotion == 'tired') {
-        document.getElementById('tired').style.color = 'var(--color-orange)';
-        return 'tired';
-    } else if (emotion.di_emotion == 'sleepy') {
-        document.getElementById('sleepy').style.color = 'var(--color-orange)';
-        return 'sleepy';
-    } else if (emotion.di_emotion == 'disgust') {
-        document.getElementById('disgust').style.color = 'var(--color-orange)';
-        return 'disgust';
+function saveemotion() {
+    var emotionlist = new Array();
+    var emotionnow = new Object();
+    if (document.getElementById('active').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion1 = 'active'
+    } else if (document.getElementById('joy').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion2 = 'joy';
+    } else if (document.getElementById('peaceful').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion3 = 'peaceful';
+    } else if (document.getElementById('neutral').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion4 = 'neutral';
+    } else if (document.getElementById('relaxed').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion5 = 'relaxed';
+    } else if (document.getElementById('content').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion6 = 'content';
+    } else if (document.getElementById('tired').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion7 = 'tired';
+    } else if (document.getElementById('sleepy').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion8 = 'sleepy';
+    } else if (document.getElementById('disgust').style.color == 'var(--color-orange)') {
+        emotionnow.di_emotion9 = 'disgust';
     } else {
         console.log('감정이 입력되어 있지 않습니다.');
     }
+    emotionlist.push(emotionnow);
+
+    var json_emotion = JSON.stringify(emotionlist);
+    return json_emotion;
 }
-
-// function loadDiary() {
-//     fetch('BASE_SERVER_URL /diary?userid=20', { method: 'GET' }).then((response) => response.json())
-//         .then((data) => {
-
-//             if (data.length == 0) {
-//                 alert('환영합니다! 일기를 작성해서 나만의 미술관을 만들어 보세요!');
-//                 document.getElementById('sunny').style.color = 'var(--color-main)';
-//                 document.getElementById('cloudy').style.color = 'var(--color-main)';
-//                 document.getElementById('rainy').style.color = 'var(--color-main)';
-//                 document.getElementById('snowy').style.color = 'var(--color-main)';
-//                 document.getElementById('active').style.color = 'var(--color-main)';
-//                 document.getElementById('joy').style.color = 'var(--color-main)';
-//                 document.getElementById('peaceful').style.color = 'var(--color-main)';
-//                 document.getElementById('neutral').style.color = 'var(--color-main)';
-//                 document.getElementById('relaxed').style.color = 'var(--color-main)';
-//                 document.getElementById('content').style.color = 'var(--color-main)';
-//                 document.getElementById('tired').style.color = 'var(--color-main)';
-//                 document.getElementById('sleepy').style.color = 'var(--color-main)';
-//                 document.getElementById('disgust').style.color = 'var(--color-main)';
-//             } else {
-//                 firstpage = data[0];//로드시 처음 페이지
-//                 document.getElementsByClassName('mydiary__container').id = 0;
-//                 document.getElementById('year').value = firstpage.date.slice(0, 4);
-//                 document.getElementById('month').value = firstpage.date.slice(5, 7);
-//                 document.getElementById('day').value = firstpage.date.slice(8, 10);
-//                 document.getElementById('title').value = firstpage.title;
-//                 document.getElementById('setInput').value = firstpage.contents;
-//                 serchemotion(firstpage.emotion);
-//                 serchweather(firstpage.weather);
-//             }
-//         });
-// }
-
-// function clickprevpage() {
-//     //diary?userid=5
-//     fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
-//         .then((data) => {
-//             len = data.length;
-//             nowpage = document.getElementsByClassName('mydiary__container').id;
-//             if (nowpage == 0) {
-//                 alert('첫번째페이지입니다');
-//             } else {
-//                 next = nowpage - 1;
-//                 nextpage = data[next];
-//                 document.getElementsByClassName('mydiary__container').id = next;
-//                 document.getElementById('year').value = nextpage.date.slice(0, 4);
-//                 document.getElementById('month').value = nextpage.date.slice(5, 7);
-//                 document.getElementById('day').value = nextpage.date.slice(8, 10);
-//                 document.getElementById('title').value = nextpage.title;
-//                 document.getElementById('setInput').value = nextpage.contents;
-//                 serchemotion(nextpage.emotion);
-//                 serchweather(nextpage.weather);
-//             }
-//         });
-// }
-
-// function clicknextpage() {
-//     //diary?userid=5
-//     fetch('BASE_SERVER_URL /diary/?userid=20', { method: 'GET' }).then((response) => response.json())
-//         .then((data) => {
-//             len = data.length;
-//             nowpage = document.getElementsByClassName('mydiary__container').id;
-//             if (nowpage == len) {
-//                 alert('일기를 작성해 주세요');
-//             } else if (nowpage == len - 1) {
-//                 next = nowpage + 1;
-//                 nextpage = data[next];
-//                 document.getElementsByClassName('mydiary__container').id = next;
-//                 document.getElementById('year').value = '';
-//                 document.getElementById('month').value = '';
-//                 document.getElementById('day').value = '';
-//                 document.getElementById('title').value = '';
-//                 document.getElementById('setInput').value = '';
-
-//                 document.getElementById('sunny').style.color = 'var(--color-main)';
-//                 document.getElementById('cloudy').style.color = 'var(--color-main)';
-//                 document.getElementById('rainy').style.color = 'var(--color-main)';
-//                 document.getElementById('snowy').style.color = 'var(--color-main)';
-//             }
-//             else {
-//                 next = nowpage + 1;
-//                 nextpage = data[next];
-//                 document.getElementsByClassName('mydiary__container').id = next;
-//                 document.getElementById('year').value = nextpage.date.slice(0, 4);
-//                 document.getElementById('month').value = nextpage.date.slice(5, 7);
-//                 document.getElementById('day').value = nextpage.date.slice(8, 10);
-//                 document.getElementById('title').value = nextpage.title;
-//                 document.getElementById('setInput').value = nextpage.contents;
-//                 serchemotion(nextpage.emotion);
-//                 serchweather(nextpage.weather);
-//             }
-
-
-//         });
-// }
 
 async function writeDiary() {
     const img = document.getElementById('image-show').value
     console.log(img);
     const base64Img = await toBase64(img);
     console.log(base64Img);
+
+    var date = document.getElementById('year').value + '-' + document.getElementById('month').value + '-' + document.getElementById('day').value;
 
 
     fetch(`${BASE_SERVER_URL}/diary/?userid=20`, {
@@ -494,9 +372,9 @@ async function writeDiary() {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            "date" : document.getElementById('year').value,
-            "emotion": {"di_emotion": "active"},
-            "weather": "sunny",
+            "date" : date,
+            "emotion": saveemotion(),
+            "weather": saveweather(),
             "title" : document.getElementById('title').value,
             "contents" : document.getElementById('setInput').value,
             "beforeImg" : base64Img,
@@ -505,7 +383,7 @@ async function writeDiary() {
     }).then((response) => response.json())
         .then((data) => {
             alert('전시가 생성되었습니다~');
-            hi()
+            hi();
         });
 }
 
@@ -567,19 +445,19 @@ function result() {
     document.querySelector("#spin2").className = "background show";
 }
 
-function finish() {
-    close3();
-    removeImage();
-    var newImage = document.createElement("img");
-    newImage.setAttribute("class", 'img');
-    newImage.id = "nowImage";
-    newImage.src = "../img/그림5.png";
-    newImage.style.width = "300px";
-    newImage.style.height = "400px";
-    newImage.style.paddingLeft = "20px";
-    newImage.style.paddingBottom = "30px";
-    document.getElementById('image-show').appendChild(newImage);
-}
+// function finish() {
+//     close3();
+//     removeImage();
+//     var newImage = document.createElement("img");
+//     newImage.setAttribute("class", 'img');
+//     newImage.id = "nowImage";
+//     newImage.src = "../img/그림5.png";
+//     newImage.style.width = "300px";
+//     newImage.style.height = "400px";
+//     newImage.style.paddingLeft = "20px";
+//     newImage.style.paddingBottom = "30px";
+//     document.getElementById('image-show').appendChild(newImage);
+// }
 function removeImage() {
     document.getElementById('image-show').classList.remove('image-show');
     document.getElementById('image-upload').classList.remove('image-upload');
